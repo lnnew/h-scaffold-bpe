@@ -54,7 +54,7 @@ fidelity to the official Scaffold-BPE code (arXiv was unreachable from the sandb
 
 ## Relation to the team's repository (`yerinNam/h-scaffold-bpe`)
 This repo is built to run **on top of** it: `Tokenizer.load` reads the team's tokenizer JSON directly (`adapter.py`), scripts accept their
-artifacts, and `patches/` holds the fix (0001, to be proposed as a draft PR) and audit notes (0002) for a training bug found there (label double shift in `lm.py` — the reported LM results are void;
+artifacts, and `patches/` holds the fix (0001, to be proposed as a draft PR) and audit notes (0002) for a training bug found there (label double shift in `lm.py` — the reported LM results are suspect and need a corrected rerun;
 see `docs/RESEARCH_ASSESSMENT.md` §1.3b/§1.4). Cross-checks: identical segmentation on all six committed tokenizers, identical trainer output on
 synthetic counts (`tests/test_adapter.py`, needs the team repo; set `HSCAFFOLD_REPO`).
 

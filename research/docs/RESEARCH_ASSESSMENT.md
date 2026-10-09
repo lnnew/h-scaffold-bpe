@@ -2,7 +2,7 @@
 
 **Status of this document.** Updated after reading the team's report (`hscaffold_bpe_report_v2.pdf`; numbers transcribed in
 `docs/PRIOR_REPORT_NUMBERS.md`) and after auditing the team's code (`yerinNam/h-scaffold-bpe`; findings in §1.4 —
-**the reported LM results were produced by a training bug**). No new LM experiment has been run. Everything below is (i) an audit of the
+**the reported LM results are strongly suspect: the training code has a confirmed label-shift bug, and the reported NLLs show its signature — the bug's presence in the recorded runs themselves is not independently verified**). No new LM experiment has been run. Everything below is (i) an audit of the
 numbers given in the research brief, (ii) a literature check, (iii) a design, and (iv) a protocol with explicit
 go/no-go gates. Where I give a judgement it is a *prior to be updated by the gates*, not a finding.
 
@@ -94,7 +94,7 @@ loss equals the two-ahead CE to 6 digits; (ii) a controlled Markov demo with kno
 unigram entropy 4.68*, fixed training 2.17 vs the true 2.07 (`scripts/demo_label_shift.py` in the team repo); (iii) the team's val/test NLL
 (8.17–8.31 nats, all six models) shows the same "worse than unigram" signature. Not verified: the team's training logs (not in the repo), the
 the transformers version actually used for the runs (the project allows `>=4.56,<5`; the shift was verified with 4.56.2 and 5.19), and a GPU rerun. **Consequence: the six LM results — including the
-32K/64K reversal — carry no information about tokenizer quality.** They must be redone with the fixed loss.
+32K/64K reversal — cannot support any tokenizer-quality claim.** The bug is confirmed in the code path that produced them and the signature is present, but whether it fired in those runs is unverified (no logs); they must be redone with the fixed loss.
 
 **(c) Seed variance is unmeasured.** In a 4-run toy suite (synthetic data, tiny model) the across-seed std of BPB
 (0.024) was ~2× the Scaffold-vs-H gap (0.012), while the document-bootstrap CI excluded zero. This is exactly why

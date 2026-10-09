@@ -53,7 +53,7 @@ Text on slide 14/15: "51 per 247K pretokens at 32K·0.5"; L2 analysis is on the 
 ## Derived checks (mine; see assessment §1.3)
 * BPB and PPL are mutually consistent: ln(3,784.75)/ln2 = 11.89 bits/token ÷ 4.499 bytes/token = 2.64 ≈ 2.648. So the BPB *accounting* looks right.
 * …which pointed at the models, and the code audit found why: `lm.py` trained with HF-shifted labels *and* pre-shifted labels (two-ahead target) while
-  evaluation was aligned — see `docs/RESEARCH_ASSESSMENT.md` §1.3b/§1.4 and the team repo's `docs/AUDIT.md`. **All six LM results are void for tokenizer comparison.**
+  evaluation was aligned — see `docs/RESEARCH_ASSESSMENT.md` §1.3b/§1.4 and the team repo's `docs/AUDIT.md`. **All six LM results are suspect (bug signature present); unusable for tokenizer comparison until rerun.**
 * LM training text: WikiText-103 train (confirmed by the team's README; 74,350 tok/s × 2.24 h ÷ 5 epochs ≈ 120M tokens/epoch agrees). Batch 16×1024, lr 3e-4,
   8-bit AdamW, 34–36K steps (from `artifacts/lm/*/result.json`).
 * Event rates (WikiText-103 test, ~247K pretokens, inferred from slide text): L2-containing 466 (0.19%), 2nd merge 51 (0.021%), cross-boundary 48.

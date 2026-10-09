@@ -6,8 +6,9 @@ For each allocation exponent alpha the tokenizer-training mixture gives language
                                                    alpha=0: uniform, i.e. closest to parity)
 Implemented by re-weighting per-language word counts (no corpus duplication).  Trains BPE and
 Scaffold-BPE per alpha at one vocabulary size, then reports per-language compression and
-parity metrics on held-out test text.  The LM training mixture is held FIXED elsewhere, so
-that tokenizer allocation is the only thing that changes.
+parity metrics.  The parity-metrics gate uses val_<lang>.jsonl; test_<lang>.jsonl is stored
+for the final report only and is never used to select anything.  The LM training mixture is
+held FIXED elsewhere, so that tokenizer allocation is the only thing that changes.
 """
 import argparse, json, os, pickle, sys
 import numpy as np
@@ -50,7 +51,11 @@ def main():
             print(f"{l}: {sizes[l]/1e6:.1f} MB, {len(wcs[l]):,} types")
         pickle.dump((wcs, sizes), open(pc, "wb"))
     tot = sum(sizes.values())
-    tests = {l: [d for d, _ in read_jsonl(f"{a.text_dir}/test_{l}.jsonl")] for l in a.langs}
+    val_docs = {l: [d for d, _ in read_jsonl(f"{a.text_dir}/val_{l}.jsonl")] for l in a.langs}
+    try:
+        test_docs = {l: [d for d, _ in read_jsonl(f"{a.text_dir}/test_{l}.jsonl")] for l in a.langs}
+    except FileNotFoundError:
+        test_docs = {}      # optional: test text is for the final report only
     report = {}
     for alpha in a.alphas:
         w_share = {l: sizes[l] ** alpha for l in a.langs}
@@ -68,15 +73,18 @@ def main():
         row = dict(share={l: w_share[l] / z for l in a.langs}, per_lang={})
         for kind in ("bpe", "scaffold"):
             toks[kind].save(f"{a.out}/ml_a{alpha}_{kind}_{a.K}.json")
-            bpt = {}
-            for l in a.langs:
-                nb = sum(len(d.encode()) for d in tests[l]); nt = sum(len(toks[kind].encode(d)) for d in tests[l])
-                bpt[l] = nb / nt
-            row["per_lang"][kind] = bpt
-            row[f"parity_{kind}"] = parity(bpt)
+            def bpt(dd):
+                return {l: sum(len(d.encode()) for d in dd[l]) / sum(len(toks[kind].encode(d)) for d in dd[l])
+                        for l in a.langs}
+            pv = bpt(val_docs)
+            row["per_lang"][kind] = pv            # gate split (val) — also read by b_analyze
+            row[f"parity_{kind}"] = parity(pv)
+            if test_docs:
+                row[f"per_lang_test_{kind}"] = bpt(test_docs)
+                row[f"parity_test_{kind}"] = parity(row[f"per_lang_test_{kind}"])
         report[str(alpha)] = row
-        print(f"alpha={alpha}: bytes/token scaffold =", {l: round(v, 2) for l, v in row["per_lang"]["scaffold"].items()},
-              "| parity", {k: round(v, 3) for k, v in row["parity_scaffold"].items()}, flush=True)
+        print(f"alpha={alpha}: val bytes/token scaffold =", {l: round(v, 2) for l, v in row["per_lang"]["scaffold"].items()},
+              "| val parity", {k: round(v, 3) for k, v in row["parity_scaffold"].items()}, flush=True)
     json.dump(report, open(f"{a.out}/b_tokenizer_report.json", "w"), indent=1)
 
 

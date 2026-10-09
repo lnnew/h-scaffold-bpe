@@ -9,10 +9,11 @@ different environment (CPU only, no GPU, no real datasets, no internet to arXiv)
 hardware and real data.** Your job, in order: (1) tell us what this machine can do, (2) make the code run well here,
 (3) run the gated experiments, (4) report honestly — including negative results.
 
-**Most important fact (read before anything else):** the team's earlier LM results (test PPL ≈ 3.7–4.1K) were produced by a training bug —
-`lm.py` of `https://github.com/yerinNam/h-scaffold-bpe` passed pre-shifted labels to a HuggingFace model that shifts them again, so the models learned to
-predict the token *two* steps ahead (assessment §1.3b/§1.4). Those LM numbers, including the "32K worse / 64K better" reversal, say nothing about
-tokenizers. The tokenizers themselves, and the tokenizer-only measurements, are fine and were cross-checked. So **the first experiment is a corrected
+**Most important fact (read before anything else):** the team's earlier LM results (test PPL ≈ 3.7–4.1K) are strongly suspect —
+`lm.py` of `https://github.com/yerinNam/h-scaffold-bpe` passed pre-shifted labels to a HuggingFace model that shifts them again, i.e. that code trains the
+token *two* steps ahead (assessment §1.3b/§1.4), and the reported NLLs show the same signature. Whether the bug fired in the recorded runs is not
+independently verified (no training logs), so the LM numbers — including the "32K worse / 64K better" reversal — cannot be used for tokenizer claims.
+The tokenizers themselves, and the tokenizer-only measurements, are fine and were cross-checked. So **the first experiment is a corrected
 rerun of Scaffold vs H-Scaffold**, not anything new.
 
 Read `README.md` and `docs/RESEARCH_ASSESSMENT.md` first (≈15 minutes). The three research directions are **separate**; do not
