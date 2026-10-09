@@ -1,0 +1,8 @@
+# large artefacts: keep out of git; keep the small JSON reports under research/results/
+runs/
+tok_data/
+tok_variants/
+*.bin
+*.npy
+*.pkl
+model.pt

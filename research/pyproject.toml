@@ -1,0 +1,11 @@
+[project]
+name = "scaffold-margin"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = ["numpy", "regex", "scipy", "scikit-learn"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

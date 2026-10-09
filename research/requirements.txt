@@ -1,0 +1,10 @@
+# Tokenizer side needs only: numpy regex scipy scikit-learn
+# LM side needs: torch (choose the wheel that matches the target machine's NVIDIA driver!)
+# Data download (prepare_text.py / prepare_multilingual.py --source hf): datasets
+numpy
+regex
+scipy
+scikit-learn
+pytest
+torch
+datasets

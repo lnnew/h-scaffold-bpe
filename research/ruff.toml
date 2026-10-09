@@ -1,0 +1,4 @@
+# Nested config: the team's root ruff settings (line-length 100, E/F/I/UP) do not apply to research code.
+line-length = 140
+[lint]
+select = ["F"]
