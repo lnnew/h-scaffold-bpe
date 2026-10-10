@@ -27,8 +27,10 @@ useful vocabulary slot than its effect on predicting the changed pretoken itself
   Quotas and disjoint exchange pairs depend only on coverage/frequency/length. Keep at
   least two possible pairs per quota. Effective budget=min(32, sum floor(pair_count/2)).
 - Word/future rank exchanges inside identical quotas. Random uses the same pair universe
-  and quotas. Among at most100 draws, choose by selection token-count proximity to Future,
+  and quotas. Among at most1000 draws, choose by selection token-count proximity to Future,
   never by LM loss. Require <=max(1token,10% absolute delta) error. Preserve the selected draw.
+  The initial100 draws had closest error6 for Future delta-36 (Word-159), so the first
+  matching prepare failed and is preserved. Only the count-based draw limit was increased.
 - One fixed random vocabulary, model initialization seeds0/1/2. Results are conditional on
   that random draw and teacher. If word and future select identical vocabularies, stop.
 - Report word/future rank correlation and score stability on separate selection-document halves.

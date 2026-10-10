@@ -120,6 +120,15 @@ def apply_pairs(base, pairs):
     return (base - removes) | adds
 
 
+def token_count(pool, keep, counts):
+    """Exact recursive-demolition lengths, computed once in merge dependency order."""
+    lengths = np.ones(len(pool.levels), dtype=np.int64)
+    for token, (left, right) in enumerate(pool.merges, 256):
+        if token not in keep:
+            lengths[token] = lengths[left] + lengths[right]
+    return int(counts @ lengths[pool.from_model])
+
+
 def prepare(a):
     a.out.mkdir(parents=True, exist_ok=False)
     (a.out / "tok").mkdir(); (a.out / "data").mkdir()
@@ -139,6 +148,7 @@ def prepare(a):
                     seeds=[0, 1, 2], data_seed=0, max_samples=32, scoring_context_pretokens=12,
                     scoring_min_occurrences=2, requested_swaps=32, train_raw_budget_bytes=64 * 1024**2,
                     pair_matching="equal byte length; closest frequency; quotas by removal/addition deciles and byte length",
+                    random_draw_limit=1000,
                     teacher=str(a.teacher), teacher_hash=file_hash(a.teacher), pool_hash=file_hash(pool_path),
                     input_hashes={p.name: file_hash(p) for p in files},
                     scoring="FP32 common pool+EOS output head; partition in bits; rank residual*shrunk span BPB",
@@ -188,13 +198,11 @@ def prepare(a):
     selection_ids = [pool.encode(text) for text in selection_docs]
     counts = np.bincount([t for doc in selection_ids for t in doc], minlength=pool.n_normal)
     def count_tokens(keep):
-        tok = with_selected(pool, keep, "matching")
-        lengths = np.array([len(tok._demolish([int(t)], 1)) for t in pool.from_model])
-        return int(counts @ lengths)
+        return token_count(pool, keep, counts)
     baseline_count = count_tokens(base)
     future_delta = count_tokens(variants["future"]) - baseline_count
     best = None
-    for draw in range(100):
+    for draw in range(contract["random_draw_limit"]):
         rng = np.random.default_rng(draw)
         pairs = [grouped[key][i] for key, quota in quotas.items()
                  for i in rng.choice(len(grouped[key]), quota, replace=False)]
@@ -214,6 +222,8 @@ def prepare(a):
         raise ValueError("random selection could not match the future token-count change")
     all_tokens = sorted(stats)
     rank = float(spearmanr([stats[t]["word"] for t in all_tokens], [stats[t]["future"] for t in all_tokens]).statistic)
+    weighted_rank = float(spearmanr([residual[t] * stats[t]["word"] for t in all_tokens],
+                                    [residual[t] * stats[t]["future"] for t in all_tokens]).statistic)
     half_stats = [summaries({t: v[(v[:, 4] < len(selection_docs) // 2) == (half == 0)]
                             for t, v in rows.items() if ((v[:, 4] < len(selection_docs) // 2) == (half == 0)).sum() >= 2})
                   for half in range(2)]
@@ -223,6 +233,7 @@ def prepare(a):
                  for method in ["word", "future"]} if len(common) >= 3 else {}
     write(a.out / "selection.json", dict(swaps=budget, selected=selected, quotas={str(k): v for k, v in quotas.items()},
           checks=checks, rejected=rejected, scored_candidates=len(stats), seen=seen, word_future_rho=rank,
+          weighted_word_future_rho=weighted_rank,
           split_rank_rho=stability, split_common_candidates=len(common),
           token_delta={name: count_tokens(keep) - baseline_count for name, keep in variants.items()},
           random=dict(draw=draw, target_delta=future_delta, delta=delta, error=error, compression_matched=True),
@@ -251,7 +262,9 @@ def prepare(a):
         print(json.dumps(dict(stage="align", split=split, documents=len(docs))), flush=True)
         prepared = aligned_prepare(pool, tokenizers, docs, seq=a.seq, context=64)
         contract["data"][split] = dict(raw_hash=str(prepared["frequency"]["raw_hash"]),
-              bytes=int(prepared["frequency"]["bytes"].sum()), windows=len(prepared["frequency"]["bytes"]), documents=len(docs))
+              bytes=int(prepared["frequency"]["bytes"].sum()), windows=len(prepared["frequency"]["bytes"]), documents=len(docs),
+              target_tokens={name: int(np.diff(corpus["offsets"]).sum() - corpus["starts"].sum())
+                             for name, corpus in prepared.items()})
         for name, corpus in prepared.items():
             if split == "train" and name != "frequency":
                 indices = np.concatenate(list(training_batches(len(corpus["bytes"]), a.steps, 32, 0)))

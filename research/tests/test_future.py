@@ -126,6 +126,15 @@ def test_stratified_exchange_budget_preserves_bytes_and_slot_count():
         m.apply_pairs(base, pairs + pairs[:1])
 
 
+def test_fast_token_count_matches_recursive_demolition(pool):
+    m = controller()
+    counts = np.arange(1, pool.n_normal + 1, dtype=np.int64)
+    for keep in [set(), {256}, {257}, {256, 258}]:
+        tok = with_selected(pool, keep, "check")
+        expected = sum(int(counts[i]) * len(tok._demolish([int(t)], 1)) for i, t in enumerate(pool.from_model))
+        assert m.token_count(pool, keep, counts) == expected
+
+
 def test_finish_checks_training_pairing_and_doc_bytes(tmp_path):
     m = controller()
     c = dict(seeds=[0, 1, 2], methods=["frequency", "word", "future", "random"], primary="PG19", scope="test")
