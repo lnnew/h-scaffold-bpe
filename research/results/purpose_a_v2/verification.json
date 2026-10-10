@@ -1,0 +1,7 @@
+{
+  "local_full_suite": "53 passed",
+  "wine_core_suite": "12 passed",
+  "wine_frozen_eval_suite": "2 passed",
+  "cpu_ddp_2process": "PASS; global token and byte exposure exactly matches expected",
+  "local_reaggregation": "means, deltas, paired p-values and document CI match server within 1e-12"
+}

@@ -1,0 +1,43 @@
+{
+ "A_K32768_s1500": {
+  "apool_freq": {
+   "n_seeds": 3,
+   "bpb_mean": 1.5079949143154374,
+   "bpb_std": 0.0016265612978547462,
+   "delta_mean": 0.0016864492110342983,
+   "delta_pct": 0.11195908740494329,
+   "seeds_better": 0,
+   "n_paired": 3,
+   "delta_std": 0.001461376904118276,
+   "paired_t_p": 0.18366536556006702,
+   "mde_bpb": 0.00236377126743532,
+   "doc_boot_ci95": [
+    -0.0006088094135445905,
+    0.004488593519491191
+   ],
+   "verdict": "NOT SUPPORTED: across-seed test does not clear zero; document bootstrap CI contains zero"
+  },
+  "apool_lm": {
+   "n_seeds": 3,
+   "bpb_mean": 1.506836679834561,
+   "bpb_std": 0.001709016490285351,
+   "delta_mean": 0.0005282147301578869,
+   "delta_pct": 0.035066836733289954,
+   "seeds_better": 1,
+   "n_paired": 3,
+   "delta_std": 0.001387882560710662,
+   "paired_t_p": 0.5775169126045654,
+   "mde_bpb": 0.002244894462432877,
+   "doc_boot_ci95": [
+    -0.0013042767813511884,
+    0.0028861808237439536
+   ],
+   "verdict": "NOT SUPPORTED: across-seed test does not clear zero; document bootstrap CI contains zero"
+  },
+  "apool_randomswap0": {
+   "n_seeds": 3,
+   "bpb_mean": 1.506308465104403,
+   "bpb_std": 0.002997010577733795
+  }
+ }
+}

@@ -1,0 +1,18 @@
+{
+  "frozen_at_utc": "2026-10-10T07:01:05.244979+00:00",
+  "training_sha": "dae94ffa1048644aa03766e56c4f19f0851c5563",
+  "evaluation_sha": "08e0461c21e7682a503446a92fa4baaea57d4661",
+  "methods": [
+    "apool_freq",
+    "apool_lm",
+    "apool_randomswap0"
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "checkpoints": "all final 1500-step checkpoints; no best-epoch choice",
+  "split": "test",
+  "success_rule": "utility must beat both frequency and matched random; no additional training"
+}

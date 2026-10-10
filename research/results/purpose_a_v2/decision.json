@@ -1,0 +1,52 @@
+{
+  "decision": "NO_GO_FOR_64K_OR_1B_WITH_CURRENT_SELECTOR",
+  "reason": "utility advantage over frequency and matched random is not established",
+  "training_sha": "dae94ffa1048644aa03766e56c4f19f0851c5563",
+  "evaluation_sha": "08e0461c21e7682a503446a92fa4baaea57d4661",
+  "K_normal": 32768,
+  "model_seeds": [
+    0,
+    1,
+    2
+  ],
+  "data_seed": 0,
+  "random_selection_seed": 0,
+  "updates_per_run": 1500,
+  "token_exposures_per_run": 12288000,
+  "changed_vocabulary_slots": 63,
+  "n_test_docs": 62,
+  "same_raw_test_bytes": 1287656,
+  "all_nine_doc_byte_arrays_equal": true,
+  "test_bpb_mean": {
+    "apool_freq": 1.5365135240319239,
+    "apool_lm": 1.5347641064221265,
+    "apool_randomswap0": 1.5347665806478112
+  },
+  "utility_vs_freq": {
+    "delta_mean": -0.0017494176097974101,
+    "delta_pct": -0.113856310565156,
+    "paired_t_p": 0.0004121233021732951,
+    "doc_boot_ci95": [
+      -0.004032046332406691,
+      0.0006773960093346911
+    ],
+    "verdict": "NOT SUPPORTED: document bootstrap CI contains zero"
+  },
+  "utility_vs_random": {
+    "delta_mean": -2.474225685000775e-06,
+    "delta_pct": -0.00016121185567882424,
+    "paired_t_p": 0.9981937599765686,
+    "doc_boot_ci95": [
+      -0.003279991729704436,
+      0.004328062281765778
+    ],
+    "verdict": "NOT SUPPORTED: across-seed test does not clear zero; document bootstrap CI contains zero"
+  },
+  "limits": [
+    "small model and fixed-token budget",
+    "one teacher and one random-selection draw",
+    "pool-normal candidates only",
+    "no raw-epoch confirmation, 64K, 1B or multilingual LM experiment"
+  ],
+  "model_label": "small, approximately 42.51M parameters"
+}

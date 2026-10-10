@@ -1,0 +1,817 @@
+{
+ "K": 32768,
+ "K_pool": 40960,
+ "n_candidates": 40704,
+ "selected_scorer": "torch:/root/home/ubuntu/research/runs/purpose_a_v1/teacher_pool40960/model.pt",
+ "teachers": {
+  "bigram": {
+   "tokenizer_variant": "apool_lm_teacher0",
+   "tokens_with_dev_evidence": 8674,
+   "spearman_freq_vs_V": 0.5109768769275274,
+   "spearman_freq_vs_mean_bits_per_occurrence": 0.22197734591727358,
+   "jaccard_freq_vs_lm": 0.9972969652291437,
+   "n_swapped_slots": 44,
+   "unsupported_decisions": "frozen to frequency baseline",
+   "predicted_dBPB_lm_minus_freq_heldout": 0.0004579946190618968,
+   "predicted_dBPB_lm_minus_freq_insample": 0.005586561030909801,
+   "predicted_dBPB_comp_minus_freq_heldout": 0.0052492404976544555,
+   "predicted_dBPB_random_minus_freq_heldout": [
+    1.1421851607868858,
+    1.2194994132942962,
+    0.762344121242186
+   ],
+   "note": "first-order, additive; ignores interactions between simultaneous removals; a fixed-teacher proxy, not a retrained-BPB estimate"
+  },
+  "torch:/root/home/ubuntu/research/runs/purpose_a_v1/teacher_pool40960/model.pt": {
+   "tokenizer_variant": "apool_lm_teacher1",
+   "tokens_with_dev_evidence": 8674,
+   "spearman_freq_vs_V": 0.5108481004719043,
+   "spearman_freq_vs_mean_bits_per_occurrence": 0.37401287367796726,
+   "jaccard_freq_vs_lm": 0.9961320030698388,
+   "n_swapped_slots": 63,
+   "unsupported_decisions": "frozen to frequency baseline",
+   "predicted_dBPB_lm_minus_freq_heldout": -1.586915776299897e-05,
+   "predicted_dBPB_lm_minus_freq_insample": 0.010373874375978106,
+   "predicted_dBPB_comp_minus_freq_heldout": 0.00018329581490144655,
+   "predicted_dBPB_random_minus_freq_heldout": [
+    0.9536946792812797,
+    1.0259572786156514,
+    0.6088579238456715
+   ],
+   "note": "first-order, additive; ignores interactions between simultaneous removals; a fixed-teacher proxy, not a retrained-BPB estimate"
+  }
+ },
+ "only_in_lm_selection": [
+  {
+   "token": " cheilocystidia",
+   "resid": 177.0,
+   "bits_saved_per_occ": 24.807400032569102,
+   "n_dev": 2
+  },
+  {
+   "token": " Tecumseh",
+   "resid": 210.0,
+   "bits_saved_per_occ": 24.630253315976386,
+   "n_dev": 2
+  },
+  {
+   "token": " Travolta",
+   "resid": 166.0,
+   "bits_saved_per_occ": 23.57856948349583,
+   "n_dev": 8
+  },
+  {
+   "token": " mycorrhizal",
+   "resid": 197.0,
+   "bits_saved_per_occ": 23.13077017896334,
+   "n_dev": 1
+  },
+  {
+   "token": " manslaughter",
+   "resid": 201.0,
+   "bits_saved_per_occ": 23.092466202963173,
+   "n_dev": 1
+  },
+  {
+   "token": " ellipsoid",
+   "resid": 174.0,
+   "bits_saved_per_occ": 22.888178330962294,
+   "n_dev": 1
+  },
+  {
+   "token": "urocystidia",
+   "resid": 163.0,
+   "bits_saved_per_occ": 22.653590693118524,
+   "n_dev": 1
+  },
+  {
+   "token": " legitimately",
+   "resid": 173.0,
+   "bits_saved_per_occ": 22.646308534922632,
+   "n_dev": 1
+  },
+  {
+   "token": " cardiovascular",
+   "resid": 169.0,
+   "bits_saved_per_occ": 22.340933388328217,
+   "n_dev": 1
+  },
+  {
+   "token": " repercussions",
+   "resid": 204.0,
+   "bits_saved_per_occ": 21.52552098889023,
+   "n_dev": 1
+  },
+  {
+   "token": " unbelievable",
+   "resid": 203.0,
+   "bits_saved_per_occ": 21.242674744042112,
+   "n_dev": 1
+  },
+  {
+   "token": " Architect",
+   "resid": 205.0,
+   "bits_saved_per_occ": 21.22014829399965,
+   "n_dev": 2
+  },
+  {
+   "token": " evacuees",
+   "resid": 189.0,
+   "bits_saved_per_occ": 21.047386105023342,
+   "n_dev": 1
+  },
+  {
+   "token": " overruled",
+   "resid": 209.0,
+   "bits_saved_per_occ": 20.94875556820085,
+   "n_dev": 1
+  },
+  {
+   "token": " Established",
+   "resid": 208.0,
+   "bits_saved_per_occ": 20.939655071833915,
+   "n_dev": 1
+  },
+  {
+   "token": " Matanikau",
+   "resid": 195.0,
+   "bits_saved_per_occ": 20.890646358188377,
+   "n_dev": 4
+  },
+  {
+   "token": " Patriotic",
+   "resid": 174.0,
+   "bits_saved_per_occ": 20.822439673717433,
+   "n_dev": 3
+  },
+  {
+   "token": " Douglass",
+   "resid": 195.0,
+   "bits_saved_per_occ": 20.759040334636747,
+   "n_dev": 2
+  },
+  {
+   "token": " unrecogn",
+   "resid": 200.0,
+   "bits_saved_per_occ": 20.617980923038047,
+   "n_dev": 1
+  },
+  {
+   "token": " silhouette",
+   "resid": 197.0,
+   "bits_saved_per_occ": 20.606802325904205,
+   "n_dev": 1
+  },
+  {
+   "token": " melodramatic",
+   "resid": 207.0,
+   "bits_saved_per_occ": 20.40985825068129,
+   "n_dev": 1
+  },
+  {
+   "token": " massacred",
+   "resid": 191.0,
+   "bits_saved_per_occ": 20.3248146184492,
+   "n_dev": 1
+  },
+  {
+   "token": " administrations",
+   "resid": 188.0,
+   "bits_saved_per_occ": 20.240625120854354,
+   "n_dev": 1
+  },
+  {
+   "token": " ministries",
+   "resid": 184.0,
+   "bits_saved_per_occ": 20.1618950405285,
+   "n_dev": 1
+  },
+  {
+   "token": " jeopard",
+   "resid": 194.0,
+   "bits_saved_per_occ": 20.065056425341876,
+   "n_dev": 1
+  },
+  {
+   "token": " Automobile",
+   "resid": 184.0,
+   "bits_saved_per_occ": 19.909471838687416,
+   "n_dev": 1
+  },
+  {
+   "token": " annihilated",
+   "resid": 200.0,
+   "bits_saved_per_occ": 19.77519133728654,
+   "n_dev": 2
+  },
+  {
+   "token": " assortment",
+   "resid": 205.0,
+   "bits_saved_per_occ": 19.560205618903844,
+   "n_dev": 1
+  },
+  {
+   "token": " legislated",
+   "resid": 198.0,
+   "bits_saved_per_occ": 19.558206767742455,
+   "n_dev": 1
+  },
+  {
+   "token": " orphans",
+   "resid": 183.0,
+   "bits_saved_per_occ": 19.51841906301677,
+   "n_dev": 1
+  },
+  {
+   "token": " Prominent",
+   "resid": 201.0,
+   "bits_saved_per_occ": 19.44825234284267,
+   "n_dev": 1
+  },
+  {
+   "token": " Surround",
+   "resid": 210.0,
+   "bits_saved_per_occ": 19.389871800111386,
+   "n_dev": 1
+  },
+  {
+   "token": " prescription",
+   "resid": 201.0,
+   "bits_saved_per_occ": 19.38258083640377,
+   "n_dev": 1
+  },
+  {
+   "token": " wettest",
+   "resid": 194.0,
+   "bits_saved_per_occ": 19.287890766077844,
+   "n_dev": 1
+  },
+  {
+   "token": " reagent",
+   "resid": 203.0,
+   "bits_saved_per_occ": 19.282999304315062,
+   "n_dev": 1
+  },
+  {
+   "token": " espoused",
+   "resid": 204.0,
+   "bits_saved_per_occ": 19.267695324938447,
+   "n_dev": 1
+  },
+  {
+   "token": " stardom",
+   "resid": 191.0,
+   "bits_saved_per_occ": 19.199967731511947,
+   "n_dev": 1
+  },
+  {
+   "token": " retribution",
+   "resid": 202.0,
+   "bits_saved_per_occ": 18.976395788835127,
+   "n_dev": 1
+  },
+  {
+   "token": " Broderick",
+   "resid": 197.0,
+   "bits_saved_per_occ": 18.961232697646093,
+   "n_dev": 1
+  },
+  {
+   "token": " Dunedin",
+   "resid": 204.0,
+   "bits_saved_per_occ": 18.954637369364686,
+   "n_dev": 1
+  },
+  {
+   "token": " airstrip",
+   "resid": 198.0,
+   "bits_saved_per_occ": 18.933341239259768,
+   "n_dev": 1
+  },
+  {
+   "token": " immigrated",
+   "resid": 208.0,
+   "bits_saved_per_occ": 18.931412832192173,
+   "n_dev": 1
+  },
+  {
+   "token": " deseg",
+   "resid": 202.0,
+   "bits_saved_per_occ": 18.920423553560404,
+   "n_dev": 1
+  },
+  {
+   "token": " gearbox",
+   "resid": 207.0,
+   "bits_saved_per_occ": 18.889956482994755,
+   "n_dev": 1
+  },
+  {
+   "token": " Advis",
+   "resid": 200.0,
+   "bits_saved_per_occ": 18.84826678773664,
+   "n_dev": 1
+  },
+  {
+   "token": " intimidation",
+   "resid": 195.0,
+   "bits_saved_per_occ": 18.751075952081052,
+   "n_dev": 1
+  },
+  {
+   "token": " Gothenburg",
+   "resid": 193.0,
+   "bits_saved_per_occ": 18.658745758897208,
+   "n_dev": 1
+  },
+  {
+   "token": " scorers",
+   "resid": 196.0,
+   "bits_saved_per_occ": 18.637634544538496,
+   "n_dev": 1
+  },
+  {
+   "token": " rulings",
+   "resid": 199.0,
+   "bits_saved_per_occ": 18.58063206439204,
+   "n_dev": 1
+  },
+  {
+   "token": " Dakotas",
+   "resid": 193.0,
+   "bits_saved_per_occ": 18.572746728643047,
+   "n_dev": 1
+  },
+  {
+   "token": " binomial",
+   "resid": 205.0,
+   "bits_saved_per_occ": 18.545969167489826,
+   "n_dev": 1
+  },
+  {
+   "token": " beech",
+   "resid": 199.0,
+   "bits_saved_per_occ": 18.528591490102166,
+   "n_dev": 1
+  },
+  {
+   "token": " Reinhard",
+   "resid": 206.0,
+   "bits_saved_per_occ": 18.50962001509243,
+   "n_dev": 1
+  },
+  {
+   "token": " Merritt",
+   "resid": 196.0,
+   "bits_saved_per_occ": 18.422549164111754,
+   "n_dev": 2
+  },
+  {
+   "token": " larva",
+   "resid": 204.0,
+   "bits_saved_per_occ": 18.35822244926281,
+   "n_dev": 1
+  },
+  {
+   "token": " ostrac",
+   "resid": 210.0,
+   "bits_saved_per_occ": 18.12048684097765,
+   "n_dev": 1
+  },
+  {
+   "token": " Prisoner",
+   "resid": 209.0,
+   "bits_saved_per_occ": 18.11208638279279,
+   "n_dev": 1
+  },
+  {
+   "token": " filament",
+   "resid": 209.0,
+   "bits_saved_per_occ": 17.975160675481852,
+   "n_dev": 1
+  },
+  {
+   "token": " Geffen",
+   "resid": 205.0,
+   "bits_saved_per_occ": 17.843384975270183,
+   "n_dev": 2
+  },
+  {
+   "token": " Sabah",
+   "resid": 209.0,
+   "bits_saved_per_occ": 17.685926031877848,
+   "n_dev": 1
+  },
+  {
+   "token": " Zoological",
+   "resid": 208.0,
+   "bits_saved_per_occ": 17.66492048365983,
+   "n_dev": 1
+  },
+  {
+   "token": " enlight",
+   "resid": 203.0,
+   "bits_saved_per_occ": 17.631402303281753,
+   "n_dev": 1
+  },
+  {
+   "token": " Huey",
+   "resid": 206.0,
+   "bits_saved_per_occ": 17.55847065242627,
+   "n_dev": 1
+  }
+ ],
+ "only_in_freq_selection": [
+  {
+   "token": "arus",
+   "resid": 324.0,
+   "bits_saved_per_occ": 0.9158429205706525,
+   "n_dev": 15
+  },
+  {
+   "token": "ono",
+   "resid": 358.0,
+   "bits_saved_per_occ": 4.588963072607795,
+   "n_dev": 12
+  },
+  {
+   "token": "IP",
+   "resid": 529.0,
+   "bits_saved_per_occ": 5.164605058907831,
+   "n_dev": 25
+  },
+  {
+   "token": " gam",
+   "resid": 402.0,
+   "bits_saved_per_occ": 6.000441842790047,
+   "n_dev": 28
+  },
+  {
+   "token": " sect",
+   "resid": 428.0,
+   "bits_saved_per_occ": 7.576748738730475,
+   "n_dev": 13
+  },
+  {
+   "token": "ulata",
+   "resid": 282.0,
+   "bits_saved_per_occ": 8.08190043624048,
+   "n_dev": 6
+  },
+  {
+   "token": "cz",
+   "resid": 310.0,
+   "bits_saved_per_occ": 9.012598997927242,
+   "n_dev": 6
+  },
+  {
+   "token": " Ave",
+   "resid": 341.0,
+   "bits_saved_per_occ": 9.264668600884404,
+   "n_dev": 14
+  },
+  {
+   "token": " Lus",
+   "resid": 348.0,
+   "bits_saved_per_occ": 9.646023483805829,
+   "n_dev": 6
+  },
+  {
+   "token": " Ashland",
+   "resid": 243.0,
+   "bits_saved_per_occ": 10.836574325213881,
+   "n_dev": 5
+  },
+  {
+   "token": " Raider",
+   "resid": 321.0,
+   "bits_saved_per_occ": 11.01639898206709,
+   "n_dev": 8
+  },
+  {
+   "token": " WM",
+   "resid": 282.0,
+   "bits_saved_per_occ": 11.346751804437645,
+   "n_dev": 2
+  },
+  {
+   "token": " Fitch",
+   "resid": 234.0,
+   "bits_saved_per_occ": 11.349885277830385,
+   "n_dev": 3
+  },
+  {
+   "token": " Chaney",
+   "resid": 239.0,
+   "bits_saved_per_occ": 11.382375736562262,
+   "n_dev": 6
+  },
+  {
+   "token": "ounts",
+   "resid": 227.0,
+   "bits_saved_per_occ": 11.6838509544074,
+   "n_dev": 4
+  },
+  {
+   "token": "CE",
+   "resid": 230.0,
+   "bits_saved_per_occ": 11.6873159772598,
+   "n_dev": 2
+  },
+  {
+   "token": " Stockton",
+   "resid": 282.0,
+   "bits_saved_per_occ": 11.9946442424346,
+   "n_dev": 4
+  },
+  {
+   "token": " Bask",
+   "resid": 217.0,
+   "bits_saved_per_occ": 12.032400491571252,
+   "n_dev": 3
+  },
+  {
+   "token": " Bost",
+   "resid": 256.0,
+   "bits_saved_per_occ": 12.068486713409055,
+   "n_dev": 4
+  },
+  {
+   "token": " MCA",
+   "resid": 234.0,
+   "bits_saved_per_occ": 12.077950145790167,
+   "n_dev": 3
+  },
+  {
+   "token": " NP",
+   "resid": 236.0,
+   "bits_saved_per_occ": 12.288325173103765,
+   "n_dev": 2
+  },
+  {
+   "token": " tut",
+   "resid": 280.0,
+   "bits_saved_per_occ": 12.729649213322034,
+   "n_dev": 3
+  },
+  {
+   "token": " Indy",
+   "resid": 258.0,
+   "bits_saved_per_occ": 12.793779085109655,
+   "n_dev": 5
+  },
+  {
+   "token": " Meridian",
+   "resid": 217.0,
+   "bits_saved_per_occ": 12.800755833002743,
+   "n_dev": 161
+  },
+  {
+   "token": " Muz",
+   "resid": 250.0,
+   "bits_saved_per_occ": 12.985546818503432,
+   "n_dev": 3
+  },
+  {
+   "token": "tion",
+   "resid": 232.0,
+   "bits_saved_per_occ": 13.048838875904735,
+   "n_dev": 2
+  },
+  {
+   "token": "feldt",
+   "resid": 242.0,
+   "bits_saved_per_occ": 13.172145046415563,
+   "n_dev": 3
+  },
+  {
+   "token": "ousel",
+   "resid": 249.0,
+   "bits_saved_per_occ": 13.492988654131338,
+   "n_dev": 6
+  },
+  {
+   "token": "mie",
+   "resid": 230.0,
+   "bits_saved_per_occ": 13.496415698918156,
+   "n_dev": 2
+  },
+  {
+   "token": " pots",
+   "resid": 219.0,
+   "bits_saved_per_occ": 13.52319249542791,
+   "n_dev": 3
+  },
+  {
+   "token": " atheist",
+   "resid": 232.0,
+   "bits_saved_per_occ": 13.687430950763432,
+   "n_dev": 4
+  },
+  {
+   "token": " Rar",
+   "resid": 231.0,
+   "bits_saved_per_occ": 13.710036019738073,
+   "n_dev": 3
+  },
+  {
+   "token": "iop",
+   "resid": 252.0,
+   "bits_saved_per_occ": 14.004460704734134,
+   "n_dev": 2
+  },
+  {
+   "token": "emed",
+   "resid": 224.0,
+   "bits_saved_per_occ": 14.014194464152567,
+   "n_dev": 2
+  },
+  {
+   "token": " diversified",
+   "resid": 231.0,
+   "bits_saved_per_occ": 14.27463214924794,
+   "n_dev": 2
+  },
+  {
+   "token": "ungs",
+   "resid": 240.0,
+   "bits_saved_per_occ": 14.492950136596003,
+   "n_dev": 2
+  },
+  {
+   "token": " 787",
+   "resid": 228.0,
+   "bits_saved_per_occ": 14.789817440953673,
+   "n_dev": 1
+  },
+  {
+   "token": " cheers",
+   "resid": 217.0,
+   "bits_saved_per_occ": 14.80604478180195,
+   "n_dev": 2
+  },
+  {
+   "token": " Tulagi",
+   "resid": 223.0,
+   "bits_saved_per_occ": 14.81519127396461,
+   "n_dev": 6
+  },
+  {
+   "token": " frontage",
+   "resid": 229.0,
+   "bits_saved_per_occ": 15.137253098417167,
+   "n_dev": 2
+  },
+  {
+   "token": " Digest",
+   "resid": 225.0,
+   "bits_saved_per_occ": 15.181027498575977,
+   "n_dev": 2
+  },
+  {
+   "token": " Farms",
+   "resid": 211.0,
+   "bits_saved_per_occ": 15.337821858973959,
+   "n_dev": 1
+  },
+  {
+   "token": " Element",
+   "resid": 229.0,
+   "bits_saved_per_occ": 15.40932996192075,
+   "n_dev": 3
+  },
+  {
+   "token": "ugged",
+   "resid": 211.0,
+   "bits_saved_per_occ": 15.477604954839387,
+   "n_dev": 1
+  },
+  {
+   "token": " Chir",
+   "resid": 218.0,
+   "bits_saved_per_occ": 15.54568036597899,
+   "n_dev": 1
+  },
+  {
+   "token": " 386",
+   "resid": 223.0,
+   "bits_saved_per_occ": 15.57983694595707,
+   "n_dev": 1
+  },
+  {
+   "token": " Jimmie",
+   "resid": 217.0,
+   "bits_saved_per_occ": 15.653261323965939,
+   "n_dev": 7
+  },
+  {
+   "token": " cors",
+   "resid": 218.0,
+   "bits_saved_per_occ": 15.71058118403763,
+   "n_dev": 1
+  },
+  {
+   "token": " Calv",
+   "resid": 220.0,
+   "bits_saved_per_occ": 15.711298833243152,
+   "n_dev": 1
+  },
+  {
+   "token": " Somerville",
+   "resid": 220.0,
+   "bits_saved_per_occ": 15.712129171721053,
+   "n_dev": 7
+  },
+  {
+   "token": "affer",
+   "resid": 217.0,
+   "bits_saved_per_occ": 15.767737760639255,
+   "n_dev": 1
+  },
+  {
+   "token": " fing",
+   "resid": 224.0,
+   "bits_saved_per_occ": 15.83172301158298,
+   "n_dev": 1
+  },
+  {
+   "token": " rost",
+   "resid": 211.0,
+   "bits_saved_per_occ": 15.838903906394046,
+   "n_dev": 1
+  },
+  {
+   "token": " polyg",
+   "resid": 220.0,
+   "bits_saved_per_occ": 15.887585177961151,
+   "n_dev": 1
+  },
+  {
+   "token": " hauling",
+   "resid": 211.0,
+   "bits_saved_per_occ": 15.899397771939132,
+   "n_dev": 1
+  },
+  {
+   "token": "geries",
+   "resid": 223.0,
+   "bits_saved_per_occ": 15.902792296708801,
+   "n_dev": 1
+  },
+  {
+   "token": " Nol",
+   "resid": 210.0,
+   "bits_saved_per_occ": 15.957219164675934,
+   "n_dev": 1
+  },
+  {
+   "token": " Zeit",
+   "resid": 212.0,
+   "bits_saved_per_occ": 15.990794580880214,
+   "n_dev": 1
+  },
+  {
+   "token": " Trick",
+   "resid": 216.0,
+   "bits_saved_per_occ": 16.171739041300306,
+   "n_dev": 1
+  },
+  {
+   "token": " mobilised",
+   "resid": 216.0,
+   "bits_saved_per_occ": 16.355034573350746,
+   "n_dev": 1
+  },
+  {
+   "token": " Adel",
+   "resid": 217.0,
+   "bits_saved_per_occ": 16.376185412512218,
+   "n_dev": 1
+  },
+  {
+   "token": " ting",
+   "resid": 216.0,
+   "bits_saved_per_occ": 16.500180225856198,
+   "n_dev": 1
+  },
+  {
+   "token": "On",
+   "resid": 212.0,
+   "bits_saved_per_occ": 16.71447115917574,
+   "n_dev": 1
+  }
+ ],
+ "variants": {
+  "freq": 32512,
+  "comp": 32512,
+  "random0": 32512,
+  "random1": 32512,
+  "random2": 32512,
+  "lm_teacher0": 32512,
+  "lm_teacher1": 32512,
+  "lm": 32512,
+  "randomswap0": 32512,
+  "randomswap1": 32512,
+  "randomswap2": 32512
+ }
+}
