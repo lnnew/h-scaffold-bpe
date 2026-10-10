@@ -1,0 +1,131 @@
+{
+  "random_seed": 20261010,
+  "audit": [
+    {
+      "K": 32768,
+      "backend": "margin",
+      "documents": 3124,
+      "stress_L2_surfaces": 2118,
+      "exact": true,
+      "output_sha256": "93aecc4548f4eda60759b031ead517cf5ac99b08bd1e8cf7eb70c882d20e6372"
+    },
+    {
+      "K": 32768,
+      "backend": "python",
+      "documents": 3124,
+      "stress_L2_surfaces": 2118,
+      "exact": true,
+      "output_sha256": "6b5a170daefa6b3f06b2687221199a4b5e6f0a59a8b89b00f2c9ec961b691307"
+    },
+    {
+      "K": 32768,
+      "backend": "tiktoken",
+      "documents": 3124,
+      "stress_L2_surfaces": 2118,
+      "exact": true,
+      "output_sha256": "4c824606918e26b2b3ab7a77d197b0cbe8945e74766580b941c193420ef96aa7"
+    },
+    {
+      "K": 65536,
+      "backend": "margin",
+      "documents": 4994,
+      "stress_L2_surfaces": 3988,
+      "exact": true,
+      "output_sha256": "5e6396f31a5e636fe3b587ea2710eeac1b54915499c55e622c9c16fd4553919a"
+    },
+    {
+      "K": 65536,
+      "backend": "python",
+      "documents": 4994,
+      "stress_L2_surfaces": 3988,
+      "exact": true,
+      "output_sha256": "9645b10c3817dfd5d01548c2126e562efe761d519554a13d710c4f782d6793b1"
+    },
+    {
+      "K": 65536,
+      "backend": "tiktoken",
+      "documents": 4994,
+      "stress_L2_surfaces": 3988,
+      "exact": true,
+      "output_sha256": "ad82a4408f8279a94aac662e5e749f76d58a6c1f186cb3184ef1194b3567b1ec"
+    }
+  ],
+  "events": [
+    {
+      "K": 32768,
+      "domain": "wiki_dev_sel",
+      "pretokens": 98830,
+      "types": 12158,
+      "attempted_rate": 0.0012647981382171406,
+      "accepted_rate": 0.00014165739148031974,
+      "changed_rate": 7.082869574015987e-05,
+      "attempted_types": 80,
+      "accepted_types": 8,
+      "changed_types": 6,
+      "merge_events": 14,
+      "cross_boundary_events": 13,
+      "tokens_scaffold": 112339,
+      "tokens_hscaffold": 112332,
+      "fertility_delta_pct": -0.006231139675446639
+    },
+    {
+      "K": 32768,
+      "domain": "pg19_excerpts",
+      "pretokens": 251247,
+      "types": 22966,
+      "attempted_rate": 0.0031920779153581935,
+      "accepted_rate": 0.00039005440860985404,
+      "changed_rate": 0.00035423308537017357,
+      "attempted_types": 500,
+      "accepted_types": 63,
+      "changed_types": 57,
+      "merge_events": 98,
+      "cross_boundary_events": 92,
+      "tokens_scaffold": 299383,
+      "tokens_hscaffold": 299294,
+      "fertility_delta_pct": -0.029727806856100714
+    },
+    {
+      "K": 65536,
+      "domain": "wiki_dev_sel",
+      "pretokens": 98830,
+      "types": 12158,
+      "attempted_rate": 0.0006981685722958616,
+      "accepted_rate": 9.106546595163413e-05,
+      "changed_rate": 9.106546595163413e-05,
+      "attempted_types": 47,
+      "accepted_types": 8,
+      "changed_types": 8,
+      "merge_events": 9,
+      "cross_boundary_events": 9,
+      "tokens_scaffold": 107315,
+      "tokens_hscaffold": 107306,
+      "fertility_delta_pct": -0.008386525648790942
+    },
+    {
+      "K": 65536,
+      "domain": "pg19_excerpts",
+      "pretokens": 251247,
+      "types": 22966,
+      "attempted_rate": 0.002208981599780296,
+      "accepted_rate": 0.00029055073294407494,
+      "changed_rate": 0.00029055073294407494,
+      "attempted_types": 355,
+      "accepted_types": 38,
+      "changed_types": 38,
+      "merge_events": 73,
+      "cross_boundary_events": 71,
+      "tokens_scaffold": 286120,
+      "tokens_hscaffold": 286047,
+      "fertility_delta_pct": -0.025513770445966727
+    }
+  ],
+  "input_sha256": {
+    "wiki_dev_sel.jsonl": "d9f5ca78c69de9824b7474904d30f1a4327f324f424635cc3fd979d3c13e50a0",
+    "hierarchical-32768.json": "78610f44f11eda08e5baba8d79e7afe52eaff23ff252c087a1c6685c3a9dbd79",
+    "scaffold-65536.json": "f0f06983f827e178fed830ed2244d5ce5b47be283b78551bf55dd5071fa507b6",
+    "hierarchical-65536.json": "ba862c26706eb08833f0b1cc6efad2187d91de036ab10aa17039534de95663b9",
+    "scaffold-32768.json": "8c7397af88f77bc545f8a4ad77fdf9e277d1e30c40926015d898d699781690b8",
+    "pg19_excerpts.jsonl": "0ca57826b69986fc4398fd115490d3a85de8602b93da2a709676d8e924aabf18"
+  }
+}

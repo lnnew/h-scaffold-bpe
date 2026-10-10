@@ -1,0 +1,14 @@
+{
+  "source_sha": "8c873596e687c557ae7593e55587f7345e66bd4e",
+  "source_hashes": {
+    "src/hscaffold_bpe/remerge.py": "dc4b38aa12f12f97b7d521456da6d0fded07c711e2823ee88fae72c01956ec8c",
+    "src/hscaffold_bpe/tokenizer.py": "ea6abf48cfcb4270fb79a8fd00933a7a7d9e6e7c2508c68082a6be9ac8300bbb",
+    "research/src/scaffold_margin/bpe.py": "4ddeb67afc3481fc24b21fbeba4c8348c484da2ce913c2c922af6afdc1f2f4fa",
+    "research/scripts/event_driven_benchmark.py": "109756812a9f663d9b5a29dd2bc1f80f8f8d92b03f7e8f021707e3eb60acaf7b",
+    "research/scripts/event_driven_audit.py": "1bf7f6b70cb13c4f71e4da30a8d6b87e0529c956623006ef2b604400a299688f"
+  },
+  "tests": "77 passed",
+  "differential_conditions": 24354,
+  "exact": true,
+  "input_hashes_verified": true
+}

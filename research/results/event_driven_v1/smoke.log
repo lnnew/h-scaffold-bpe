@@ -1,0 +1,120 @@
+BEGIN K=32768 backend=margin domain=wiki_dev_sel
+round=1 method=full seconds=0.0192
+round=1 method=local seconds=0.0192
+round=1 method=scaffold seconds=0.0164
+round=1 method=skip seconds=0.0176
+round=2 method=scaffold seconds=0.0164
+round=2 method=local seconds=0.0189
+round=2 method=full seconds=0.0179
+round=2 method=skip seconds=0.0174
+END scaffold=1.408MB/s full=1.244MB/s skip=1.318MB/s local=1.212MB/s
+BEGIN K=32768 backend=margin domain=pg19_excerpts
+round=1 method=full seconds=0.0261
+round=1 method=local seconds=0.0280
+round=1 method=scaffold seconds=0.0236
+round=1 method=skip seconds=0.0269
+round=2 method=scaffold seconds=0.0252
+round=2 method=local seconds=0.0298
+round=2 method=full seconds=0.0275
+round=2 method=skip seconds=0.0267
+END scaffold=1.344MB/s full=1.220MB/s skip=1.221MB/s local=1.133MB/s
+BEGIN K=32768 backend=python domain=wiki_dev_sel
+round=1 method=full seconds=0.0210
+round=1 method=local seconds=0.0201
+round=1 method=scaffold seconds=0.0193
+round=1 method=skip seconds=0.0211
+round=2 method=scaffold seconds=0.0194
+round=2 method=local seconds=0.0207
+round=2 method=full seconds=0.0210
+round=2 method=skip seconds=0.0207
+END scaffold=1.191MB/s full=1.099MB/s skip=1.103MB/s local=1.130MB/s
+BEGIN K=32768 backend=python domain=pg19_excerpts
+round=1 method=full seconds=0.0283
+round=1 method=local seconds=0.0283
+round=1 method=scaffold seconds=0.0264
+round=1 method=skip seconds=0.0282
+round=2 method=scaffold seconds=0.0260
+round=2 method=local seconds=0.0288
+round=2 method=full seconds=0.0281
+round=2 method=skip seconds=0.0280
+END scaffold=1.247MB/s full=1.159MB/s skip=1.165MB/s local=1.146MB/s
+BEGIN K=32768 backend=tiktoken domain=wiki_dev_sel
+round=1 method=full seconds=0.0030
+round=1 method=local seconds=0.0027
+round=1 method=scaffold seconds=0.0019
+round=1 method=skip seconds=0.0031
+round=2 method=scaffold seconds=0.0018
+round=2 method=local seconds=0.0028
+round=2 method=full seconds=0.0027
+round=2 method=skip seconds=0.0032
+END scaffold=12.590MB/s full=8.100MB/s skip=7.347MB/s local=8.248MB/s
+BEGIN K=32768 backend=tiktoken domain=pg19_excerpts
+round=1 method=full seconds=0.0064
+round=1 method=local seconds=0.0060
+round=1 method=scaffold seconds=0.0036
+round=1 method=skip seconds=0.0067
+round=2 method=scaffold seconds=0.0034
+round=2 method=local seconds=0.0059
+round=2 method=full seconds=0.0061
+round=2 method=skip seconds=0.0066
+END scaffold=9.409MB/s full=5.254MB/s skip=4.901MB/s local=5.525MB/s
+BEGIN K=65536 backend=margin domain=wiki_dev_sel
+round=1 method=full seconds=0.0178
+round=1 method=local seconds=0.0188
+round=1 method=scaffold seconds=0.0165
+round=1 method=skip seconds=0.0185
+round=2 method=scaffold seconds=0.0169
+round=2 method=local seconds=0.0195
+round=2 method=full seconds=0.0182
+round=2 method=skip seconds=0.0187
+END scaffold=1.379MB/s full=1.283MB/s skip=1.243MB/s local=1.205MB/s
+BEGIN K=65536 backend=margin domain=pg19_excerpts
+round=1 method=full seconds=0.0273
+round=1 method=local seconds=0.0297
+round=1 method=scaffold seconds=0.0251
+round=1 method=skip seconds=0.0267
+round=2 method=scaffold seconds=0.0244
+round=2 method=local seconds=0.0295
+round=2 method=full seconds=0.0273
+round=2 method=skip seconds=0.0261
+END scaffold=1.321MB/s full=1.198MB/s skip=1.241MB/s local=1.107MB/s
+BEGIN K=65536 backend=python domain=wiki_dev_sel
+round=1 method=full seconds=0.0210
+round=1 method=local seconds=0.0209
+round=1 method=scaffold seconds=0.0196
+round=1 method=skip seconds=0.0211
+round=2 method=scaffold seconds=0.0198
+round=2 method=local seconds=0.0213
+round=2 method=full seconds=0.0210
+round=2 method=skip seconds=0.0218
+END scaffold=1.173MB/s full=1.099MB/s skip=1.076MB/s local=1.094MB/s
+BEGIN K=65536 backend=python domain=pg19_excerpts
+round=1 method=full seconds=0.0304
+round=1 method=local seconds=0.0284
+round=1 method=scaffold seconds=0.0279
+round=1 method=skip seconds=0.0305
+round=2 method=scaffold seconds=0.0265
+round=2 method=local seconds=0.0289
+round=2 method=full seconds=0.0301
+round=2 method=skip seconds=0.0289
+END scaffold=1.203MB/s full=1.082MB/s skip=1.101MB/s local=1.143MB/s
+BEGIN K=65536 backend=tiktoken domain=wiki_dev_sel
+round=1 method=full seconds=0.0032
+round=1 method=local seconds=0.0030
+round=1 method=scaffold seconds=0.0021
+round=1 method=skip seconds=0.0031
+round=2 method=scaffold seconds=0.0021
+round=2 method=local seconds=0.0030
+round=2 method=full seconds=0.0029
+round=2 method=skip seconds=0.0026
+END scaffold=10.951MB/s full=7.558MB/s skip=7.972MB/s local=7.666MB/s
+BEGIN K=65536 backend=tiktoken domain=pg19_excerpts
+round=1 method=full seconds=0.0060
+round=1 method=local seconds=0.0058
+round=1 method=scaffold seconds=0.0036
+round=1 method=skip seconds=0.0061
+round=2 method=scaffold seconds=0.0034
+round=2 method=local seconds=0.0059
+round=2 method=full seconds=0.0060
+round=2 method=skip seconds=0.0061
+END scaffold=9.356MB/s full=5.448MB/s skip=5.362MB/s local=5.624MB/s

@@ -79,3 +79,5 @@ exports are approximate. Our claim is narrower: preserving a scaffold-demolition
 second pass, including rank batches and the existing backend boundary behavior.
 The prior work already supports the general principle of avoiding global scans;
 we do not claim to introduce that principle or prove publication-level novelty.
+
+The [official tiktoken Rust implementation](https://raw.githubusercontent.com/openai/tiktoken/main/src/lib.rs) already uses a binary heap for long pieces, invalidates stale merges, and updates neighboring candidates. It uses a simpler vector path for short pieces, explicitly noting that cache locality can outweigh asymptotic gains. Thus neither a heap nor neighbor updates are novel here; short-sequence regressions are plausible.

@@ -1,0 +1,15 @@
+{
+  "decision": "NO_GO_FOR_CURRENT_PYTHON_LOCAL_IMPLEMENTATION",
+  "exact_output_gate": true,
+  "fast_64K_10pct_gate": false,
+  "fast_no_regression_gate": false,
+  "source_sha": "8c873596e687c557ae7593e55587f7345e66bd4e",
+  "baseline_sha": "0113d8e",
+  "audit_conditions": 24354,
+  "real_document_model_backend_conditions": 564,
+  "recommended_team_default": "full",
+  "research_default": "existing event skip",
+  "LM_retraining": false,
+  "historical_BPB_reused": false,
+  "publication_novelty": "not established"
+}

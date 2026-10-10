@@ -1,0 +1,1018 @@
+{
+  "source_sha": "0113d8ebbf342e0a02f0ba23cc1d6b0a3fff8810",
+  "host": {
+    "system": "Darwin",
+    "node": "Jihyuns-Mac-mini.local",
+    "release": "25.6.0",
+    "version": "Darwin Kernel Version 25.6.0: Fri Jul 31 19:17:26 PDT 2026; root:xnu-12377.161.14~5/RELEASE_ARM64_T6041",
+    "machine": "arm64",
+    "processor": "arm"
+  },
+  "python": "3.14.7",
+  "packages": {
+    "numpy": "2.5.3",
+    "tiktoken": "0.14.0",
+    "regex": "2026.9.29"
+  },
+  "input_sha256": {
+    "hierarchical-32768.json": "78610f44f11eda08e5baba8d79e7afe52eaff23ff252c087a1c6685c3a9dbd79",
+    "hierarchical-65536.json": "ba862c26706eb08833f0b1cc6efad2187d91de036ab10aa17039534de95663b9",
+    "pg19_excerpts.jsonl": "0ca57826b69986fc4398fd115490d3a85de8602b93da2a709676d8e924aabf18",
+    "scaffold-32768.json": "8c7397af88f77bc545f8a4ad77fdf9e277d1e30c40926015d898d699781690b8",
+    "scaffold-65536.json": "f0f06983f827e178fed830ed2244d5ce5b47be283b78551bf55dd5071fa507b6",
+    "wiki_dev_sel.jsonl": "d9f5ca78c69de9824b7474904d30f1a4327f324f424635cc3fd979d3c13e50a0"
+  },
+  "repetitions": 2,
+  "baseline_sha": "0113d8e",
+  "baseline_file_sha256": {
+    "tokenizer.py": "b4b501025d94a12d0318388bbc238ded133cabba596f5ed1ac7b7fa512ec2ae4",
+    "bpe.py": "6b657c9ecd2cb1751bc9e46fbafe01b06fc22a487686377459baf1947ff69fda"
+  },
+  "policy": "single CPU process; no encoding cache; warm demolition cache; median; rotated order",
+  "measurements": [
+    {
+      "K": 32768,
+      "backend": "margin",
+      "domain": "wiki_dev_sel",
+      "documents": 2,
+      "raw_bytes": 23077,
+      "methods": {
+        "scaffold": {
+          "seconds": [
+            0.01728016696870327,
+            0.016686624963767827
+          ],
+          "token_count": 5150,
+          "output_sha256": "56d1b03db3d996ab34b2b8afbc2e01ecbc85d29677285ac6e97aa684ba7a498a",
+          "MBps_median": 1.3587977366764021,
+          "speedup_over_full_median": 1.0116480227832385,
+          "speedup_range": [
+            0.982689633337318,
+            1.0406064122291592
+          ]
+        },
+        "full": {
+          "seconds": [
+            0.01698104094248265,
+            0.01736420893575996
+          ],
+          "token_count": 5150,
+          "output_sha256": "56d1b03db3d996ab34b2b8afbc2e01ecbc85d29677285ac6e97aa684ba7a498a",
+          "MBps_median": 1.3438248422597188,
+          "speedup_over_full_median": 1.0,
+          "speedup_range": [
+            1.0,
+            1.0
+          ]
+        },
+        "skip": {
+          "seconds": [
+            0.0182544169947505,
+            0.017510959063656628
+          ],
+          "token_count": 5150,
+          "output_sha256": "56d1b03db3d996ab34b2b8afbc2e01ecbc85d29677285ac6e97aa684ba7a498a",
+          "MBps_median": 1.2904659502147438,
+          "speedup_over_full_median": 0.9609311896938822,
+          "speedup_range": [
+            0.9302428528594455,
+            0.991619526528319
+          ]
+        },
+        "local": {
+          "seconds": [
+            0.019216957967728376,
+            0.019201416987925768
+          ],
+          "token_count": 5150,
+          "output_sha256": "56d1b03db3d996ab34b2b8afbc2e01ecbc85d29677285ac6e97aa684ba7a498a",
+          "MBps_median": 1.2013522189128247,
+          "speedup_over_full_median": 0.8939839474453818,
+          "speedup_range": [
+            0.8836487528879144,
+            0.9043191420028491
+          ]
+        }
+      },
+      "round_order": [
+        [
+          "full",
+          "local",
+          "scaffold",
+          "skip"
+        ],
+        [
+          "scaffold",
+          "local",
+          "full",
+          "skip"
+        ]
+      ],
+      "exact_H_output_sha256": "56d1b03db3d996ab34b2b8afbc2e01ecbc85d29677285ac6e97aa684ba7a498a",
+      "exact_ids_all_rounds": true,
+      "changed_H_vs_scaffold_documents": 0
+    },
+    {
+      "K": 32768,
+      "backend": "margin",
+      "domain": "pg19_excerpts",
+      "documents": 2,
+      "raw_bytes": 32727,
+      "methods": {
+        "scaffold": {
+          "seconds": [
+            0.024174166028387845,
+            0.024714250001125038
+          ],
+          "token_count": 9782,
+          "output_sha256": "a559663d14f7d19521760cf5f331c63d89d319e5703ad2e2575595739761bdd7",
+          "MBps_median": 1.3388447676538924,
+          "speedup_over_full_median": 1.0988459985471022,
+          "speedup_range": [
+            1.0819642318860359,
+            1.1157277652081685
+          ]
+        },
+        "full": {
+          "seconds": [
+            0.026155582978390157,
+            0.027574374922551215
+          ],
+          "token_count": 9780,
+          "output_sha256": "36fc39de253759e93786c987d328d10229a5ac904db61bf98f2c90f0ca1d04fd",
+          "MBps_median": 1.2182030762181784,
+          "speedup_over_full_median": 1.0,
+          "speedup_range": [
+            1.0,
+            1.0
+          ]
+        },
+        "skip": {
+          "seconds": [
+            0.02596708294004202,
+            0.026266166009008884
+          ],
+          "token_count": 9780,
+          "output_sha256": "36fc39de253759e93786c987d328d10229a5ac904db61bf98f2c90f0ca1d04fd",
+          "MBps_median": 1.253109873824713,
+          "speedup_over_full_median": 1.0285325245559322,
+          "speedup_range": [
+            1.0072591919078235,
+            1.049805857204041
+          ]
+        },
+        "local": {
+          "seconds": [
+            0.028740417095832527,
+            0.029321082984097302
+          ],
+          "token_count": 9780,
+          "output_sha256": "36fc39de253759e93786c987d328d10229a5ac904db61bf98f2c90f0ca1d04fd",
+          "MBps_median": 1.127321889890777,
+          "speedup_over_full_median": 0.9252455020959944,
+          "speedup_range": [
+            0.9100627486085725,
+            0.9404282555834163
+          ]
+        }
+      },
+      "round_order": [
+        [
+          "full",
+          "local",
+          "scaffold",
+          "skip"
+        ],
+        [
+          "scaffold",
+          "local",
+          "full",
+          "skip"
+        ]
+      ],
+      "exact_H_output_sha256": "36fc39de253759e93786c987d328d10229a5ac904db61bf98f2c90f0ca1d04fd",
+      "exact_ids_all_rounds": true,
+      "changed_H_vs_scaffold_documents": 2
+    },
+    {
+      "K": 32768,
+      "backend": "python",
+      "domain": "wiki_dev_sel",
+      "documents": 2,
+      "raw_bytes": 23077,
+      "methods": {
+        "scaffold": {
+          "seconds": [
+            0.019085541018284857,
+            0.01928016694728285
+          ],
+          "token_count": 5150,
+          "output_sha256": "59745fd93d72a0f9d545619f1ca30a7d1865cbb957d4b08763be5dba943933f6",
+          "MBps_median": 1.2030013897155787,
+          "speedup_over_full_median": 1.062044772404253,
+          "speedup_range": [
+            1.0566104029485235,
+            1.0674791418599825
+          ]
+        },
+        "full": {
+          "seconds": [
+            0.020373416948132217,
+            0.020371624967083335
+          ],
+          "token_count": 5150,
+          "output_sha256": "59745fd93d72a0f9d545619f1ca30a7d1865cbb957d4b08763be5dba943933f6",
+          "MBps_median": 1.1327513196830106,
+          "speedup_over_full_median": 1.0,
+          "speedup_range": [
+            1.0,
+            1.0
+          ]
+        },
+        "skip": {
+          "seconds": [
+            0.02039095899090171,
+            0.019665332976728678
+          ],
+          "token_count": 5150,
+          "output_sha256": "59745fd93d72a0f9d545619f1ca30a7d1865cbb957d4b08763be5dba943933f6",
+          "MBps_median": 1.1522284698068705,
+          "speedup_over_full_median": 1.0175276511669524,
+          "speedup_range": [
+            0.9991397146756403,
+            1.0359155876582644
+          ]
+        },
+        "local": {
+          "seconds": [
+            0.020577499992214143,
+            0.02074025000911206
+          ],
+          "token_count": 5150,
+          "output_sha256": "59745fd93d72a0f9d545619f1ca30a7d1865cbb957d4b08763be5dba943933f6",
+          "MBps_median": 1.1170501781563267,
+          "speedup_over_full_median": 0.9861544049821651,
+          "speedup_range": [
+            0.9822265863783333,
+            0.9900822235859971
+          ]
+        }
+      },
+      "round_order": [
+        [
+          "full",
+          "local",
+          "scaffold",
+          "skip"
+        ],
+        [
+          "scaffold",
+          "local",
+          "full",
+          "skip"
+        ]
+      ],
+      "exact_H_output_sha256": "59745fd93d72a0f9d545619f1ca30a7d1865cbb957d4b08763be5dba943933f6",
+      "exact_ids_all_rounds": true,
+      "changed_H_vs_scaffold_documents": 0
+    },
+    {
+      "K": 32768,
+      "backend": "python",
+      "domain": "pg19_excerpts",
+      "documents": 2,
+      "raw_bytes": 32727,
+      "methods": {
+        "scaffold": {
+          "seconds": [
+            0.02531533397268504,
+            0.024636207963339984
+          ],
+          "token_count": 9782,
+          "output_sha256": "2a120e28a2c373fcd7cd6cd9cec377c193c70ac9a43bcf9e77a189bcb54eaff9",
+          "MBps_median": 1.3103499404248542,
+          "speedup_over_full_median": 1.0736445658260252,
+          "speedup_range": [
+            1.0687876575472521,
+            1.0785014741047982
+          ]
+        },
+        "full": {
+          "seconds": [
+            0.027302625006996095,
+            0.0263308749999851
+          ],
+          "token_count": 9780,
+          "output_sha256": "4f1132e4afc6db1d59586ecf21a26b1183849ba4dd6f2af1dadcda07fbb0c1a4",
+          "MBps_median": 1.2203939700276916,
+          "speedup_over_full_median": 1.0,
+          "speedup_range": [
+            1.0,
+            1.0
+          ]
+        },
+        "skip": {
+          "seconds": [
+            0.027335042017512023,
+            0.0275175420101732
+          ],
+          "token_count": 9780,
+          "output_sha256": "4f1132e4afc6db1d59586ecf21a26b1183849ba4dd6f2af1dadcda07fbb0c1a4",
+          "MBps_median": 1.1932710401931843,
+          "speedup_over_full_median": 0.9778450333689044,
+          "speedup_range": [
+            0.9568759807925652,
+            0.9988140859452435
+          ]
+        },
+        "local": {
+          "seconds": [
+            0.02750466705765575,
+            0.027175416937097907
+          ],
+          "token_count": 9780,
+          "output_sha256": "4f1132e4afc6db1d59586ecf21a26b1183849ba4dd6f2af1dadcda07fbb0c1a4",
+          "MBps_median": 1.1970354691898435,
+          "speedup_over_full_median": 0.9807884198171761,
+          "speedup_range": [
+            0.9689225766409529,
+            0.9926542629933992
+          ]
+        }
+      },
+      "round_order": [
+        [
+          "full",
+          "local",
+          "scaffold",
+          "skip"
+        ],
+        [
+          "scaffold",
+          "local",
+          "full",
+          "skip"
+        ]
+      ],
+      "exact_H_output_sha256": "4f1132e4afc6db1d59586ecf21a26b1183849ba4dd6f2af1dadcda07fbb0c1a4",
+      "exact_ids_all_rounds": true,
+      "changed_H_vs_scaffold_documents": 2
+    },
+    {
+      "K": 32768,
+      "backend": "tiktoken",
+      "domain": "wiki_dev_sel",
+      "documents": 2,
+      "raw_bytes": 23077,
+      "methods": {
+        "scaffold": {
+          "seconds": [
+            0.0018660830100998282,
+            0.0013867919333279133
+          ],
+          "token_count": 5150,
+          "output_sha256": "59745fd93d72a0f9d545619f1ca30a7d1865cbb957d4b08763be5dba943933f6",
+          "MBps_median": 14.188679492044928,
+          "speedup_over_full_median": 1.6272988406156164,
+          "speedup_range": [
+            1.3865272789328646,
+            1.868070402298368
+          ]
+        },
+        "full": {
+          "seconds": [
+            0.002587374998256564,
+            0.0025906249647960067
+          ],
+          "token_count": 5150,
+          "output_sha256": "59745fd93d72a0f9d545619f1ca30a7d1865cbb957d4b08763be5dba943933f6",
+          "MBps_median": 8.913480171751676,
+          "speedup_over_full_median": 1.0,
+          "speedup_range": [
+            1.0,
+            1.0
+          ]
+        },
+        "skip": {
+          "seconds": [
+            0.002785291988402605,
+            0.0026667920174077153
+          ],
+          "token_count": 5150,
+          "output_sha256": "59745fd93d72a0f9d545619f1ca30a7d1865cbb957d4b08763be5dba943933f6",
+          "MBps_median": 8.465386804534448,
+          "speedup_over_full_median": 0.9501904006131465,
+          "speedup_range": [
+            0.9289421033880371,
+            0.971438697838256
+          ]
+        },
+        "local": {
+          "seconds": [
+            0.00291929196100682,
+            0.002949165995232761
+          ],
+          "token_count": 5150,
+          "output_sha256": "59745fd93d72a0f9d545619f1ca30a7d1865cbb957d4b08763be5dba943933f6",
+          "MBps_median": 7.864757717302415,
+          "speedup_over_full_median": 0.8823642675346801,
+          "speedup_range": [
+            0.8784262971238902,
+            0.8863022379454699
+          ]
+        }
+      },
+      "round_order": [
+        [
+          "full",
+          "local",
+          "scaffold",
+          "skip"
+        ],
+        [
+          "scaffold",
+          "local",
+          "full",
+          "skip"
+        ]
+      ],
+      "exact_H_output_sha256": "59745fd93d72a0f9d545619f1ca30a7d1865cbb957d4b08763be5dba943933f6",
+      "exact_ids_all_rounds": true,
+      "changed_H_vs_scaffold_documents": 0
+    },
+    {
+      "K": 32768,
+      "backend": "tiktoken",
+      "domain": "pg19_excerpts",
+      "documents": 2,
+      "raw_bytes": 32727,
+      "methods": {
+        "scaffold": {
+          "seconds": [
+            0.0036455830559134483,
+            0.002856459002941847
+          ],
+          "token_count": 9782,
+          "output_sha256": "2a120e28a2c373fcd7cd6cd9cec377c193c70ac9a43bcf9e77a189bcb54eaff9",
+          "MBps_median": 10.066683575332544,
+          "speedup_over_full_median": 1.8688457909765193,
+          "speedup_range": [
+            1.6394497006576974,
+            2.098241881295341
+          ]
+        },
+        "full": {
+          "seconds": [
+            0.005976750049740076,
+            0.005993541912175715
+          ],
+          "token_count": 9780,
+          "output_sha256": "4f1132e4afc6db1d59586ecf21a26b1183849ba4dd6f2af1dadcda07fbb0c1a4",
+          "MBps_median": 5.4680370544215515,
+          "speedup_over_full_median": 1.0,
+          "speedup_range": [
+            1.0,
+            1.0
+          ]
+        },
+        "skip": {
+          "seconds": [
+            0.006584541988559067,
+            0.006476790993474424
+          ],
+          "token_count": 9780,
+          "output_sha256": "4f1132e4afc6db1d59586ecf21a26b1183849ba4dd6f2af1dadcda07fbb0c1a4",
+          "MBps_median": 5.011280249116626,
+          "speedup_over_full_median": 0.9165408478637429,
+          "speedup_range": [
+            0.9076941205819544,
+            0.9253875751455315
+          ]
+        },
+        "local": {
+          "seconds": [
+            0.006227166973985732,
+            0.005889749969355762
+          ],
+          "token_count": 9780,
+          "output_sha256": "4f1132e4afc6db1d59586ecf21a26b1183849ba4dd6f2af1dadcda07fbb0c1a4",
+          "MBps_median": 5.401869164083721,
+          "speedup_over_full_median": 0.9887044252279567,
+          "speedup_range": [
+            0.9597863803408864,
+            1.017622470115027
+          ]
+        }
+      },
+      "round_order": [
+        [
+          "full",
+          "local",
+          "scaffold",
+          "skip"
+        ],
+        [
+          "scaffold",
+          "local",
+          "full",
+          "skip"
+        ]
+      ],
+      "exact_H_output_sha256": "4f1132e4afc6db1d59586ecf21a26b1183849ba4dd6f2af1dadcda07fbb0c1a4",
+      "exact_ids_all_rounds": true,
+      "changed_H_vs_scaffold_documents": 2
+    },
+    {
+      "K": 65536,
+      "backend": "margin",
+      "domain": "wiki_dev_sel",
+      "documents": 2,
+      "raw_bytes": 23077,
+      "methods": {
+        "scaffold": {
+          "seconds": [
+            0.017089458997361362,
+            0.0168173749698326
+          ],
+          "token_count": 4881,
+          "output_sha256": "a55d5e9fe28cf61784ce36cad5242b7c02229768acbf7df980d95d3d66fd1dfb",
+          "MBps_median": 1.361200519183112,
+          "speedup_over_full_median": 1.0632808982575033,
+          "speedup_range": [
+            1.049079903255737,
+            1.0774818932592698
+          ]
+        },
+        "full": {
+          "seconds": [
+            0.01792820799164474,
+            0.018120417022146285
+          ],
+          "token_count": 4881,
+          "output_sha256": "a55d5e9fe28cf61784ce36cad5242b7c02229768acbf7df980d95d3d66fd1dfb",
+          "MBps_median": 1.2803262255451626,
+          "speedup_over_full_median": 1.0,
+          "speedup_range": [
+            1.0,
+            1.0
+          ]
+        },
+        "skip": {
+          "seconds": [
+            0.01805575005710125,
+            0.017767332959920168
+          ],
+          "token_count": 4881,
+          "output_sha256": "a55d5e9fe28cf61784ce36cad5242b7c02229768acbf7df980d95d3d66fd1dfb",
+          "MBps_median": 1.2883871546753758,
+          "speedup_over_full_median": 1.006404430977599,
+          "speedup_range": [
+            0.992936207853279,
+            1.019872654101919
+          ]
+        },
+        "local": {
+          "seconds": [
+            0.019863875000737607,
+            0.019303458044305444
+          ],
+          "token_count": 4881,
+          "output_sha256": "a55d5e9fe28cf61784ce36cad5242b7c02229768acbf7df980d95d3d66fd1dfb",
+          "MBps_median": 1.1783799511425037,
+          "speedup_over_full_median": 0.920633461132208,
+          "speedup_range": [
+            0.9025534036525608,
+            0.9387135186118553
+          ]
+        }
+      },
+      "round_order": [
+        [
+          "full",
+          "local",
+          "scaffold",
+          "skip"
+        ],
+        [
+          "scaffold",
+          "local",
+          "full",
+          "skip"
+        ]
+      ],
+      "exact_H_output_sha256": "a55d5e9fe28cf61784ce36cad5242b7c02229768acbf7df980d95d3d66fd1dfb",
+      "exact_ids_all_rounds": true,
+      "changed_H_vs_scaffold_documents": 0
+    },
+    {
+      "K": 65536,
+      "backend": "margin",
+      "domain": "pg19_excerpts",
+      "documents": 2,
+      "raw_bytes": 32727,
+      "methods": {
+        "scaffold": {
+          "seconds": [
+            0.02413933293428272,
+            0.023539582965895534
+          ],
+          "token_count": 9232,
+          "output_sha256": "5ea0a1480d3bba3307abfbfad9d06db36675f1792ba0c6b43361355fd4976b22",
+          "MBps_median": 1.372808059164686,
+          "speedup_over_full_median": 1.1164049406465213,
+          "speedup_range": [
+            1.090176154141127,
+            1.1426337271519154
+          ]
+        },
+        "full": {
+          "seconds": [
+            0.027582415961660445,
+            0.02566229202784598
+          ],
+          "token_count": 9231,
+          "output_sha256": "342c7a4147797af3e5559bc1ab0ffe5e21d91d31a06cab199daa72dd556ca6fd",
+          "MBps_median": 1.2293052675375702,
+          "speedup_over_full_median": 1.0,
+          "speedup_range": [
+            1.0,
+            1.0
+          ]
+        },
+        "skip": {
+          "seconds": [
+            0.025395667064003646,
+            0.024989500059746206
+          ],
+          "token_count": 9231,
+          "output_sha256": "342c7a4147797af3e5559bc1ab0ffe5e21d91d31a06cab199daa72dd556ca6fd",
+          "MBps_median": 1.2990727973421212,
+          "speedup_over_full_median": 1.0565150757256938,
+          "speedup_range": [
+            1.0269229863139009,
+            1.086107165137487
+          ]
+        },
+        "local": {
+          "seconds": [
+            0.02964170800987631,
+            0.028314209077507257
+          ],
+          "token_count": 9231,
+          "output_sha256": "342c7a4147797af3e5559bc1ab0ffe5e21d91d31a06cab199daa72dd556ca6fd",
+          "MBps_median": 1.12937562356767,
+          "speedup_over_full_median": 0.9184334615263647,
+          "speedup_range": [
+            0.9063397094228581,
+            0.9305272136298715
+          ]
+        }
+      },
+      "round_order": [
+        [
+          "full",
+          "local",
+          "scaffold",
+          "skip"
+        ],
+        [
+          "scaffold",
+          "local",
+          "full",
+          "skip"
+        ]
+      ],
+      "exact_H_output_sha256": "342c7a4147797af3e5559bc1ab0ffe5e21d91d31a06cab199daa72dd556ca6fd",
+      "exact_ids_all_rounds": true,
+      "changed_H_vs_scaffold_documents": 1
+    },
+    {
+      "K": 65536,
+      "backend": "python",
+      "domain": "wiki_dev_sel",
+      "documents": 2,
+      "raw_bytes": 23077,
+      "methods": {
+        "scaffold": {
+          "seconds": [
+            0.021156415925361216,
+            0.019506042008288205
+          ],
+          "token_count": 4881,
+          "output_sha256": "a38e0f190dcc1118b92249ad9eed55709a3a8a31a392b1ca9a771fd5b6c6236f",
+          "MBps_median": 1.1350518966490257,
+          "speedup_over_full_median": 1.0090852237662704,
+          "speedup_range": [
+            0.962170722068236,
+            1.0559997254643048
+          ]
+        },
+        "full": {
+          "seconds": [
+            0.020356083987280726,
+            0.02059837500564754
+          ],
+          "token_count": 4881,
+          "output_sha256": "a38e0f190dcc1118b92249ad9eed55709a3a8a31a392b1ca9a771fd5b6c6236f",
+          "MBps_median": 1.12695909395286,
+          "speedup_over_full_median": 1.0,
+          "speedup_range": [
+            1.0,
+            1.0
+          ]
+        },
+        "skip": {
+          "seconds": [
+            0.021345791989006102,
+            0.020905917044728994
+          ],
+          "token_count": 4881,
+          "output_sha256": "a38e0f190dcc1118b92249ad9eed55709a3a8a31a392b1ca9a771fd5b6c6236f",
+          "MBps_median": 1.0923581804264815,
+          "speedup_over_full_median": 0.969461874767962,
+          "speedup_range": [
+            0.9536345148385633,
+            0.9852892346973607
+          ]
+        },
+        "local": {
+          "seconds": [
+            0.02070400002412498,
+            0.02236287493724376
+          ],
+          "token_count": 4881,
+          "output_sha256": "a38e0f190dcc1118b92249ad9eed55709a3a8a31a392b1ca9a771fd5b6c6236f",
+          "MBps_median": 1.0716821232420608,
+          "speedup_over_full_median": 0.9521463096568576,
+          "speedup_range": [
+            0.9210969100999813,
+            0.983195709213734
+          ]
+        }
+      },
+      "round_order": [
+        [
+          "full",
+          "local",
+          "scaffold",
+          "skip"
+        ],
+        [
+          "scaffold",
+          "local",
+          "full",
+          "skip"
+        ]
+      ],
+      "exact_H_output_sha256": "a38e0f190dcc1118b92249ad9eed55709a3a8a31a392b1ca9a771fd5b6c6236f",
+      "exact_ids_all_rounds": true,
+      "changed_H_vs_scaffold_documents": 0
+    },
+    {
+      "K": 65536,
+      "backend": "python",
+      "domain": "pg19_excerpts",
+      "documents": 2,
+      "raw_bytes": 32727,
+      "methods": {
+        "scaffold": {
+          "seconds": [
+            0.02790450002066791,
+            0.026514333090744913
+          ],
+          "token_count": 9232,
+          "output_sha256": "ad4d5312e6ecd90859d464c6c6a6a6c562749328de94f1b139be274cb6eda6c1",
+          "MBps_median": 1.2027821299658272,
+          "speedup_over_full_median": 1.0603076124534194,
+          "speedup_range": [
+            1.0450554558629088,
+            1.0755597690439302
+          ]
+        },
+        "full": {
+          "seconds": [
+            0.02916174998972565,
+            0.028517749975435436
+          ],
+          "token_count": 9231,
+          "output_sha256": "1a49d09d2648e8d30ebf816d3eda9c8ba8c28745c458f75142eebde1ac6a68cc",
+          "MBps_median": 1.1347879236043097,
+          "speedup_over_full_median": 1.0,
+          "speedup_range": [
+            1.0,
+            1.0
+          ]
+        },
+        "skip": {
+          "seconds": [
+            0.02933758299332112,
+            0.030857749981805682
+          ],
+          "token_count": 9231,
+          "output_sha256": "1a49d09d2648e8d30ebf816d3eda9c8ba8c28745c458f75142eebde1ac6a68cc",
+          "MBps_median": 1.0873600454547883,
+          "speedup_over_full_median": 0.9590873599172557,
+          "speedup_range": [
+            0.9241681584772073,
+            0.994006561357304
+          ]
+        },
+        "local": {
+          "seconds": [
+            0.03134975000284612,
+            0.02989462506957352
+          ],
+          "token_count": 9231,
+          "output_sha256": "1a49d09d2648e8d30ebf816d3eda9c8ba8c28745c458f75142eebde1ac6a68cc",
+          "MBps_median": 1.0687348825521135,
+          "speedup_over_full_median": 0.9420745829067487,
+          "speedup_range": [
+            0.9302067795461899,
+            0.9539423862673074
+          ]
+        }
+      },
+      "round_order": [
+        [
+          "full",
+          "local",
+          "scaffold",
+          "skip"
+        ],
+        [
+          "scaffold",
+          "local",
+          "full",
+          "skip"
+        ]
+      ],
+      "exact_H_output_sha256": "1a49d09d2648e8d30ebf816d3eda9c8ba8c28745c458f75142eebde1ac6a68cc",
+      "exact_ids_all_rounds": true,
+      "changed_H_vs_scaffold_documents": 1
+    },
+    {
+      "K": 65536,
+      "backend": "tiktoken",
+      "domain": "wiki_dev_sel",
+      "documents": 2,
+      "raw_bytes": 23077,
+      "methods": {
+        "scaffold": {
+          "seconds": [
+            0.0019870830001309514,
+            0.0013090000720694661
+          ],
+          "token_count": 4881,
+          "output_sha256": "a38e0f190dcc1118b92249ad9eed55709a3a8a31a392b1ca9a771fd5b6c6236f",
+          "MBps_median": 14.002681057789074,
+          "speedup_over_full_median": 1.667331636859347,
+          "speedup_range": [
+            1.2691553351991425,
+            2.065507938519551
+          ]
+        },
+        "full": {
+          "seconds": [
+            0.0025219169910997152,
+            0.002703750040382147
+          ],
+          "token_count": 4881,
+          "output_sha256": "a38e0f190dcc1118b92249ad9eed55709a3a8a31a392b1ca9a771fd5b6c6236f",
+          "MBps_median": 8.832173906593496,
+          "speedup_over_full_median": 1.0,
+          "speedup_range": [
+            1.0,
+            1.0
+          ]
+        },
+        "skip": {
+          "seconds": [
+            0.002428125008009374,
+            0.0029270410304889083
+          ],
+          "token_count": 4881,
+          "output_sha256": "a38e0f190dcc1118b92249ad9eed55709a3a8a31a392b1ca9a771fd5b6c6236f",
+          "MBps_median": 8.618593647367598,
+          "speedup_over_full_median": 0.9811708799746137,
+          "speedup_range": [
+            0.9237144311333877,
+            1.0386273288158396
+          ]
+        },
+        "local": {
+          "seconds": [
+            0.0026747080264613032,
+            0.002327791997231543
+          ],
+          "token_count": 4881,
+          "output_sha256": "a38e0f190dcc1118b92249ad9eed55709a3a8a31a392b1ca9a771fd5b6c6236f",
+          "MBps_median": 9.22618686284965,
+          "speedup_over_full_median": 1.052192028080144,
+          "speedup_range": [
+            0.942875620871511,
+            1.161508435288777
+          ]
+        }
+      },
+      "round_order": [
+        [
+          "full",
+          "local",
+          "scaffold",
+          "skip"
+        ],
+        [
+          "scaffold",
+          "local",
+          "full",
+          "skip"
+        ]
+      ],
+      "exact_H_output_sha256": "a38e0f190dcc1118b92249ad9eed55709a3a8a31a392b1ca9a771fd5b6c6236f",
+      "exact_ids_all_rounds": true,
+      "changed_H_vs_scaffold_documents": 0
+    },
+    {
+      "K": 65536,
+      "backend": "tiktoken",
+      "domain": "pg19_excerpts",
+      "documents": 2,
+      "raw_bytes": 32727,
+      "methods": {
+        "scaffold": {
+          "seconds": [
+            0.003421416040509939,
+            0.0029208750929683447
+          ],
+          "token_count": 9232,
+          "output_sha256": "ad4d5312e6ecd90859d464c6c6a6a6c562749328de94f1b139be274cb6eda6c1",
+          "MBps_median": 10.32024525876712,
+          "speedup_over_full_median": 1.704248130154983,
+          "speedup_range": [
+            1.5483232583888118,
+            1.8601730019211542
+          ]
+        },
+        "full": {
+          "seconds": [
+            0.005297458032146096,
+            0.005433332989923656
+          ],
+          "token_count": 9231,
+          "output_sha256": "1a49d09d2648e8d30ebf816d3eda9c8ba8c28745c458f75142eebde1ac6a68cc",
+          "MBps_median": 6.099643527246256,
+          "speedup_over_full_median": 1.0,
+          "speedup_range": [
+            1.0,
+            1.0
+          ]
+        },
+        "skip": {
+          "seconds": [
+            0.005838166922330856,
+            0.005817874916829169
+          ],
+          "token_count": 9231,
+          "output_sha256": "1a49d09d2648e8d30ebf816d3eda9c8ba8c28745c458f75142eebde1ac6a68cc",
+          "MBps_median": 5.615456850892433,
+          "speedup_over_full_median": 0.9206435802024036,
+          "speedup_range": [
+            0.9073837906010257,
+            0.9339033698037815
+          ]
+        },
+        "local": {
+          "seconds": [
+            0.005563625018112361,
+            0.00556575006339699
+          ],
+          "token_count": 9231,
+          "output_sha256": "1a49d09d2648e8d30ebf816d3eda9c8ba8c28745c458f75142eebde1ac6a68cc",
+          "MBps_median": 5.881192746279804,
+          "speedup_over_full_median": 0.9641840077012367,
+          "speedup_range": [
+            0.9521594311083584,
+            0.9762085842941148
+          ]
+        }
+      },
+      "round_order": [
+        [
+          "full",
+          "local",
+          "scaffold",
+          "skip"
+        ],
+        [
+          "scaffold",
+          "local",
+          "full",
+          "skip"
+        ]
+      ],
+      "exact_H_output_sha256": "1a49d09d2648e8d30ebf816d3eda9c8ba8c28745c458f75142eebde1ac6a68cc",
+      "exact_ids_all_rounds": true,
+      "changed_H_vs_scaffold_documents": 1
+    }
+  ]
+}
