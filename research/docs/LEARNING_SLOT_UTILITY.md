@@ -22,8 +22,10 @@ Novelty is unconfirmed.
 - Pool-normal candidates only; previously excluded intermediate scaffolds are not optimized.
 - Development documents are partitioned by a frozen seed into selection and confirmation halves.
   They were used in earlier research: neither half is a newly sealed final test. Test is not loaded.
-- Candidate tokens must occur at least twice in selection text. Propose 256 disjoint equal-byte-length
-  exchanges, grouped randomly into sixteen groups of sixteen. These estimate group utility, not
+- Candidate tokens must occur at least twice in each actual adaptation training order. The original
+  selection-only criterion yielded only67 eligible additions and failed preparation before GPU use.
+  Actual128-update training orders have163 eligible additions. Propose128 disjoint equal-byte-length
+  exchanges, grouped randomly into eight groups of sixteen. These estimate group utility, not
   identifiable individual-token effects.
 - UTF-8 chunks <=255 bytes are fixed before tokenization. Every arm gets the same raw chunks,
   raw training order, and byte exposures. Each sequence is [EOS] + content -> content + [EOS].
@@ -36,7 +38,7 @@ Novelty is unconfirmed.
 - Rank group U_128 on selection only. Accept at most four positive groups. Rank U_0 separately
   as the frozen-score ablation with the same group count. No confirmation loss enters selection.
 - Evaluate the joint learned and static selections, frequency, and three random selectors.
-  Random selectors exactly match changed-slot count, observed support, residual-frequency deciles
+  Random selectors exactly match changed-slot count, training-support eligibility, residual-frequency deciles
   and token byte lengths, separately for removals/additions. For each selector choose among twenty
   draws by selection-text token count only; token-count change must be within max(1 token,10%)
   of the learned selection's change. Report imperfect matching and fail the promotion gate.
@@ -46,7 +48,7 @@ Novelty is unconfirmed.
   95% bounds <0; both data orders improve; compression matching and pairing checks pass.
   Bootstrap uncertainty is conditional on the teacher/data orders, not teacher initialization.
 
-34 individual probe fits plus12 joint fits =5888 updates. Short raw contexts change the evaluation
+18 individual probe fits plus12 joint fits =3840 updates. Short raw contexts change the evaluation
 setting relative to previous flattened-stream BPB; do not compare the absolute numbers directly.
 Short chunks can split words and raise EOS frequency. If promoted, verify longer-context stability
 and train final fixed vocabularies from scratch across independent initialization seeds, using a
@@ -64,9 +66,9 @@ per-job outputs. Existing completed outputs are reused only if their input ident
 python research/scripts/a_learning_utility.py --stage prepare \
   --root /root/home/ubuntu/research \
   --teacher /root/home/ubuntu/research/runs/purpose_a_v1/teacher_pool40960/model.pt \
-  --out /root/home/ubuntu/research/runs/learning_a_v1
+  --out /root/home/ubuntu/research/runs/learning_a_v2
 python research/scripts/a_learning_utility.py --stage run \
-  --out /root/home/ubuntu/research/runs/learning_a_v1
+  --out /root/home/ubuntu/research/runs/learning_a_v2
 ```
 
 The operator checks GPU ownership before running. Never resume an incomplete job in place or

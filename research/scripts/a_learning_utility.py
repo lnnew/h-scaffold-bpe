@@ -18,7 +18,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from scaffold_margin.bpe import Tokenizer
 from scaffold_margin.data import read_jsonl
 from scaffold_margin.direction_a import pool_candidates, with_selected
-from scaffold_margin.learning import prepare_aligned, retokenize, run_probe
+from scaffold_margin.learning import prepare_aligned, retokenize, run_probe, training_batches
 
 
 def write(path, value):
@@ -68,6 +68,15 @@ def random_matched(pool, base, selected, support, seed):
     return result
 
 
+def training_support(corpus, pool, steps, batch_chunks=32):
+    counts = []
+    for seed in [0, 1]:
+        indices = np.concatenate(list(training_batches(len(corpus["bytes"]), steps, batch_chunks, seed)))
+        ids = np.concatenate([corpus["ids"][corpus["offsets"][i]:corpus["offsets"][i + 1]] for i in indices])
+        counts.append(np.bincount(pool.from_model[ids], minlength=len(pool.levels)))
+    return np.minimum(counts[0], counts[1])
+
+
 def prepare(a):
     a.out.mkdir(parents=True, exist_ok=False)
     pool_path = a.root / f"tok/apool_pool_{round(a.K * 1.25)}.json"
@@ -102,7 +111,7 @@ def prepare(a):
     pool.save(str(a.out / "tok/pool.json"))
     freq = with_selected(pool, base, "frequency")
     freq.save(str(a.out / "tok/frequency.json"))
-    support = np.bincount(pool.from_model[corpus["select"]["ids"]], minlength=len(pool.levels))
+    support = training_support(corpus["train"], pool, a.steps)
     np.save(a.out / "data/support.npy", support)
     pairs = propose_pairs(pool, base, support, a.groups * a.swaps)
     groups = [pairs[i * a.swaps:(i + 1) * a.swaps] for i in range(a.groups)]
@@ -121,6 +130,7 @@ def prepare(a):
                     split_docs={"select": order[:len(docs) // 2].tolist(), "confirm": order[len(docs) // 2:].tolist()},
                     scope="development calibration; one pool teacher; two data orders, not model initialization seeds",
                     optimizer="AdamW reset in every arm; constant learning rate; byte-normalized loss",
+                    eligibility="at least 2 training occurrences in each actual data order; no development frequencies used",
                     gate="negative document CI upper bound vs frequency, static U0 and mean of 3 matched random selectors; both data orders improve; matching and exposure checks pass")
     write(a.out / "contract.json", contract)
     write(a.out / "status.json", dict(status="PREPARED", stage="paired probes"))
@@ -191,6 +201,7 @@ def run_jobs(a, phase, methods):
                 stop.set()
                 raise
             write(a.out / f"gpu{gpu}_progress.json", dict(phase=phase, method=method, seed=seed, status="COMPLETE"))
+            print(json.dumps(dict(phase=phase, method=method, seed=seed, gpu=gpu, status="COMPLETE")), flush=True)
     with ThreadPoolExecutor(max_workers=2) as executor:
         list(executor.map(worker, [0, 1]))
 
@@ -310,7 +321,7 @@ def main():
     ap.add_argument("--root", type=Path)
     ap.add_argument("--teacher", type=Path)
     ap.add_argument("--K", type=int, default=32768)
-    ap.add_argument("--groups", type=int, default=16)
+    ap.add_argument("--groups", type=int, default=8)
     ap.add_argument("--swaps", type=int, default=16)
     ap.add_argument("--select_groups", type=int, default=4)
     ap.add_argument("--steps", type=int, default=128)

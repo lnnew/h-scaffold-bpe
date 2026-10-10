@@ -10,7 +10,7 @@ import torch
 from scaffold_margin.bpe import Tokenizer
 from scaffold_margin.direction_a import with_selected
 from scaffold_margin.learning import (batch, evaluate, mapped_model, prepare_aligned,
-                                     raw_chunks, retokenize, run_probe)
+                                     raw_chunks, retokenize, run_probe, training_batches)
 from scaffold_margin.lm import LM, make_config, save_checkpoint
 
 
@@ -109,6 +109,20 @@ def test_exposure_mismatch_and_skipped_update_invalidate_comparison(script):
     for bad in [dict(good, train_order_hash="other"), dict(good, skipped_updates=1)]:
         with pytest.raises(ValueError, match="exposure"):
             script.assert_exposure(good, bad)
+
+
+def test_candidate_support_comes_from_actual_training_exposures(pool, script):
+    corpus = prepare_aligned(pool, ["abc " * 80, "bc xy " * 80], 15)
+    support = script.training_support(corpus, pool, steps=2, batch_chunks=4)
+    expected = []
+    for seed in [0, 1]:
+        ids = []
+        for indices in training_batches(len(corpus["bytes"]), 2, 4, seed):
+            for i in indices:
+                ids.extend(corpus["ids"][corpus["offsets"][i]:corpus["offsets"][i + 1]])
+        expected.append(Counter(pool.from_model[ids]))
+    assert support[258] == min(expected[0][258], expected[1][258])
+    assert support[97] == min(expected[0][97], expected[1][97])
 
 
 def test_document_comparison_uses_paired_bytes_and_rejects_mismatch(script, tmp_path):

@@ -2,9 +2,9 @@
 from __future__ import annotations
 
 import hashlib
+import json
 import math
 import time
-import json
 from dataclasses import replace
 from pathlib import Path
 
@@ -90,6 +90,19 @@ def batch(corpus, indices, eos, seq, device):
     return torch.from_numpy(x).to(device), torch.from_numpy(y).to(device)
 
 
+def training_batches(n_chunks, steps, batch_chunks, data_seed):
+    if n_chunks < batch_chunks or min(steps, batch_chunks) <= 0:
+        raise ValueError("positive budget and sufficient raw chunks required")
+    per_epoch = n_chunks // batch_chunks
+    order, previous = None, -1
+    for step in range(steps):
+        epoch, pos = divmod(step, per_epoch)
+        if epoch != previous:
+            order = np.random.default_rng([data_seed, epoch]).permutation(n_chunks)
+            previous = epoch
+        yield order[pos * batch_chunks:(pos + 1) * batch_chunks]
+
+
 def mapped_model(pool, tokenizer, teacher, device, seed=0, preset="small", seq=256):
     torch.manual_seed(seed)
     if teacher:
@@ -169,14 +182,7 @@ def run_probe(pool, tokenizer, corpora, out, teacher=None, steps=128, data_seed=
         result["curves"][str(step)] = metrics
         print(json.dumps(dict(step=step, bpb=metrics)), flush=True)
     assess(0)
-    per_epoch = len(train["bytes"]) // batch_chunks
-    order, epoch_old = None, -1
-    for step in range(steps):
-        epoch, pos = divmod(step, per_epoch)
-        if epoch != epoch_old:
-            order = np.random.default_rng([data_seed, epoch]).permutation(len(train["bytes"]))
-            epoch_old = epoch
-        idx = order[pos * batch_chunks:(pos + 1) * batch_chunks]
+    for step, idx in enumerate(training_batches(len(train["bytes"]), steps, batch_chunks, data_seed)):
         order_digest.update(idx.astype("<i8").tobytes())
         count = int(train["bytes"][idx].sum())
         for start in range(0, batch_chunks, micro_batch):
