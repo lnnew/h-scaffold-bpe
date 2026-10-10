@@ -1,0 +1,25 @@
+{
+  "scheduled_windows": 48000,
+  "unique_scheduled_windows": 48000,
+  "scheduled_bytes": 43453915,
+  "changes": {
+    "word": {
+      "input_windows": 1295,
+      "target_windows": 1025,
+      "input_window_fraction": 0.026979166666666665,
+      "target_window_fraction": 0.021354166666666667
+    },
+    "future": {
+      "input_windows": 1210,
+      "target_windows": 954,
+      "input_window_fraction": 0.025208333333333333,
+      "target_window_fraction": 0.019875
+    },
+    "random": {
+      "input_windows": 1301,
+      "target_windows": 1003,
+      "input_window_fraction": 0.027104166666666665,
+      "target_window_fraction": 0.020895833333333332
+    }
+  }
+}

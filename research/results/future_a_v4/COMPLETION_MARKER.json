@@ -1,0 +1,13 @@
+{
+  "status": "FUTURE_A_COMPLETE",
+  "controller_pid": null,
+  "source_sha": "89e2da363a16edc00f454975136a99efe10ccc09",
+  "source": "/root/home/ubuntu/research/h-scaffold-bpe-future-a-v5",
+  "run": "/root/home/ubuntu/research/runs/future_a_v4",
+  "owned_gpus": [
+    0,
+    1
+  ],
+  "child_pid": null,
+  "returncode": 0
+}

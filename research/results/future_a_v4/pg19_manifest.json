@@ -1,0 +1,519 @@
+{
+  "listing_url": "https://huggingface.co/datasets/deepmind/pg19/raw/main/data/test_files.txt",
+  "listing_sha256": "c84c08139695f3312df83239a1a41e7b9cde1baf7c08bfcf230ae09eaaf18d8c",
+  "books": [
+    {
+      "book": "test/30754.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/30754.txt",
+      "source_sha256": "f01af5df32ed5c8c4f5e99121f85d25667d45579da31856e9d572fd09810dd50",
+      "start_character": 229160,
+      "excerpt_sha256": "bd6c6221ce0750aff4396fc5274683a66bac9fc93e24d22ef2d7c94821d7cc6f",
+      "bytes": 16376
+    },
+    {
+      "book": "test/37403.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/37403.txt",
+      "source_sha256": "071262841d7a577585a182101d028fa7bd79683c99bf27c2db3b570e6d24d101",
+      "start_character": 25032,
+      "excerpt_sha256": "27990eed50765795e5a93b55d908c2f92bd68deec1d397279506d58c4cbac88c",
+      "bytes": 16351
+    },
+    {
+      "book": "test/22424.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/22424.txt",
+      "source_sha256": "a3475140ed4763614c11c4f2e486e468ae5620bf539877bf769e16710d808a0d",
+      "start_character": 111100,
+      "excerpt_sha256": "4b77c6b7154aba49f1361435ac8632234854e936e1f3277c9f05ba8d41c5d7ed",
+      "bytes": 16373
+    },
+    {
+      "book": "test/8197.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/8197.txt",
+      "source_sha256": "68d02bd36db0180bf70c7f95afc54541f588618b25c59a39cc60018f51070ca3",
+      "start_character": 34466,
+      "excerpt_sha256": "8881149a78a01b41575a6bc58f1ec00076bdc46c0d841df04fd42af260640ce5",
+      "bytes": 16369
+    },
+    {
+      "book": "test/53345.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/53345.txt",
+      "source_sha256": "bfb2a98da02fbb42f1f8394ee09119cdffe75ab98fbfcd383a4b1fe86efc3382",
+      "start_character": 86933,
+      "excerpt_sha256": "6a342928a21afd382b6accd624fafcc468dcc6b049c65eaeedb7be305be142a9",
+      "bytes": 16331
+    },
+    {
+      "book": "test/49078.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/49078.txt",
+      "source_sha256": "84a2b672270646dd6f517d4331853256dd80b68d317e5574eb04cec9efd3b5e5",
+      "start_character": 36781,
+      "excerpt_sha256": "d4822ed9c0d8b1f575cba419e0236f5d3cc8e610f1874b3c889b209fa36ea8a7",
+      "bytes": 16323
+    },
+    {
+      "book": "test/35205.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/35205.txt",
+      "source_sha256": "05440b6f4c77d4204facc7c8ec5ebea3df8fef5782f03cb041f2accd184265f9",
+      "start_character": 91231,
+      "excerpt_sha256": "1814bb1c083d6bffb5efa39ed8fd41d188ed4276e5e930df60e6e405993f4c40",
+      "bytes": 16347
+    },
+    {
+      "book": "test/5962.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/5962.txt",
+      "source_sha256": "c19a6febe9781833f02598cf157fc1c45b65d8994f2674e88410cd00eea7ad6d",
+      "start_character": 114999,
+      "excerpt_sha256": "b947070b03f9bae087db0e3f2b9f5e49d05a40d72f1730c40f0147802291653d",
+      "bytes": 16320
+    },
+    {
+      "book": "test/41607.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/41607.txt",
+      "source_sha256": "d630ebc88f0a16f42c770d581e05cee96ae444d84039eeb46c025f7da51fc09e",
+      "start_character": 84491,
+      "excerpt_sha256": "50f60c6ea553cc7e5597af9025fd8c7ae31879ed28ce2a1e18f64cb7efc9bcd2",
+      "bytes": 16374
+    },
+    {
+      "book": "test/40579.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/40579.txt",
+      "source_sha256": "6564c4b893231d7b39a195e10d734a53506350fb6c2af16105a67365eded11cc",
+      "start_character": 89009,
+      "excerpt_sha256": "cc0cfd151144785091f3f2d98cb437f3b194401e534ad3367abd59dd258a3075",
+      "bytes": 16362
+    },
+    {
+      "book": "test/12204.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/12204.txt",
+      "source_sha256": "e1c79655be744bc89fd291f84b77ddb1819d117f2bba142373f94d5ab309d0d0",
+      "start_character": 6118,
+      "excerpt_sha256": "15573cf329f08526682a3ade762dce66db8780478d7792e2548c3833ca3ba48a",
+      "bytes": 16381
+    },
+    {
+      "book": "test/32761.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/32761.txt",
+      "source_sha256": "cd0c0c4cb9508cbabd73f90673c63363bf03e2d72aa87de2e86ed895689c3c13",
+      "start_character": 126542,
+      "excerpt_sha256": "a5a648aaa51c359c29e21858d72d146824eb94570ed9dd20c2b2d39b2ef7c998",
+      "bytes": 16342
+    },
+    {
+      "book": "test/10321.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/10321.txt",
+      "source_sha256": "fedcb2723c2ad091f76d45eb98efd810977e7b906f6fd8cbd815734d1e90c456",
+      "start_character": 81290,
+      "excerpt_sha256": "fdca1d10a1997b9d68eb5bb467d40e060437b928ab9ac629846f4e26a26b6c3c",
+      "bytes": 16355
+    },
+    {
+      "book": "test/54624.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/54624.txt",
+      "source_sha256": "8c7c0d63e4253003d93727e5d9dfe1245ecfef2ac71fc4b48969f685d150e6e8",
+      "start_character": 17570,
+      "excerpt_sha256": "6b451b1981d3a54361e8c1883cbdbc5bfba3b3fdad60f0adb5fb889f2c6b04ac",
+      "bytes": 16375
+    },
+    {
+      "book": "test/47676.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/47676.txt",
+      "source_sha256": "f343ccc3e34d5cc819fb4eb11b59f2ec7d4a8c2a67ec59eef2e9f614f5e680fd",
+      "start_character": 77942,
+      "excerpt_sha256": "3d2e56d574873ca8f3e1a8e92a779f300fd98a1370bf0e83826d4df1e4e7be66",
+      "bytes": 16356
+    },
+    {
+      "book": "test/26493.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/26493.txt",
+      "source_sha256": "f2088dc639475a627a830a819d2b4ade98e347a840a08980e0fdf35a7f836275",
+      "start_character": 140700,
+      "excerpt_sha256": "44f9a2715ad4c0db75d2905d290cd202d494e1f5570e08336bac9dc20c0d8328",
+      "bytes": 16349
+    },
+    {
+      "book": "test/45888.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/45888.txt",
+      "source_sha256": "86385daf220051742b03c4835c426b3fdb6fc4493fec31f390725ad80212439f",
+      "start_character": 70552,
+      "excerpt_sha256": "08822a4d874ca68b5915603ae5a20ca89191dbb25f4a8a930bd813f172feec91",
+      "bytes": 16375
+    },
+    {
+      "book": "test/4047.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/4047.txt",
+      "source_sha256": "a1126b6bec29256f9e92fb120c71520623694813d3a9772853c09ad1c5f75f8a",
+      "start_character": 156131,
+      "excerpt_sha256": "a3b898901136911600d1fa73380567fc583d6d49f012d09a28ea06bf955e7653",
+      "bytes": 16321
+    },
+    {
+      "book": "test/10762.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/10762.txt",
+      "source_sha256": "fcc71b161311d4854a078f8cdda6e4381542536167145f6dfdda84bcad256d5f",
+      "start_character": 87203,
+      "excerpt_sha256": "ce7f96872f86e36ad6bba90f6509e7cd2a0182b4a3adc6efa78efd261b8f9973",
+      "bytes": 16342
+    },
+    {
+      "book": "test/36256.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/36256.txt",
+      "source_sha256": "84ec4641bc67f1c91c19be710e42f6009dec808e5f174fede2ef65d00e5d2a92",
+      "start_character": 25213,
+      "excerpt_sha256": "ce9206cbb9ae465460d071226111940d33da6fcb100cc065d070e0bf238bb76c",
+      "bytes": 16384
+    },
+    {
+      "book": "test/5734.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/5734.txt",
+      "source_sha256": "ebec4c08c5dd799ce02f3ff91e380242f50d79e8700310ec5f57d66fd38bdd09",
+      "start_character": 145334,
+      "excerpt_sha256": "61480a322989d85d3953d772d05c52a8b228f13639fa57a39ae8b6905fad4ec7",
+      "bytes": 16378
+    },
+    {
+      "book": "test/9315.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/9315.txt",
+      "source_sha256": "0be37609fae1df19c234b8e5c54ea41f538d6963554fad9bc55ae073b3dec79b",
+      "start_character": 5668,
+      "excerpt_sha256": "1d097f9617cc61c4889c51209f0186a9fa26c8e999da0e411c18d79bf91b0bc7",
+      "bytes": 16379
+    },
+    {
+      "book": "test/4128.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/4128.txt",
+      "source_sha256": "23a359e1c8734cf74372442fbedc6ec6bf9ecaf47e6936628cb6dba90fb6409b",
+      "start_character": 23977,
+      "excerpt_sha256": "b0c9dc69c350d93fdb51a54dbff1e13b5c657e7a3a67b4cb9d5adc387a89a4cf",
+      "bytes": 16323
+    },
+    {
+      "book": "test/35246.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/35246.txt",
+      "source_sha256": "4362445794452e6df50919837f9aa851539a11eaed673b8eb3ed613ac0b1a84b",
+      "start_character": 57061,
+      "excerpt_sha256": "f81f2dcbc63b3cd260684be0f109157f9b3f77f76afb4a1d90ce3df33b7ecb3f",
+      "bytes": 16383
+    },
+    {
+      "book": "test/860.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/860.txt",
+      "source_sha256": "4b52c996d63bfeb3c942fff20b6b2298d3455be8954d44a3350022c3187dd584",
+      "start_character": 70140,
+      "excerpt_sha256": "4573611409baa90cbebd59c382e1b61177dd2e430c929baa3791188ce75060f9",
+      "bytes": 16384
+    },
+    {
+      "book": "test/31974.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/31974.txt",
+      "source_sha256": "9b4f3142b8512a98e0e245140f6aaad36bd50eac5d1684d04513ead2a7fc1df0",
+      "start_character": 3762,
+      "excerpt_sha256": "5bd44a551faad84e384f49082ac7c4aabf2466f4268979af83e3e67821f41f86",
+      "bytes": 11114
+    },
+    {
+      "book": "test/54537.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/54537.txt",
+      "source_sha256": "0d117fc278fee172617e45f38b1c60b45dde0af22bd11837c18a94412c0ce345",
+      "start_character": 50114,
+      "excerpt_sha256": "ba9f61419940ea081ee88db0a365a04f7986a1be2e3a6c2178477a018b62406b",
+      "bytes": 16358
+    },
+    {
+      "book": "test/5396.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/5396.txt",
+      "source_sha256": "ff10a13b1a0007d7c1a06ebc5c5e85990063c43bbc44af62059455631f62dc42",
+      "start_character": 239258,
+      "excerpt_sha256": "04e0fab9638eb89aef56e0721f591570a9b74f4e5a6b33775f0a26f9c384999a",
+      "bytes": 16369
+    },
+    {
+      "book": "test/30312.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/30312.txt",
+      "source_sha256": "4d9c0b401a9fd85b169a744d76c9e88e1d2a4b5d9a690c40fa2bf98164823032",
+      "start_character": 625603,
+      "excerpt_sha256": "149726805c062011578e3143f4f5dfc4c7a1b1bd8337b9d9d0f4dd3d6e6ec977",
+      "bytes": 16342
+    },
+    {
+      "book": "test/25773.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/25773.txt",
+      "source_sha256": "02dedc58fe901826fe05a6864f377ec2d38993bd8c4e27429152e5e047dd52c4",
+      "start_character": 122047,
+      "excerpt_sha256": "092ffa9ac003704c84cb06c8243a349e60c1bc2b258a9a62520ecb27d9992409",
+      "bytes": 16345
+    },
+    {
+      "book": "test/44557.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/44557.txt",
+      "source_sha256": "35a78d3b4dcdd964ba3e36d1ce662941a2d9410f4bb7a7b04880a9379468e217",
+      "start_character": 61283,
+      "excerpt_sha256": "906434eaf2e58a5bcb2ef7c3784705e78fdd43bfc63920b9a0224720f54b0e7c",
+      "bytes": 16322
+    },
+    {
+      "book": "test/47581.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/47581.txt",
+      "source_sha256": "6c5056dc6c3b1f04ff44c4e7ed081c699fdce974bde23443c9a67902b7710757",
+      "start_character": 18756,
+      "excerpt_sha256": "886b9d843d9437ef4d562394137c309281c6328d43d18d338f0ea03df3d9112d",
+      "bytes": 16366
+    },
+    {
+      "book": "test/58598.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/58598.txt",
+      "source_sha256": "e6b356ae9cd31ec1d719b4e2f5ce7c74e35a367668974407fd8e7d735455fb20",
+      "start_character": 28762,
+      "excerpt_sha256": "4de1e9b0eb7990eb211acc2984217fa2f44b87e0c4aeaba8b810dc4ec6a0f053",
+      "bytes": 16347
+    },
+    {
+      "book": "test/3340.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/3340.txt",
+      "source_sha256": "0d3bea08577a6bde3265827ddf5e688d8aa8ce1ab4ff4243075358c19709d788",
+      "start_character": 98234,
+      "excerpt_sha256": "baa98a6c9736b581627f56067e48932d5f37721f16f366a7f78d708207abefc0",
+      "bytes": 16358
+    },
+    {
+      "book": "test/37328.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/37328.txt",
+      "source_sha256": "5adf5e9ded08c343b60cb66b553a696a27e3724d9f4410839333d37699063ffe",
+      "start_character": 37219,
+      "excerpt_sha256": "230b09d168bf051c6b317a2463940700bc7dee717ab097829ad96fa4a44938eb",
+      "bytes": 16315
+    },
+    {
+      "book": "test/45881.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/45881.txt",
+      "source_sha256": "0679c4e2815a953073365d556046421bad38c561d9389375b2d874eab195fa33",
+      "start_character": 54465,
+      "excerpt_sha256": "0ac52b966af42d506e51f1644fcf2383d5b6b8209e1807595193a15d4e10bd51",
+      "bytes": 16340
+    },
+    {
+      "book": "test/29973.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/29973.txt",
+      "source_sha256": "349ac4532773414f8da1723d38f09ffad5911018fb380365022e6e76e48abf46",
+      "start_character": 42255,
+      "excerpt_sha256": "cc1903ed10e8b94ad7331d3cae7980d4f6dd975f6e4e7c016fa7157680c93ca3",
+      "bytes": 16335
+    },
+    {
+      "book": "test/30752.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/30752.txt",
+      "source_sha256": "14f951b46330ff912bf29fe4888d668fc4693cd05b9d87f0c2fd0d985f3c29de",
+      "start_character": 43007,
+      "excerpt_sha256": "fb12dafa50fa73900ca466f0ada1980730b5d17590e9c89b80473798393bfb36",
+      "bytes": 16374
+    },
+    {
+      "book": "test/51410.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/51410.txt",
+      "source_sha256": "b6a0f83faf217077d871f4607ec6edf2c0da7d4e61692edfe4a6bdd3f4ebe39c",
+      "start_character": 86538,
+      "excerpt_sha256": "0cef6b48f90e3b924010c06e2e2265649d2fd8043e1a0ff800b42701ed5d59be",
+      "bytes": 16323
+    },
+    {
+      "book": "test/37702.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/37702.txt",
+      "source_sha256": "30bd8b5ca13be6439e231389f94f4d2d7fdf3b15cf0b0202842cee38c5f17260",
+      "start_character": 223067,
+      "excerpt_sha256": "cdcf1eff928641df1b1edd0df73d615dbb3c81eddb63b53144756084978c2f81",
+      "bytes": 16372
+    },
+    {
+      "book": "test/28444.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/28444.txt",
+      "source_sha256": "f7bd54971caf53bc3ca651cacbaaefae402812b56918f6c4b5dcaeb6a279864f",
+      "start_character": 84061,
+      "excerpt_sha256": "11f7f118bfb39352d4c09c6c9634fde20bdda3aa519060902ec943d148abcaae",
+      "bytes": 16378
+    },
+    {
+      "book": "test/55871.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/55871.txt",
+      "source_sha256": "f2f9d8771c2d07a2f669daf07311340413b93c3340feeaaf1457d00c7cbe28c1",
+      "start_character": 360875,
+      "excerpt_sha256": "34cf84a8beec79a7155d1e35d202df8594b8e4ade64d202172fe92d64a6dbc93",
+      "bytes": 16360
+    },
+    {
+      "book": "test/3129.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/3129.txt",
+      "source_sha256": "7e561c6b6d4fa20f508b9484f56a9703a88d469e7c2d7a47d91e74431e4c6ff0",
+      "start_character": 20562,
+      "excerpt_sha256": "cb728b3f387077c06d0a68d04cf2fe374a0712c7cf424638287e4948ca26280d",
+      "bytes": 16335
+    },
+    {
+      "book": "test/37006.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/37006.txt",
+      "source_sha256": "1680b3efa53c5f1267a6fb0bebd30c4f224093e1ccaa8af2f7c179b5f95c4bb2",
+      "start_character": 39140,
+      "excerpt_sha256": "36f51076f1a5e2dada9ec5f23b69a27cbf618e70a40cd33333aa0525c6eff73b",
+      "bytes": 16345
+    },
+    {
+      "book": "test/26239.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/26239.txt",
+      "source_sha256": "550798583dc17a1b7f7300591a6531d1f0a3440b6d530c331186814225a36344",
+      "start_character": 88549,
+      "excerpt_sha256": "34ab3756ec524a92d2e52711a708f977130a27dc6c186223074ac0324607f363",
+      "bytes": 16368
+    },
+    {
+      "book": "test/25830.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/25830.txt",
+      "source_sha256": "63a0e5ee09349c28a33fea6a19c88d741307731b2f1a68da9b3982aeda91694f",
+      "start_character": 31042,
+      "excerpt_sha256": "9d1cbfaf5813cd51b8f03c10c1932126ea451d09fd0840a3ec9069efd5f10c69",
+      "bytes": 16326
+    },
+    {
+      "book": "test/38955.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/38955.txt",
+      "source_sha256": "540fa42d430263cc4662caa95b33e5e5c8babbdedda671f800a2db65ff25a485",
+      "start_character": 70676,
+      "excerpt_sha256": "c694e3dd1a1314621dd82b26523533539b624a89c5f6eb07b1bea4e36dab9b75",
+      "bytes": 16311
+    },
+    {
+      "book": "test/41603.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/41603.txt",
+      "source_sha256": "f24c812cb32ad195a0a5d779d43579179a4e8e5add019d49de3536d9163ae3c6",
+      "start_character": 68687,
+      "excerpt_sha256": "215bce1290d4b6617cb5603bb16084860a18d1fd7d8b9322263653de82120bf8",
+      "bytes": 16383
+    },
+    {
+      "book": "test/58553.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/58553.txt",
+      "source_sha256": "6ee7e3af2b427cdb48132e8debd6d0013927b31d0980aa505832b0f85666f489",
+      "start_character": 52507,
+      "excerpt_sha256": "4fbeca78ba17fa971f7ada10d3ed4de087e77c4e10e4157d2e133c545bc97ebc",
+      "bytes": 16317
+    },
+    {
+      "book": "test/28988.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/28988.txt",
+      "source_sha256": "5ba1eb22b96320155afd942871f76b1f040d4918d9871a1d4b854176c7015567",
+      "start_character": 184268,
+      "excerpt_sha256": "6211d481dd4b25ab3932f9f8e8cdd39e4997979d8054e8a1e2f44841794481be",
+      "bytes": 16333
+    },
+    {
+      "book": "test/5770.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/5770.txt",
+      "source_sha256": "1f04507f01f6d19e871095037ff4742745bda5a1583ee792f6a386d1228b32ff",
+      "start_character": 61733,
+      "excerpt_sha256": "4c348b44fbaa3bd7257dfcad48cd5c357983e5c01f32a8373637d11b2c96ca84",
+      "bytes": 16384
+    },
+    {
+      "book": "test/43845.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/43845.txt",
+      "source_sha256": "a02e28569346e8e561b4574ab60a6f4dd01dd9f9ddccca2241fe961f9c186537",
+      "start_character": 14295,
+      "excerpt_sha256": "a8976cdd2904e64d85774152bb10f9c2e48045934e1b9eb131ec15b1b11a0ff6",
+      "bytes": 16322
+    },
+    {
+      "book": "test/42081.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/42081.txt",
+      "source_sha256": "70f8bdb8a20026f5651b800e58b5210d501852cdd99ee637084ebc85dd99584a",
+      "start_character": 211146,
+      "excerpt_sha256": "e43f198f18a96b828741ac3522bc97905f973f91a814288a86e947fcc0a16933",
+      "bytes": 16323
+    },
+    {
+      "book": "test/48693.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/48693.txt",
+      "source_sha256": "68fa97ed43ba3245cfb9329d9875d6d40b5e776aeb47eba94bef976baf4008ab",
+      "start_character": 102636,
+      "excerpt_sha256": "10b95225c66626dbdd5c1528ac27e26005643115e5822e32e8de68f63ba127c3",
+      "bytes": 16363
+    },
+    {
+      "book": "test/9931.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/9931.txt",
+      "source_sha256": "23935eb122717a05d7153e7c6ab95a9000c116139fa5af4b403513ead6f0c61a",
+      "start_character": 130513,
+      "excerpt_sha256": "f895af0ddc73cdf5dcfb8c85251e72e15b65138fc1b5ad6a01b29ddcc947c52e",
+      "bytes": 16366
+    },
+    {
+      "book": "test/7987.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/7987.txt",
+      "source_sha256": "cae86a95f8467d55800af340ee360c83a97f0ee35536ad9ff4d9a0132617fd2a",
+      "start_character": 262220,
+      "excerpt_sha256": "8c494c5d06099d76204802f3d176ebfdc6a17dee2e908cb4f053be7a31a48439",
+      "bytes": 16349
+    },
+    {
+      "book": "test/6941.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/6941.txt",
+      "source_sha256": "1f7197a758f44b85bd0b279387c74753fe8c5afdcd9531ec9247c4fd5cedd0ca",
+      "start_character": 266168,
+      "excerpt_sha256": "efacd118bc9506908cfba491d7713e15b21b39145c45db5b110b662dbab48c0f",
+      "bytes": 16379
+    },
+    {
+      "book": "test/29594.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/29594.txt",
+      "source_sha256": "f4590fbca52dedf54ce45d1ef6ad6d01875d8cde22796213c40dd01dc971696a",
+      "start_character": 21520,
+      "excerpt_sha256": "fa347455b320c1d4f8f7b42439ec3d5e5904c266e461cb219a8dfc5e156234b1",
+      "bytes": 16379
+    },
+    {
+      "book": "test/56410.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/56410.txt",
+      "source_sha256": "5a0dfe99fad39f1b18ab1cc051527ccfdef12e214a22cc27264f25b21bd8c154",
+      "start_character": 27212,
+      "excerpt_sha256": "1e316a640947952e52df5fb81b86f07a2abdf43ae711ea92b391ae826ad3dece",
+      "bytes": 16341
+    },
+    {
+      "book": "test/27454.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/27454.txt",
+      "source_sha256": "0f5a3efba148e8435ae9acc4a34e570369d493d635413d56a3044b08d70f6d9a",
+      "start_character": 101114,
+      "excerpt_sha256": "3cb641fd485f668f0ca4d08423ec485d151b7d4031bb977d7888dd0e4505165e",
+      "bytes": 16379
+    },
+    {
+      "book": "test/44099.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/44099.txt",
+      "source_sha256": "496ccf8a9235dc7f820271404a48d00e5cb4a1faf9842fa86160df56261281cc",
+      "start_character": 36819,
+      "excerpt_sha256": "6e5e6e5bfd1fefd996ff5087b8414c901487fe3bb3d64e00cc17a1d9bfb7dbdb",
+      "bytes": 16365
+    },
+    {
+      "book": "test/57791.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/57791.txt",
+      "source_sha256": "f8117b124fc2da28f823a9add2a69a4d528a8b7a649573f864df442740dd537d",
+      "start_character": 25424,
+      "excerpt_sha256": "b35be81b1b85511129fc9b6b8e0a13de86b0e9ae59b35c2abcdb90fc1f267f78",
+      "bytes": 16356
+    },
+    {
+      "book": "test/30909.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/30909.txt",
+      "source_sha256": "1eebeea3739f55afd5d47e989fca2657022e72829abcab070af599cefa62dc92",
+      "start_character": 47711,
+      "excerpt_sha256": "b0fc002466f9d2ca781e597d52dbef9774f3e8d2227c8799d5cac25a0ce9471f",
+      "bytes": 16371
+    },
+    {
+      "book": "test/40700.txt",
+      "url": "https://storage.googleapis.com/deepmind-gutenberg/test/40700.txt",
+      "source_sha256": "c8dbe3563ca688278bcfa09b673bd177e2500ecb243cfb34a00690823b113c9c",
+      "start_character": 37046,
+      "excerpt_sha256": "e719c81b05aba3a019cf94f5f3a4e5371147732c8f7b5af7ebd34d48d4e21236",
+      "bytes": 16359
+    }
+  ],
+  "selection": "first64 SHA256-sorted official test books; quarter-book start; <=16KiB each; no loss filtering"
+}

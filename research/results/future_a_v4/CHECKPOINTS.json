@@ -1,0 +1,90 @@
+{
+  "source_sha": "89e2da363a16edc00f454975136a99efe10ccc09",
+  "contract_hash": "f07e6fb52f3ef4f4b1e320a0985383df3ec8b33126c042d3aedae4723f92fb55",
+  "files": [
+    {
+      "method": "frequency",
+      "seed": 0,
+      "path": "/root/home/ubuntu/research/runs/future_a_v4/runs/frequency/seed0/model.pt",
+      "bytes": 170056997,
+      "sha256": "898a4a21dcc952c26bd3563960be69a685b128dbefdfa24f08f9b4d0b462a301"
+    },
+    {
+      "method": "frequency",
+      "seed": 1,
+      "path": "/root/home/ubuntu/research/runs/future_a_v4/runs/frequency/seed1/model.pt",
+      "bytes": 170056997,
+      "sha256": "b918c2335c1a600e6495a33f2a6d42ae202cd746493f7b81e17100f7d822e161"
+    },
+    {
+      "method": "frequency",
+      "seed": 2,
+      "path": "/root/home/ubuntu/research/runs/future_a_v4/runs/frequency/seed2/model.pt",
+      "bytes": 170056997,
+      "sha256": "03d8fbd25bbb80ef4281bd239e0b24aed1193ec03260b5cb4dbf88334b9e9eb7"
+    },
+    {
+      "method": "word",
+      "seed": 0,
+      "path": "/root/home/ubuntu/research/runs/future_a_v4/runs/word/seed0/model.pt",
+      "bytes": 170056997,
+      "sha256": "26f9cf443dc25ae48849826e1d71435f77da4e5bf444c4d698e53a3b86688fab"
+    },
+    {
+      "method": "word",
+      "seed": 1,
+      "path": "/root/home/ubuntu/research/runs/future_a_v4/runs/word/seed1/model.pt",
+      "bytes": 170056997,
+      "sha256": "4f8484efc48904e2d63a8a98f50ea16542efa292691e3dfde2d018d5b5735a9f"
+    },
+    {
+      "method": "word",
+      "seed": 2,
+      "path": "/root/home/ubuntu/research/runs/future_a_v4/runs/word/seed2/model.pt",
+      "bytes": 170056997,
+      "sha256": "a4597e8076fb68920632f6f5b1b11b67831c0fd1f0e78b98b5e0cdff1dbe39ec"
+    },
+    {
+      "method": "future",
+      "seed": 0,
+      "path": "/root/home/ubuntu/research/runs/future_a_v4/runs/future/seed0/model.pt",
+      "bytes": 170056997,
+      "sha256": "eb79b3b50e00c67f5c36323b00116e1ad7dda1d2a0a862ae313e41d644ea499c"
+    },
+    {
+      "method": "future",
+      "seed": 1,
+      "path": "/root/home/ubuntu/research/runs/future_a_v4/runs/future/seed1/model.pt",
+      "bytes": 170056997,
+      "sha256": "61f052d903cf0de414ab1a3ce5fe3e6139c4dd14f4109b5b3b9fb1384af1e8f5"
+    },
+    {
+      "method": "future",
+      "seed": 2,
+      "path": "/root/home/ubuntu/research/runs/future_a_v4/runs/future/seed2/model.pt",
+      "bytes": 170056997,
+      "sha256": "9762cd7a0181bb562b95880d1e73344c20984055c2926caca881755db66ae854"
+    },
+    {
+      "method": "random",
+      "seed": 0,
+      "path": "/root/home/ubuntu/research/runs/future_a_v4/runs/random/seed0/model.pt",
+      "bytes": 170056997,
+      "sha256": "f30d48e6ec6dd58d0ab5c91f24685b650ffa2fe5e4f767854768b42f48899dce"
+    },
+    {
+      "method": "random",
+      "seed": 1,
+      "path": "/root/home/ubuntu/research/runs/future_a_v4/runs/random/seed1/model.pt",
+      "bytes": 170056997,
+      "sha256": "ce5750265207994938cf6f96824e787724b4bdea5196a792617ac68e706916df"
+    },
+    {
+      "method": "random",
+      "seed": 2,
+      "path": "/root/home/ubuntu/research/runs/future_a_v4/runs/random/seed2/model.pt",
+      "bytes": 170056997,
+      "sha256": "65f63daaf6a1e38fddc205fb900fce5d675707678c435a5710d773862508106c"
+    }
+  ]
+}

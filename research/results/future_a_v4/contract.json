@@ -1,0 +1,163 @@
+{
+  "K": 32768,
+  "source_sha": "89e2da363a16edc00f454975136a99efe10ccc09",
+  "source_hashes": {
+    "src/scaffold_margin/adapter.py": "34ca06381654bb209395c0907fd00879c79743ceb32754904e0655850270277e",
+    "src/scaffold_margin/aligned_lm.py": "758655dbaf5166796934f2b32cda59f120f7898af213e2fda18b1b36b7776608",
+    "src/scaffold_margin/bpe.py": "6b657c9ecd2cb1751bc9e46fbafe01b06fc22a487686377459baf1947ff69fda",
+    "src/scaffold_margin/data.py": "0ccdb577c569e040129824bb9f09e484a7d0f023b147781062aea8d99f876152",
+    "src/scaffold_margin/direction_a.py": "fa0789c2fa3cc3c191af4d8ccb72d3ae438b34b404d514058935f1f8a31df3be",
+    "src/scaffold_margin/future.py": "e6110693efccefe384c7dfea3917a4eeb7d02c93dea12701ec0872bf48c2fb5d",
+    "src/scaffold_margin/learning.py": "eaeca3ac0ae3bb16f7173068977ac518c4c0084953a36a7844bd2cb22f1cc649",
+    "src/scaffold_margin/lm.py": "cec889bae8db6d81face35d696bc6d3f130fa2aa8c40b3aa74ad6852b3fba284",
+    "src/scaffold_margin/pretok.py": "bd0c9874e4b3a4aa6fa257da4a130e0058e21a637de64b7dc4a3002b44c0d4b4",
+    "src/scaffold_margin/remerge.py": "d7f52c42f26d234258f765c5e7cdc932a1d662560ff8c87aa08ea8651d2d2249",
+    "src/scaffold_margin/scorer.py": "1b3c99f4ae2a9582bb73e0ff5054edba0b12ebf639209458bc3a694f3448225b",
+    "src/scaffold_margin/synth.py": "d9c9b377caa8aa7cb790df9ca20534613b690ef20ce418f794b059be9c7bbc53",
+    "src/scaffold_margin/train_lm.py": "972f945551ed66b497b738b28eb3a9818959e9bb57cb54e0ccaf6d4473c09a0d",
+    "src/scaffold_margin/utility.py": "50bc12c8c69c6673746229efcdfd32ebbce71b471cf37c2bdb5eec27b2d89562",
+    "scripts/a_future_utility.py": "b5a3e6a414d96f42a8823b3ae22d1e8bf3e01b910e69346a75a92469ff8a0870",
+    "scripts/run_lm_suite.py": "1c5049d7041fc8a6d404c50374ec1bcd7ad271fb4584f62654b79bcee6259cec"
+  },
+  "steps": 1500,
+  "seq": 256,
+  "context_tokens": 64,
+  "batch_windows": 32,
+  "micro_batch": 8,
+  "lr": 0.0003,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "data_seed": 0,
+  "max_samples": 32,
+  "scoring_context_pretokens": 12,
+  "scoring_min_occurrences": 2,
+  "requested_swaps": 32,
+  "train_raw_budget_bytes": 67108864,
+  "pair_matching": "equal byte length; closest frequency; quotas by removal/addition deciles and byte length",
+  "random_draw_limit": 1000,
+  "min_scheduled_pool_occurrences": 8,
+  "teacher": "/root/home/ubuntu/research/runs/purpose_a_v1/teacher_pool40960/model.pt",
+  "teacher_hash": "a6cfcd964f8a246c3e75dcd7e137a36e16ec80a1fec3bde90b9383e6aea18a57",
+  "pool_hash": "ffa7403ef1eeea19349d83e982e115e6ff96d576e7af764654f36511f46dff42",
+  "input_hashes": {
+    "lm_train.jsonl": "39f3da0837120abe42713e579523fd5926651abb3930b0f1c1276127643cabc2",
+    "dev_sel.jsonl": "d9f5ca78c69de9824b7474904d30f1a4327f324f424635cc3fd979d3c13e50a0",
+    "val.jsonl": "93ca2c903eb5a2d6ae7e4b668f66d72d1c014bda337052f3bfe45d8ceb961cc7",
+    "test.jsonl": "d5333eecd459773de645346c72d17e1c0af8bcac6e66259a4fc72a34b3992fd4"
+  },
+  "scoring": "FP32 common pool+EOS output head; partition in bits; rank residual*shrunk span BPB",
+  "primary": "PG19 new book excerpts",
+  "secondary": "WikiText reused test; exploratory",
+  "gate": "Future beats frequency, word, and one matched-random vocabulary on PG19; all3 seed signs and doc CI upper<0",
+  "random_scope": "one fixed random vocabulary; three model initialization seeds",
+  "scope": "fixed-pool fixed-K slot-selection pilot; not full Scaffold vocabulary-construction optimization",
+  "score_cache": {
+    "root": "/root/home/ubuntu/research/runs/future_a_v1",
+    "source_sha": "7134bf6fd48b1a7e611d84326c274c43d04f1bf1",
+    "samples_hash": "cbe3206d52f0bb0620077379dc6d5db662ca0103ab85a939c122a9a726ed8044"
+  },
+  "eligibility": {
+    "cache": "/root/home/ubuntu/research/runs/future_a_v3",
+    "cache_hash": "49cbb037c11184639b018863027f7b4e72e51bc8ebe5fb43d50090a4ac396440",
+    "support_hash": "887b66041ce742eb40b4ca8c9a31644d75803ca27fec5676a730a95eb15f4ccd",
+    "eligible_scored_candidates": 12170
+  },
+  "data": {
+    "train": {
+      "raw_hash": "be4b821054126f315371671a8010804fe439257c20e2253756657fb33dbfb763",
+      "bytes": 67135626,
+      "windows": 74175,
+      "documents": 3676,
+      "target_tokens": {
+        "frequency": 14108402,
+        "word": 14108187,
+        "future": 14108913,
+        "random": 14108457
+      }
+    },
+    "val": {
+      "raw_hash": "30e0b5b945a04ae0f4c71ab7d2da63bb289d5b449e96d7c90886c66cbd28559a",
+      "bytes": 631207,
+      "windows": 690,
+      "documents": 30,
+      "target_tokens": {
+        "frequency": 130723,
+        "word": 130747,
+        "future": 130745,
+        "random": 130731
+      }
+    },
+    "wiki": {
+      "raw_hash": "b05a5e54bfdbcf57b53d4a57a2cd02a943224dabb749ea1007f32900382ad5c3",
+      "bytes": 1287656,
+      "windows": 1425,
+      "documents": 62,
+      "target_tokens": {
+        "frequency": 270853,
+        "word": 270868,
+        "future": 270859,
+        "random": 270856
+      }
+    },
+    "pg19": {
+      "raw_hash": "4fe6a7b4a89ea1f6c725561373c144b2a445f094fdb68ea1869036f77ab80fd7",
+      "bytes": 1041425,
+      "windows": 1667,
+      "documents": 64,
+      "target_tokens": {
+        "frequency": 318122,
+        "word": 318131,
+        "future": 318122,
+        "random": 318149
+      }
+    }
+  },
+  "training_support": {
+    "word": {
+      "min_added_occurrences": 9
+    },
+    "future": {
+      "min_added_occurrences": 5
+    },
+    "random": {
+      "min_added_occurrences": 5
+    }
+  },
+  "methods": [
+    "frequency",
+    "word",
+    "future",
+    "random"
+  ],
+  "swaps": 32,
+  "pg19_manifest_hash": "57020707c7fdd8d04f7644692940ac46774c6e885f46f483d49c095b47754f4c",
+  "selection_hash": "45c5ae0da7a0e9aa9677dd31ef91c07901dbd92088facf549233aa48be88bb04",
+  "corpus_hashes": {
+    "frequency_pg19.npz": "cef85ce724ce771a24c10a49891e3dd7787387f34d869011f2c664000029caec",
+    "frequency_train.npz": "1b35fc6781a10bd9a22bed59f7bf904f1e000531d9c772ff273c6b14ab4bf101",
+    "frequency_val.npz": "a280ddfad3e39c6ff141433c81ef90df283bcbdac3d0729988d330dee0652986",
+    "frequency_wiki.npz": "e9fdb902a837710c553c833ac9a12c10da6fd917e832cab3c9a250d9b003e12d",
+    "future_pg19.npz": "b847077da562ff85dffc20fb985c1e7c16d91f164088f5325c409f7aadc3cb74",
+    "future_train.npz": "f3c4af8d512db86e32ad900df5da9519f7a7ddaabccc36734245ef26ccfbd999",
+    "future_val.npz": "2973601d7ee2a0035532c25c637edd4093e0f8fdc54007685aa858fef6959066",
+    "future_wiki.npz": "c822ce5f8fbdc532814ebe965ffab917265c325a98e552775ad99d72839082c4",
+    "random_pg19.npz": "ab571d54e8ff58a9fec000a2bab45da9a552b53ef1f138a4d1c067fab22ea0d0",
+    "random_train.npz": "39340356e61234de77c5c26bfd24fed6036892fb4e87976a545afdb9e3ca5038",
+    "random_val.npz": "b29a3d5b54ecd639e3d252e505a0ff19d7181fc0d513bd34e9459100ada509a3",
+    "random_wiki.npz": "0eb1f0ee84685dba1564319c1f237c4da23e5ab5a9e52552fe892e3243f0bf54",
+    "word_pg19.npz": "070fbf2f1beb0fa785c2eaf280a321f1ebccdf1c946b70fa3f84ba0da0e30113",
+    "word_train.npz": "f4b9a2244d5e1ef40980fb1b8bd45e4072204dde6750215b77ef53b848eb2ce4",
+    "word_val.npz": "6298a1e5c6cf67f900044966d46bef819e3be1aff50b157cc2b175c6a71f897a",
+    "word_wiki.npz": "569e006a539c3bf40680c7d5d9938335af268e73886f4181a540217fd671b560"
+  },
+  "tokenizer_hashes": {
+    "frequency.json": "12b313f80d75493758713b20785208b4af0aebb5a8c19b527837e3b4b415cfb2",
+    "future.json": "6405fd6a9b9a6fb1faef8df8dad989d80960baa1fa8ada5e2c4d33cfdf4f7ab4",
+    "pool.json": "ffa7403ef1eeea19349d83e982e115e6ff96d576e7af764654f36511f46dff42",
+    "random.json": "32c76f4d881546540c5fcfa45b97aab8e587dd98e2fedbfb8edb90c90526dcc6",
+    "word.json": "b32bb2f0c31ce64566e3119d22850cd6680906ee6a5087e5edade2f4f274704a"
+  }
+}
