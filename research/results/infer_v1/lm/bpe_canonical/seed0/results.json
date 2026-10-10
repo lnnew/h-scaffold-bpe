@@ -1,0 +1,142 @@
+{
+ "args": {
+  "data": "/root/home/ubuntu/research/runs/infer_v1/data/bpe_canonical",
+  "out": "/root/home/ubuntu/research/runs/infer_v1/lm/bpe_canonical/seed0",
+  "preset": "small",
+  "seq": 1024,
+  "batch_tokens": 131072,
+  "micro_batch": 16,
+  "epochs": 2.0,
+  "max_steps": 0,
+  "lr": 0.0006,
+  "min_lr_frac": 0.1,
+  "warmup_steps": 200,
+  "wd": 0.1,
+  "clip": 1.0,
+  "seed": 0,
+  "data_seed": 0,
+  "amp": "auto",
+  "compile": true,
+  "eval_sets": "val,test,test_canonical,test_longest,test_dp",
+  "eval_every": 0,
+  "save_ckpt": true,
+  "init_pool": null,
+  "max_train_tokens": 0
+ },
+ "cfg": {
+  "vocab_size": 32768,
+  "d_model": 512,
+  "n_layers": 8,
+  "n_heads": 8,
+  "n_kv_heads": 8,
+  "ffn_dim": 1408,
+  "max_seq": 1024,
+  "rope_theta": 500000.0,
+  "norm_eps": 1e-05,
+  "tie_embeddings": true
+ },
+ "amp": "fp16",
+ "train_time_s": 2027.7431135177612,
+ "total_steps": 1814,
+ "n_params": 42476032,
+ "train_tokens": 118988839,
+ "train_exposure_tokens": 237764608,
+ "train_exposure_bytes": 1077625881,
+ "meta": {
+  "tokenizer": "/root/home/ubuntu/research/h-scaffold-bpe-infer-v1/artifacts/tokenizers/bpe-32768.json",
+  "n_normal": 32767,
+  "eos_id": 32767,
+  "mode": "bpe",
+  "inference": "canonical",
+  "splits": {
+   "train": {
+    "tokens": 118988839,
+    "docs": 29444,
+    "bytes": 539295549,
+    "bytes_per_token": 4.5334423021690915,
+    "methods": {
+     "canonical": 29444
+    }
+   },
+   "val": {
+    "tokens": 136457,
+    "docs": 30,
+    "bytes": 631207,
+    "bytes_per_token": 4.626735373022737,
+    "methods": {
+     "canonical": 30
+    }
+   },
+   "test": {
+    "tokens": 284664,
+    "docs": 62,
+    "bytes": 1287656,
+    "bytes_per_token": 4.524425423663304,
+    "methods": {
+     "canonical": 62
+    }
+   },
+   "val_canonical": {
+    "tokens": 136457,
+    "docs": 30,
+    "bytes": 631207,
+    "bytes_per_token": 4.626735373022737,
+    "methods": {
+     "canonical": 30
+    }
+   },
+   "val_longest": {
+    "tokens": 136199,
+    "docs": 30,
+    "bytes": 631207,
+    "bytes_per_token": 4.635501733153164,
+    "methods": {
+     "longest": 30
+    }
+   },
+   "val_dp": {
+    "tokens": 135861,
+    "docs": 30,
+    "bytes": 631207,
+    "bytes_per_token": 4.647036737097843,
+    "methods": {
+     "dp": 30
+    }
+   },
+   "test_canonical": {
+    "tokens": 284664,
+    "docs": 62,
+    "bytes": 1287656,
+    "bytes_per_token": 4.524425423663304,
+    "methods": {
+     "canonical": 62
+    }
+   },
+   "test_longest": {
+    "tokens": 284068,
+    "docs": 62,
+    "bytes": 1287656,
+    "bytes_per_token": 4.533920177461664,
+    "methods": {
+     "longest": 62
+    }
+   },
+   "test_dp": {
+    "tokens": 283249,
+    "docs": 62,
+    "bytes": 1287656,
+    "bytes_per_token": 4.547032692294111,
+    "methods": {
+     "dp": 62
+    }
+   }
+  }
+ },
+ "bpb": {
+  "val": 1.0863765880138114,
+  "test": 1.094463858193758,
+  "test_canonical": 1.094463858193758,
+  "test_longest": 1.2087389825409356,
+  "test_dp": 1.1933373478034126
+ }
+}

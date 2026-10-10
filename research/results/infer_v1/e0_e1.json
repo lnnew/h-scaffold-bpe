@@ -1,0 +1,1792 @@
+{
+ "args": {
+  "tok_dir": "/root/home/ubuntu/research/h-scaffold-bpe-infer-v1/artifacts/tokenizers",
+  "text_dir": "data/text",
+  "word_counts": "tok/word_counts.pkl",
+  "out": "runs/infer_v1/e0_e1.json",
+  "K": [
+   32768,
+   65536
+  ],
+  "splits": [
+   "val",
+   "test"
+  ],
+  "e0_k": [
+   500,
+   1000,
+   2600,
+   5000,
+   10000
+  ]
+ },
+ "e1": {
+  "32768": {
+   "val": {
+    "pretokens": 120785,
+    "types": 13572,
+    "tokens": {
+     "bpe": 136426,
+     "scaffold": 135923,
+     "hscaffold": 135884,
+     "longest": 135443,
+     "dp": 135184
+    },
+    "rel_vs_scaffold": {
+     "bpe": 0.00370062461835019,
+     "scaffold": 0.0,
+     "hscaffold": -0.00028692715728761975,
+     "longest": -0.0035314111666163717,
+     "dp": -0.005436901775269787
+    },
+    "pretokens_dp_better": 693,
+    "pretokens_dp_better_frac": 0.005737467400753405,
+    "pretokens_longest_worse_frac": 0.001846255743676781,
+    "hscaffold_gap_closed": 0.05277401894451962,
+    "top_examples": [
+     {
+      "count": 48,
+      "word": " Nosek",
+      "scaffold": [
+       " N",
+       "ose",
+       "k"
+      ],
+      "dp": [
+       " Nos",
+       "ek"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 27,
+      "word": " Boogaloo",
+      "scaffold": [
+       " Bo",
+       "og",
+       "al",
+       "oo"
+      ],
+      "dp": [
+       " Bo",
+       "oga",
+       "loo"
+      ],
+      "hscaffold_len": 4
+     },
+     {
+      "count": 21,
+      "word": " Moultrie",
+      "scaffold": [
+       " M",
+       "oul",
+       "t",
+       "rie"
+      ],
+      "dp": [
+       " Moul",
+       "tri",
+       "e"
+      ],
+      "hscaffold_len": 4
+     },
+     {
+      "count": 20,
+      "word": " Krabs",
+      "scaffold": [
+       " K",
+       "rab",
+       "s"
+      ],
+      "dp": [
+       " Kra",
+       "bs"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 15,
+      "word": " Bamboo",
+      "scaffold": [
+       " B",
+       "amb",
+       "oo"
+      ],
+      "dp": [
+       " Bamb",
+       "oo"
+      ],
+      "hscaffold_len": 2
+     },
+     {
+      "count": 13,
+      "word": " Thelnetham",
+      "scaffold": [
+       " The",
+       "l",
+       "n",
+       "eth",
+       "am"
+      ],
+      "dp": [
+       " The",
+       "l",
+       "net",
+       "ham"
+      ],
+      "hscaffold_len": 5
+     },
+     {
+      "count": 12,
+      "word": " Pořádek",
+      "scaffold": [
+       " Po",
+       "ř",
+       "á",
+       "de",
+       "k"
+      ],
+      "dp": [
+       " Po",
+       "ř",
+       "ád",
+       "ek"
+      ],
+      "hscaffold_len": 5
+     },
+     {
+      "count": 12,
+      "word": " Roode",
+      "scaffold": [
+       " R",
+       "ood",
+       "e"
+      ],
+      "dp": [
+       " Ro",
+       "ode"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 10,
+      "word": " Fairey",
+      "scaffold": [
+       " Fa",
+       "ire",
+       "y"
+      ],
+      "dp": [
+       " Fair",
+       "ey"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 9,
+      "word": " Keetoowah",
+      "scaffold": [
+       " Ke",
+       "eto",
+       "ow",
+       "ah"
+      ],
+      "dp": [
+       " Kee",
+       "too",
+       "wah"
+      ],
+      "hscaffold_len": 4
+     },
+     {
+      "count": 6,
+      "word": " ketone",
+      "scaffold": [
+       " k",
+       "et",
+       "one"
+      ],
+      "dp": [
+       " ke",
+       "tone"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 6,
+      "word": " Peralta",
+      "scaffold": [
+       " P",
+       "eral",
+       "ta"
+      ],
+      "dp": [
+       " Per",
+       "alta"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 5,
+      "word": " reinstatement",
+      "scaffold": [
+       " rein",
+       "st",
+       "at",
+       "ement"
+      ],
+      "dp": [
+       " rein",
+       "state",
+       "ment"
+      ],
+      "hscaffold_len": 4
+     },
+     {
+      "count": 5,
+      "word": " promoters",
+      "scaffold": [
+       " prom",
+       "ot",
+       "ers"
+      ],
+      "dp": [
+       " promoter",
+       "s"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 5,
+      "word": " boogaloo",
+      "scaffold": [
+       " bo",
+       "og",
+       "al",
+       "oo"
+      ],
+      "dp": [
+       " bo",
+       "oga",
+       "loo"
+      ],
+      "hscaffold_len": 4
+     },
+     {
+      "count": 5,
+      "word": " substrates",
+      "scaffold": [
+       " sub",
+       "str",
+       "ates"
+      ],
+      "dp": [
+       " substrate",
+       "s"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 5,
+      "word": " bioterror",
+      "scaffold": [
+       " bi",
+       "ot",
+       "err",
+       "or"
+      ],
+      "dp": [
+       " bio",
+       "terror"
+      ],
+      "hscaffold_len": 4
+     },
+     {
+      "count": 4,
+      "word": " Aftermath",
+      "scaffold": [
+       " After",
+       "m",
+       "ath"
+      ],
+      "dp": [
+       " ",
+       "Aftermath"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 4,
+      "word": " donned",
+      "scaffold": [
+       " d",
+       "onn",
+       "ed"
+      ],
+      "dp": [
+       " don",
+       "ned"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 4,
+      "word": " Torokina",
+      "scaffold": [
+       " Tor",
+       "ok",
+       "ina"
+      ],
+      "dp": [
+       " Toro",
+       "kina"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 4,
+      "word": " Jablonský",
+      "scaffold": [
+       " J",
+       "abl",
+       "ons",
+       "k",
+       "ý"
+      ],
+      "dp": [
+       " Jab",
+       "lon",
+       "sk",
+       "ý"
+      ],
+      "hscaffold_len": 5
+     },
+     {
+      "count": 4,
+      "word": " contingents",
+      "scaffold": [
+       " cont",
+       "ing",
+       "ents"
+      ],
+      "dp": [
+       " contingent",
+       "s"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 4,
+      "word": " HMCS",
+      "scaffold": [
+       " H",
+       "MC",
+       "S"
+      ],
+      "dp": [
+       " HM",
+       "CS"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 4,
+      "word": " offensives",
+      "scaffold": [
+       " off",
+       "ens",
+       "ives"
+      ],
+      "dp": [
+       " offensive",
+       "s"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 4,
+      "word": " Indonesians",
+      "scaffold": [
+       " Ind",
+       "ones",
+       "ians"
+      ],
+      "dp": [
+       " Indonesian",
+       "s"
+      ],
+      "hscaffold_len": 3
+     }
+    ]
+   },
+   "test": {
+    "pretokens": 247230,
+    "types": 20994,
+    "tokens": {
+     "bpe": 284601,
+     "scaffold": 283276,
+     "hscaffold": 283229,
+     "longest": 282427,
+     "dp": 281662
+    },
+    "rel_vs_scaffold": {
+     "bpe": 0.004677417077338042,
+     "scaffold": 0.0,
+     "hscaffold": -0.0001659159265169352,
+     "longest": -0.0029970770555923787,
+     "dp": -0.005697623519112072
+    },
+    "pretokens_dp_better": 1534,
+    "pretokens_dp_better_frac": 0.006204748614650326,
+    "pretokens_longest_worse_frac": 0.0026169963192169236,
+    "hscaffold_gap_closed": 0.029120198265179677,
+    "top_examples": [
+     {
+      "count": 106,
+      "word": " Kershaw",
+      "scaffold": [
+       " K",
+       "ers",
+       "haw"
+      ],
+      "dp": [
+       " Ker",
+       "shaw"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 39,
+      "word": " Yongsan",
+      "scaffold": [
+       " Y",
+       "ongs",
+       "an"
+      ],
+      "dp": [
+       " Yong",
+       "san"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 25,
+      "word": " Dürenstein",
+      "scaffold": [
+       " D",
+       "ü",
+       "ren",
+       "stein"
+      ],
+      "dp": [
+       " D",
+       "ür",
+       "enstein"
+      ],
+      "hscaffold_len": 4
+     },
+     {
+      "count": 21,
+      "word": " oxaziridines",
+      "scaffold": [
+       " ox",
+       "az",
+       "ir",
+       "id",
+       "ines"
+      ],
+      "dp": [
+       " ox",
+       "azi",
+       "rid",
+       "ines"
+      ],
+      "hscaffold_len": 5
+     },
+     {
+      "count": 20,
+      "word": " Krosa",
+      "scaffold": [
+       " K",
+       "ros",
+       "a"
+      ],
+      "dp": [
+       " Kro",
+       "sa"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 19,
+      "word": " Weevil",
+      "scaffold": [
+       " W",
+       "eev",
+       "il"
+      ],
+      "dp": [
+       " Wee",
+       "vil"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 18,
+      "word": " Vastra",
+      "scaffold": [
+       " V",
+       "ast",
+       "ra"
+      ],
+      "dp": [
+       " Vas",
+       "tra"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 17,
+      "word": " Pusan",
+      "scaffold": [
+       " P",
+       "us",
+       "an"
+      ],
+      "dp": [
+       " Pu",
+       "san"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 14,
+      "word": " Kuching",
+      "scaffold": [
+       " K",
+       "uch",
+       "ing"
+      ],
+      "dp": [
+       " Ku",
+       "ching"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 13,
+      "word": " semiaquatic",
+      "scaffold": [
+       " sem",
+       "ia",
+       "qu",
+       "atic"
+      ],
+      "dp": [
+       " semi",
+       "aqu",
+       "atic"
+      ],
+      "hscaffold_len": 4
+     },
+     {
+      "count": 13,
+      "word": " cheeks",
+      "scaffold": [
+       " che",
+       "e",
+       "ks"
+      ],
+      "dp": [
+       " ch",
+       "eeks"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 12,
+      "word": " Undisputed",
+      "scaffold": [
+       " Und",
+       "is",
+       "put",
+       "ed"
+      ],
+      "dp": [
+       " Und",
+       "isp",
+       "uted"
+      ],
+      "hscaffold_len": 4
+     },
+     {
+      "count": 12,
+      "word": " Otho",
+      "scaffold": [
+       " O",
+       "th",
+       "o"
+      ],
+      "dp": [
+       " Ot",
+       "ho"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 10,
+      "word": " Yanyan",
+      "scaffold": [
+       " Y",
+       "any",
+       "an"
+      ],
+      "dp": [
+       " Yan",
+       "yan"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 10,
+      "word": " Waltham",
+      "scaffold": [
+       " W",
+       "alth",
+       "am"
+      ],
+      "dp": [
+       " Walt",
+       "ham"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 9,
+      "word": " Josepha",
+      "scaffold": [
+       " Jos",
+       "ep",
+       "ha"
+      ],
+      "dp": [
+       " Joseph",
+       "a"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 9,
+      "word": " typhoons",
+      "scaffold": [
+       " ty",
+       "ph",
+       "oons"
+      ],
+      "dp": [
+       " typhoon",
+       "s"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 9,
+      "word": " Provisionals",
+      "scaffold": [
+       " Prov",
+       "ision",
+       "als"
+      ],
+      "dp": [
+       " Provisional",
+       "s"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 8,
+      "word": " Yeats",
+      "scaffold": [
+       " Y",
+       "eat",
+       "s"
+      ],
+      "dp": [
+       " Ye",
+       "ats"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 8,
+      "word": " ornaments",
+      "scaffold": [
+       " or",
+       "nam",
+       "ents"
+      ],
+      "dp": [
+       " ornament",
+       "s"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 8,
+      "word": " DePauw",
+      "scaffold": [
+       " De",
+       "P",
+       "au",
+       "w"
+      ],
+      "dp": [
+       " De",
+       "Pa",
+       "uw"
+      ],
+      "hscaffold_len": 4
+     },
+     {
+      "count": 7,
+      "word": " casemate",
+      "scaffold": [
+       " cas",
+       "em",
+       "ate"
+      ],
+      "dp": [
+       " case",
+       "mate"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 7,
+      "word": " Limnarchia",
+      "scaffold": [
+       " Lim",
+       "n",
+       "arch",
+       "ia"
+      ],
+      "dp": [
+       " Lim",
+       "nar",
+       "chia"
+      ],
+      "hscaffold_len": 4
+     },
+     {
+      "count": 7,
+      "word": " lissamphibians",
+      "scaffold": [
+       " l",
+       "iss",
+       "amp",
+       "hib",
+       "ians"
+      ],
+      "dp": [
+       " l",
+       "issa",
+       "m",
+       "phibians"
+      ],
+      "hscaffold_len": 5
+     },
+     {
+      "count": 7,
+      "word": " Morakot",
+      "scaffold": [
+       " Mor",
+       "ak",
+       "ot"
+      ],
+      "dp": [
+       " Mora",
+       "kot"
+      ],
+      "hscaffold_len": 3
+     }
+    ]
+   }
+  },
+  "65536": {
+   "val": {
+    "pretokens": 120785,
+    "types": 13572,
+    "tokens": {
+     "bpe": 130429,
+     "scaffold": 130089,
+     "hscaffold": 130084,
+     "longest": 129884,
+     "dp": 129719
+    },
+    "rel_vs_scaffold": {
+     "bpe": 0.0026135953078276764,
+     "scaffold": 0.0,
+     "hscaffold": -3.843522511515207e-05,
+     "longest": -0.0015758442297196806,
+     "dp": -0.0028442066585183667
+    },
+    "pretokens_dp_better": 353,
+    "pretokens_dp_better_frac": 0.0029225483296766983,
+    "pretokens_longest_worse_frac": 0.0011590843233845263,
+    "hscaffold_gap_closed": 0.013513513513513514,
+    "top_examples": [
+     {
+      "count": 27,
+      "word": " Boogaloo",
+      "scaffold": [
+       " Bo",
+       "og",
+       "al",
+       "oo"
+      ],
+      "dp": [
+       " Boo",
+       "gal",
+       "oo"
+      ],
+      "hscaffold_len": 4
+     },
+     {
+      "count": 20,
+      "word": " Krabs",
+      "scaffold": [
+       " K",
+       "rab",
+       "s"
+      ],
+      "dp": [
+       " Kra",
+       "bs"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 13,
+      "word": " Sybille",
+      "scaffold": [
+       " Sy",
+       "b",
+       "ille"
+      ],
+      "dp": [
+       " Sybil",
+       "le"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 9,
+      "word": " Keetoowah",
+      "scaffold": [
+       " Ke",
+       "eto",
+       "ow",
+       "ah"
+      ],
+      "dp": [
+       " Kee",
+       "too",
+       "wah"
+      ],
+      "hscaffold_len": 4
+     },
+     {
+      "count": 6,
+      "word": " Tibbitt",
+      "scaffold": [
+       " T",
+       "ibb",
+       "itt"
+      ],
+      "dp": [
+       " Tib",
+       "bitt"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 6,
+      "word": " Roosting",
+      "scaffold": [
+       " Ro",
+       "ost",
+       "ing"
+      ],
+      "dp": [
+       " Roos",
+       "ting"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 5,
+      "word": " boogaloo",
+      "scaffold": [
+       " bo",
+       "og",
+       "al",
+       "oo"
+      ],
+      "dp": [
+       " bo",
+       "oga",
+       "loo"
+      ],
+      "hscaffold_len": 4
+     },
+     {
+      "count": 5,
+      "word": " bioterror",
+      "scaffold": [
+       " biot",
+       "err",
+       "or"
+      ],
+      "dp": [
+       " bio",
+       "terror"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 5,
+      "word": " Icarus",
+      "scaffold": [
+       " I",
+       "car",
+       "us"
+      ],
+      "dp": [
+       " Ic",
+       "arus"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 4,
+      "word": " donned",
+      "scaffold": [
+       " d",
+       "onn",
+       "ed"
+      ],
+      "dp": [
+       " don",
+       "ned"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 4,
+      "word": " Torokina",
+      "scaffold": [
+       " Tor",
+       "ok",
+       "ina"
+      ],
+      "dp": [
+       " Toro",
+       "kina"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 4,
+      "word": " Jablonský",
+      "scaffold": [
+       " Jabl",
+       "ons",
+       "k",
+       "ý"
+      ],
+      "dp": [
+       " Jabl",
+       "on",
+       "ský"
+      ],
+      "hscaffold_len": 4
+     },
+     {
+      "count": 4,
+      "word": " Indonesians",
+      "scaffold": [
+       " Ind",
+       "ones",
+       "ians"
+      ],
+      "dp": [
+       " Indonesian",
+       "s"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 4,
+      "word": " cyclopentenone",
+      "scaffold": [
+       " cycl",
+       "op",
+       "ent",
+       "en",
+       "one"
+      ],
+      "dp": [
+       " cyclo",
+       "pent",
+       "eno",
+       "ne"
+      ],
+      "hscaffold_len": 5
+     },
+     {
+      "count": 3,
+      "word": " Actaeon",
+      "scaffold": [
+       " Act",
+       "ae",
+       "on"
+      ],
+      "dp": [
+       " Acta",
+       "eon"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 3,
+      "word": " galleon",
+      "scaffold": [
+       " g",
+       "alle",
+       "on"
+      ],
+      "dp": [
+       " gall",
+       "eon"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 3,
+      "word": " Pakenham",
+      "scaffold": [
+       " P",
+       "aken",
+       "ham"
+      ],
+      "dp": [
+       " Pak",
+       "enham"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 3,
+      "word": " UPDB",
+      "scaffold": [
+       " U",
+       "PD",
+       "B"
+      ],
+      "dp": [
+       " UP",
+       "DB"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 3,
+      "word": " COINTELPRO",
+      "scaffold": [
+       " CO",
+       "IN",
+       "TE",
+       "LP",
+       "RO"
+      ],
+      "dp": [
+       " CO",
+       "INT",
+       "EL",
+       "PRO"
+      ],
+      "hscaffold_len": 5
+     },
+     {
+      "count": 3,
+      "word": " rearrangements",
+      "scaffold": [
+       " rear",
+       "rang",
+       "ements"
+      ],
+      "dp": [
+       " rearrangement",
+       "s"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 3,
+      "word": " Comnidyne",
+      "scaffold": [
+       " Com",
+       "n",
+       "idy",
+       "ne"
+      ],
+      "dp": [
+       " Com",
+       "nid",
+       "yne"
+      ],
+      "hscaffold_len": 4
+     },
+     {
+      "count": 3,
+      "word": " Smethurst",
+      "scaffold": [
+       " Sm",
+       "eth",
+       "urst"
+      ],
+      "dp": [
+       " Smet",
+       "hurst"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 2,
+      "word": " refereeing",
+      "scaffold": [
+       " ref",
+       "ere",
+       "eing"
+      ],
+      "dp": [
+       " referee",
+       "ing"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 2,
+      "word": " provincially",
+      "scaffold": [
+       " prov",
+       "inc",
+       "ially"
+      ],
+      "dp": [
+       " provincial",
+       "ly"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 2,
+      "word": " proclamations",
+      "scaffold": [
+       " pro",
+       "cl",
+       "am",
+       "ations"
+      ],
+      "dp": [
+       " proclamation",
+       "s"
+      ],
+      "hscaffold_len": 4
+     }
+    ]
+   },
+   "test": {
+    "pretokens": 247230,
+    "types": 20994,
+    "tokens": {
+     "bpe": 271423,
+     "scaffold": 270718,
+     "hscaffold": 270698,
+     "longest": 270258,
+     "dp": 269821
+    },
+    "rel_vs_scaffold": {
+     "bpe": 0.0026041859056287198,
+     "scaffold": 0.0,
+     "hscaffold": -7.387761434407558e-05,
+     "longest": -0.0016991851299137384,
+     "dp": -0.003313411003331934
+    },
+    "pretokens_dp_better": 861,
+    "pretokens_dp_better_frac": 0.003482587064676617,
+    "pretokens_longest_worse_frac": 0.0014844476802976984,
+    "hscaffold_gap_closed": 0.022296544035674472,
+    "top_examples": [
+     {
+      "count": 48,
+      "word": " Tetrarchs",
+      "scaffold": [
+       " Tet",
+       "r",
+       "arch",
+       "s"
+      ],
+      "dp": [
+       " Tet",
+       "rar",
+       "chs"
+      ],
+      "hscaffold_len": 4
+     },
+     {
+      "count": 39,
+      "word": " Yongsan",
+      "scaffold": [
+       " Y",
+       "ongs",
+       "an"
+      ],
+      "dp": [
+       " Yong",
+       "san"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 25,
+      "word": " Dürenstein",
+      "scaffold": [
+       " Dü",
+       "ren",
+       "stein"
+      ],
+      "dp": [
+       " Dür",
+       "enstein"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 19,
+      "word": " Weevil",
+      "scaffold": [
+       " W",
+       "eev",
+       "il"
+      ],
+      "dp": [
+       " Wee",
+       "vil"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 13,
+      "word": " semiaquatic",
+      "scaffold": [
+       " sem",
+       "ia",
+       "qu",
+       "atic"
+      ],
+      "dp": [
+       " semi",
+       "aqu",
+       "atic"
+      ],
+      "hscaffold_len": 4
+     },
+     {
+      "count": 9,
+      "word": " typhoons",
+      "scaffold": [
+       " ty",
+       "ph",
+       "oons"
+      ],
+      "dp": [
+       " typhoon",
+       "s"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 8,
+      "word": " rhachitomous",
+      "scaffold": [
+       " rh",
+       "ach",
+       "it",
+       "om",
+       "ous"
+      ],
+      "dp": [
+       " rh",
+       "achi",
+       "tom",
+       "ous"
+      ],
+      "hscaffold_len": 5
+     },
+     {
+      "count": 8,
+      "word": " Quiapo",
+      "scaffold": [
+       " Qu",
+       "ia",
+       "po"
+      ],
+      "dp": [
+       " Qui",
+       "apo"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 7,
+      "word": " Morakot",
+      "scaffold": [
+       " Mor",
+       "ak",
+       "ot"
+      ],
+      "dp": [
+       " Mora",
+       "kot"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 7,
+      "word": " Miloradovich",
+      "scaffold": [
+       " Mil",
+       "or",
+       "ad",
+       "ovich"
+      ],
+      "dp": [
+       " Milo",
+       "rado",
+       "vich"
+      ],
+      "hscaffold_len": 4
+     },
+     {
+      "count": 7,
+      "word": " Antichrist",
+      "scaffold": [
+       " Ant",
+       "ich",
+       "rist"
+      ],
+      "dp": [
+       " Anti",
+       "christ"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 6,
+      "word": " Doleserpeton",
+      "scaffold": [
+       " D",
+       "oles",
+       "er",
+       "pet",
+       "on"
+      ],
+      "dp": [
+       " Dole",
+       "ser",
+       "pet",
+       "on"
+      ],
+      "hscaffold_len": 5
+     },
+     {
+      "count": 6,
+      "word": " Adentro",
+      "scaffold": [
+       " Ad",
+       "ent",
+       "ro"
+      ],
+      "dp": [
+       " Aden",
+       "tro"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 6,
+      "word": " Soudelor",
+      "scaffold": [
+       " S",
+       "oud",
+       "el",
+       "or"
+      ],
+      "dp": [
+       " Sou",
+       "del",
+       "or"
+      ],
+      "hscaffold_len": 4
+     },
+     {
+      "count": 6,
+      "word": " diverticulitis",
+      "scaffold": [
+       " diver",
+       "tic",
+       "ul",
+       "itis"
+      ],
+      "dp": [
+       " divert",
+       "icul",
+       "itis"
+      ],
+      "hscaffold_len": 4
+     },
+     {
+      "count": 6,
+      "word": " Zionsville",
+      "scaffold": [
+       " Z",
+       "ions",
+       "ville"
+      ],
+      "dp": [
+       " Zion",
+       "sville"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 6,
+      "word": " DCDA",
+      "scaffold": [
+       " D",
+       "CD",
+       "A"
+      ],
+      "dp": [
+       " DC",
+       "DA"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 5,
+      "word": " catapults",
+      "scaffold": [
+       " cat",
+       "ap",
+       "ults"
+      ],
+      "dp": [
+       " catapult",
+       "s"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 5,
+      "word": " WBEN",
+      "scaffold": [
+       " W",
+       "BE",
+       "N"
+      ],
+      "dp": [
+       " WB",
+       "EN"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 5,
+      "word": " Gerrothorax",
+      "scaffold": [
+       " Ger",
+       "ro",
+       "thor",
+       "ax"
+      ],
+      "dp": [
+       " Ger",
+       "roth",
+       "orax"
+      ],
+      "hscaffold_len": 4
+     },
+     {
+      "count": 5,
+      "word": " Weedsport",
+      "scaffold": [
+       " We",
+       "eds",
+       "port"
+      ],
+      "dp": [
+       " Weed",
+       "sport"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 5,
+      "word": " hydroxylation",
+      "scaffold": [
+       " hydro",
+       "x",
+       "ylation"
+      ],
+      "dp": [
+       " hydroxyl",
+       "ation"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 5,
+      "word": " alkenes",
+      "scaffold": [
+       " al",
+       "ken",
+       "es"
+      ],
+      "dp": [
+       " alk",
+       "enes"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 5,
+      "word": " Takalik",
+      "scaffold": [
+       " Tak",
+       "al",
+       "ik"
+      ],
+      "dp": [
+       " Taka",
+       "lik"
+      ],
+      "hscaffold_len": 3
+     },
+     {
+      "count": 5,
+      "word": " Corbulo",
+      "scaffold": [
+       " Cor",
+       "bul",
+       "o"
+      ],
+      "dp": [
+       " Corb",
+       "ulo"
+      ],
+      "hscaffold_len": 3
+     }
+    ]
+   }
+  }
+ },
+ "e0": {
+  "32768": {
+   "stats": {
+    "merge_tokens": 32511,
+    "leaves": 22443,
+    "zero_exposure": 1337,
+    "zero_exposure_nonleaf": 335,
+    "exposure_lt100": 4882,
+    "exposure_lt100_nonleaf": 1915
+   },
+   "rows": [
+    {
+     "k": 500,
+     "method": "leaf",
+     "nonleaf_frac": 0.018,
+     "exposure_removed": 0,
+     "val_rel": 0.0,
+     "test_rel": 0.0
+    },
+    {
+     "k": 500,
+     "method": "hide",
+     "nonleaf_frac": 0.076,
+     "exposure_removed": 0,
+     "val_rel": 0.0,
+     "test_rel": 0.0
+    },
+    {
+     "k": 1000,
+     "method": "leaf",
+     "nonleaf_frac": 0.082,
+     "exposure_removed": 0,
+     "val_rel": 7.329981088544102e-06,
+     "test_rel": 7.027382194824128e-06
+    },
+    {
+     "k": 1000,
+     "method": "hide",
+     "nonleaf_frac": 0.168,
+     "exposure_removed": 0,
+     "val_rel": 0.0,
+     "test_rel": 0.0
+    },
+    {
+     "k": 2600,
+     "method": "leaf",
+     "nonleaf_frac": 0.15,
+     "exposure_removed": 8698,
+     "val_rel": 5.130986762047485e-05,
+     "test_rel": 5.2705366460514824e-05
+    },
+    {
+     "k": 2600,
+     "method": "hide",
+     "nonleaf_frac": 0.2823076923076923,
+     "exposure_removed": 3425,
+     "val_rel": 2.9319924354620497e-05,
+     "test_rel": 2.8109528778852422e-05
+    },
+    {
+     "k": 5000,
+     "method": "leaf",
+     "nonleaf_frac": 0.1534,
+     "exposure_removed": 270816,
+     "val_rel": 0.0023016140618357106,
+     "test_rel": 0.003162321987624672
+    },
+    {
+     "k": 5000,
+     "method": "hide",
+     "nonleaf_frac": 0.3928,
+     "exposure_removed": 118566,
+     "val_rel": 0.0013487165203114326,
+     "test_rel": 0.001187627590907958
+    },
+    {
+     "k": 10000,
+     "method": "leaf",
+     "nonleaf_frac": 0.1565,
+     "exposure_removed": 1736176,
+     "val_rel": 0.014623312271854427,
+     "test_rel": 0.017459531062786082
+    },
+    {
+     "k": 10000,
+     "method": "hide",
+     "nonleaf_frac": 0.3422,
+     "exposure_removed": 1219573,
+     "val_rel": 0.0112588509521645,
+     "test_rel": 0.01352771072483927
+    }
+   ]
+  },
+  "65536": {
+   "stats": {
+    "merge_tokens": 65279,
+    "leaves": 46594,
+    "zero_exposure": 4557,
+    "zero_exposure_nonleaf": 1125,
+    "exposure_lt100": 22527,
+    "exposure_lt100_nonleaf": 6919
+   },
+   "rows": [
+    {
+     "k": 500,
+     "method": "leaf",
+     "nonleaf_frac": 0.006,
+     "exposure_removed": 0,
+     "val_rel": 0.0,
+     "test_rel": 0.0
+    },
+    {
+     "k": 500,
+     "method": "hide",
+     "nonleaf_frac": 0.04,
+     "exposure_removed": 0,
+     "val_rel": 0.0,
+     "test_rel": 0.0
+    },
+    {
+     "k": 1000,
+     "method": "leaf",
+     "nonleaf_frac": 0.012,
+     "exposure_removed": 0,
+     "val_rel": 0.0,
+     "test_rel": 0.0
+    },
+    {
+     "k": 1000,
+     "method": "hide",
+     "nonleaf_frac": 0.073,
+     "exposure_removed": 0,
+     "val_rel": 0.0,
+     "test_rel": 0.0
+    },
+    {
+     "k": 2600,
+     "method": "leaf",
+     "nonleaf_frac": 0.05423076923076923,
+     "exposure_removed": 0,
+     "val_rel": 0.0,
+     "test_rel": 3.684286151051097e-06
+    },
+    {
+     "k": 2600,
+     "method": "hide",
+     "nonleaf_frac": 0.13692307692307693,
+     "exposure_removed": 0,
+     "val_rel": 0.0,
+     "test_rel": 3.684286151051097e-06
+    },
+    {
+     "k": 5000,
+     "method": "leaf",
+     "nonleaf_frac": 0.1176,
+     "exposure_removed": 1281,
+     "val_rel": 1.533401314124383e-05,
+     "test_rel": 1.8421430755699575e-05
+    },
+    {
+     "k": 5000,
+     "method": "hide",
+     "nonleaf_frac": 0.2392,
+     "exposure_removed": 443,
+     "val_rel": 2.3001019711976767e-05,
+     "test_rel": 1.4737144604648478e-05
+    },
+    {
+     "k": 10000,
+     "method": "leaf",
+     "nonleaf_frac": 0.1472,
+     "exposure_removed": 70472,
+     "val_rel": 0.0009430418081868286,
+     "test_rel": 0.0008252800978545416
+    },
+    {
+     "k": 10000,
+     "method": "hide",
+     "nonleaf_frac": 0.325,
+     "exposure_removed": 31446,
+     "val_rel": 0.00032968128253685336,
+     "test_rel": 0.0004421143381363457
+    }
+   ]
+  }
+ },
+ "seconds": 36.14746379852295
+}

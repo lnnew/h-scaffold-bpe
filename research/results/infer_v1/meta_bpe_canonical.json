@@ -1,0 +1,90 @@
+{
+ "tokenizer": "/root/home/ubuntu/research/h-scaffold-bpe-infer-v1/artifacts/tokenizers/bpe-32768.json",
+ "n_normal": 32767,
+ "eos_id": 32767,
+ "mode": "bpe",
+ "inference": "canonical",
+ "splits": {
+  "train": {
+   "tokens": 118988839,
+   "docs": 29444,
+   "bytes": 539295549,
+   "bytes_per_token": 4.5334423021690915,
+   "methods": {
+    "canonical": 29444
+   }
+  },
+  "val": {
+   "tokens": 136457,
+   "docs": 30,
+   "bytes": 631207,
+   "bytes_per_token": 4.626735373022737,
+   "methods": {
+    "canonical": 30
+   }
+  },
+  "test": {
+   "tokens": 284664,
+   "docs": 62,
+   "bytes": 1287656,
+   "bytes_per_token": 4.524425423663304,
+   "methods": {
+    "canonical": 62
+   }
+  },
+  "val_canonical": {
+   "tokens": 136457,
+   "docs": 30,
+   "bytes": 631207,
+   "bytes_per_token": 4.626735373022737,
+   "methods": {
+    "canonical": 30
+   }
+  },
+  "val_longest": {
+   "tokens": 136199,
+   "docs": 30,
+   "bytes": 631207,
+   "bytes_per_token": 4.635501733153164,
+   "methods": {
+    "longest": 30
+   }
+  },
+  "val_dp": {
+   "tokens": 135861,
+   "docs": 30,
+   "bytes": 631207,
+   "bytes_per_token": 4.647036737097843,
+   "methods": {
+    "dp": 30
+   }
+  },
+  "test_canonical": {
+   "tokens": 284664,
+   "docs": 62,
+   "bytes": 1287656,
+   "bytes_per_token": 4.524425423663304,
+   "methods": {
+    "canonical": 62
+   }
+  },
+  "test_longest": {
+   "tokens": 284068,
+   "docs": 62,
+   "bytes": 1287656,
+   "bytes_per_token": 4.533920177461664,
+   "methods": {
+    "longest": 62
+   }
+  },
+  "test_dp": {
+   "tokens": 283249,
+   "docs": 62,
+   "bytes": 1287656,
+   "bytes_per_token": 4.547032692294111,
+   "methods": {
+    "dp": 62
+   }
+  }
+ }
+}
