@@ -84,7 +84,7 @@ def test_legacy_fast_no_l2_skip_preserves_boundary_merges():
     full = HierarchicalTokenizer(model, backend="tiktoken")
     python = HierarchicalTokenizer(model, backend="python")
     assert full.encode("\na") != python.encode("\na")
-    for mode in ("skip", "local"):
+    for mode in ("skip", "local", "hybrid"):
         tok = HierarchicalTokenizer(model, backend="tiktoken", second_pass=mode)
         assert tok.encode("\na") == full.encode("\na")
 
@@ -95,7 +95,7 @@ def test_team_backend_parity_random_specials_and_eos(backend):
             + "The quick brown fox jumps over the lazy dog. " * 20)
     model = train_from_counts(Counter(iter_pretokens(text)), 275, "hierarchical", show_progress=False)
     toks = [HierarchicalTokenizer(model, backend=backend, second_pass=mode)
-            for mode in ("full", "skip", "local")]
+            for mode in ("full", "skip", "local", "hybrid")]
     rng = random.Random(7)
     docs = ["", text, "café 한글\n\n aaabbb", "Arizona<|endoftext|>zona"]
     docs += ["".join(rng.choices("Arizona mate\n\t 123.-", k=80)) for _ in range(300)]

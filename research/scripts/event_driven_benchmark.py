@@ -96,8 +96,9 @@ def measure(toks, docs, reps):
                     speedup_range=[float(min(speedups)), float(max(speedups))])
     return dict(documents=len(docs), raw_bytes=nbytes, methods=methods, round_order=order,
                 exact_H_output_sha256=expected, exact_ids_all_rounds=True,
-                changed_H_vs_scaffold_documents=sum(a != b for a, b in zip(
-                    reference, [toks["scaffold"].encode(doc) for doc in docs])))
+                changed_H_vs_scaffold_documents=(sum(a != b for a, b in zip(
+                    reference, [toks["scaffold"].encode(doc) for doc in docs]))
+                    if "scaffold" in toks else None))
 
 
 def main():

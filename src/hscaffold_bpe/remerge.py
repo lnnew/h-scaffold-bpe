@@ -3,19 +3,23 @@
 from heapq import heapify, heappop, heappush
 
 
-def event_remerge(sequence, rules, starts=None, log=None):
+def event_remerge(sequence, rules, starts=None, log=None, *, candidates=None):
     """`rules` maps pairs to (rank, output). None seeds every initial edge.
 
     A restricted frontier is safe only when all omitted edges were already
     saturated by the first pass. Original positions break ties within a batch.
     """
     n = len(sequence)
-    heap = []
-    for left in range(n - 1) if starts is None else sorted(starts):
-        if 0 <= left < n - 1:
-            rule = rules.get((sequence[left], sequence[left + 1]))
-            if rule is not None:
-                heap.append((rule[0], left, left + 1))
+    if candidates is None:
+        heap = []
+        for left in range(n - 1) if starts is None else sorted(starts):
+            if 0 <= left < n - 1:
+                rule = rules.get((sequence[left], sequence[left + 1]))
+                if rule is not None:
+                    heap.append((rule[0], left, left + 1))
+    else:
+        # Hybrid collects eligible edges while emitting demolished tokens.
+        heap = list(candidates)
     if not heap:
         return list(sequence)
     heapify(heap)

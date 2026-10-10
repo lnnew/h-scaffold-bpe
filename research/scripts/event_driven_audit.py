@@ -18,6 +18,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--inputs", type=Path, required=True)
     ap.add_argument("--out", type=Path, required=True)
+    ap.add_argument("--hybrid", action="store_true")
     a = ap.parse_args()
     rng = random.Random(20261010)
     texts = ["".join(rng.choices(" abcdeArizona\n\t123.!é한中🙂", k=rng.randrange(1, 200)))
@@ -38,8 +39,10 @@ def main():
         assert all(model.tokens[t] == sc.tokens[t] for t in model.visible_ids)
         for backend in ("margin", "python", "tiktoken"):
             toks = tokenizers(a.inputs, size, backend)
+            if a.hybrid and backend != "margin":
+                toks["hybrid"] = HierarchicalTokenizer(model, backend=backend, second_pass="hybrid")
             reference = [toks["full"].encode(doc) for doc in docs]
-            for name in ("skip", "local"):
+            for name in [key for key in toks if key not in ("full", "scaffold")]:
                 outputs = [toks[name].encode(doc) for doc in docs]
                 assert outputs == reference, (size, backend, name)
                 for doc, ids in zip(docs, outputs):
@@ -50,6 +53,7 @@ def main():
                 assert [current_full.encode(doc) for doc in docs] == reference
                 assert current_full.encode("a", add_eos=True)[-1] == current_full.eos_token_id
             result["audit"].append(dict(K=size, backend=backend, documents=len(docs),
+                                        compared_methods=[key for key in toks if key not in ("full", "scaffold")],
                                         stress_L2_surfaces=len(stress), exact=True,
                                         output_sha256=output_hash(reference)))
             print(f"parity K={size} backend={backend} docs={len(docs)} PASS", flush=True)
