@@ -1,0 +1,10 @@
+parity K=32768 backend=margin docs=3124 PASS
+parity K=32768 backend=python docs=3124 PASS
+parity K=32768 backend=tiktoken docs=3124 PASS
+events K=32768 wiki_dev_sel pretokens=98830 merges=14
+events K=32768 pg19_excerpts pretokens=251247 merges=98
+parity K=65536 backend=margin docs=4994 PASS
+parity K=65536 backend=python docs=4994 PASS
+parity K=65536 backend=tiktoken docs=4994 PASS
+events K=65536 wiki_dev_sel pretokens=98830 merges=9
+events K=65536 pg19_excerpts pretokens=251247 merges=73

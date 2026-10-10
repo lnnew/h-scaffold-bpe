@@ -1,0 +1,22 @@
+{
+  "source_sha": "baa49a507cfc247e7c8c0fc2a3842e536e828080",
+  "source_sha256": {
+    "src/hscaffold_bpe/remerge.py": "3ba927cbdbcfc40b8fb42dad38c938e3f94d3c10600a7c1e56fd000c4d456151",
+    "src/hscaffold_bpe/tokenizer.py": "c83187f0aa5aa97759e679189d019df734a5c4bc51c850c86f4c742efc26bf5d",
+    "src/hscaffold_bpe/model.py": "8aaac95628a7d66e43798fd44664c67ca34ac2aece8d152b43811d3dc205f9c4",
+    "src/hscaffold_bpe/pretokenize.py": "70562e42003df85608ea1f8b6d01ae071af15b7040b54203512f9d30205f255e",
+    "research/scripts/event_driven_benchmark.py": "fffefab0c15281dad985c21936dd48d2977f2f273bd6b11f9536fd52df93b782",
+    "research/scripts/event_hybrid_benchmark.py": "2dea33ffc43f06a09a6d37f30ac57bb787a1c09cfb2ca89ef4ebfba824dec661",
+    "research/scripts/event_driven_audit.py": "af864adcce4547a26c06abb11ea49f02eb7c17b1bdc16b64e143806c6c4ef0af",
+    "research/scripts/event_kernel_profile.py": "4b7384491ef2e6adb52ee9a4a9456aed2b8a57089592e38e0479b1d66747e1ee",
+    "research/tests/test_frontier_completeness.py": "670e112a3386f7b32c2616867027630989cc31fac3a7a5522e91f0c47332621f"
+  },
+  "tests": "80 passed; strengthened frontier 3 passed",
+  "frozen_local_verified": true,
+  "input_model_hashes_verified": true,
+  "all_output_hashes_equal": true,
+  "timing_metrics_recomputed": true,
+  "kernel_source_hashes_verified": true,
+  "thresholds_unchanged": true,
+  "active_jobs": []
+}

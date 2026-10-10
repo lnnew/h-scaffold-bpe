@@ -1,0 +1,554 @@
+{
+  "caveat": "instrumented copies, warm inputs, timers add overhead; not end-to-end throughput",
+  "repetitions": 7,
+  "measurements": [
+    {
+      "K": 32768,
+      "domain": "wiki_dev_sel",
+      "rounds": {
+        "full": [
+          {
+            "full_scan": 0.008821710478514433,
+            "merge_application": 0.0019236253574490547
+          },
+          {
+            "full_scan": 0.008917039958760142,
+            "merge_application": 0.0019389569060876966
+          },
+          {
+            "full_scan": 0.008830704959109426,
+            "merge_application": 0.0018747089197859168
+          },
+          {
+            "full_scan": 0.008883834816515446,
+            "merge_application": 0.0019674149807542562
+          },
+          {
+            "full_scan": 0.008861790993250906,
+            "merge_application": 0.001911540748551488
+          },
+          {
+            "full_scan": 0.008912412449717522,
+            "merge_application": 0.0019374570110812783
+          },
+          {
+            "full_scan": 0.008745834929868579,
+            "merge_application": 0.0019335817778483033
+          }
+        ],
+        "local": [
+          {
+            "candidate_generation": 0.007706712814979255,
+            "output_reconstruction": 0.0006877114064991474,
+            "state_setup": 0.0005735410377383232,
+            "merge_application": 4.417262971401215e-06,
+            "queue_pop_validation": 9.498558938503265e-06,
+            "neighbor_candidate_push": 5.87396789342165e-06
+          },
+          {
+            "candidate_generation": 0.007423250353895128,
+            "output_reconstruction": 0.0006591639248654246,
+            "state_setup": 0.00047262513544410467,
+            "merge_application": 9.415089152753353e-06,
+            "queue_pop_validation": 8.127070032060146e-06,
+            "neighbor_candidate_push": 5.250913091003895e-06
+          },
+          {
+            "candidate_generation": 0.007565961917862296,
+            "output_reconstruction": 0.0006912498502060771,
+            "state_setup": 0.0004685417516157031,
+            "merge_application": 3.457185812294483e-06,
+            "queue_pop_validation": 8.292030543088913e-06,
+            "neighbor_candidate_push": 5.000387318432331e-06
+          },
+          {
+            "candidate_generation": 0.007592583307996392,
+            "output_reconstruction": 0.0006849152268841863,
+            "state_setup": 0.0005402088863775134,
+            "merge_application": 3.832974471151829e-06,
+            "queue_pop_validation": 8.459086529910564e-06,
+            "neighbor_candidate_push": 4.831934347748756e-06
+          },
+          {
+            "candidate_generation": 0.00742025172803551,
+            "output_reconstruction": 0.0006840800633653998,
+            "state_setup": 0.0004879998741671443,
+            "merge_application": 3.7121353670954704e-06,
+            "queue_pop_validation": 8.077826350927353e-06,
+            "neighbor_candidate_push": 5.249981768429279e-06
+          },
+          {
+            "candidate_generation": 0.008108585607260466,
+            "output_reconstruction": 0.000722876749932766,
+            "state_setup": 0.0005204990739002824,
+            "merge_application": 4.293862730264664e-06,
+            "queue_pop_validation": 9.582145139575005e-06,
+            "neighbor_candidate_push": 5.4996926337480545e-06
+          },
+          {
+            "candidate_generation": 0.007758087129332125,
+            "output_reconstruction": 0.0006794177461415529,
+            "state_setup": 0.0005148762138560414,
+            "merge_application": 4.208646714687347e-06,
+            "queue_pop_validation": 9.748502634465694e-06,
+            "neighbor_candidate_push": 5.875015631318092e-06
+          }
+        ],
+        "plain_demolition": [
+          0.006900207954458892,
+          0.0066197499400004745,
+          0.006536083063110709,
+          0.006637874990701675,
+          0.006579165928997099,
+          0.006747917039319873,
+          0.006948125082999468
+        ],
+        "fused_demolition_and_candidates": [
+          0.019421125063672662,
+          0.018871875014156103,
+          0.01855154091026634,
+          0.01936958299484104,
+          0.01892525004222989,
+          0.01997879205737263,
+          0.018924832926131785
+        ]
+      },
+      "median_seconds": {
+        "full": {
+          "full_scan": 0.008861790993250906,
+          "merge_application": 0.0019335817778483033
+        },
+        "local": {
+          "candidate_generation": 0.007592583307996392,
+          "merge_application": 4.208646714687347e-06,
+          "neighbor_candidate_push": 5.250913091003895e-06,
+          "output_reconstruction": 0.0006849152268841863,
+          "queue_pop_validation": 8.459086529910564e-06,
+          "state_setup": 0.0005148762138560414
+        }
+      },
+      "dispatch_counts": {
+        "short_full": 0,
+        "empty_skip": 23,
+        "seeded_full": 7,
+        "local": 0
+      },
+      "source_function_sha256": {
+        "full": "2a4222a55a3d413020ce74aa5b7c267e60964df1f8cf48bf28e15a5c16cd6a52",
+        "local": "56076530988fffcf64371b91d302f8bdee9b6bdec8b41ac9280a88afc1a90f2c"
+      },
+      "exact_replays": true
+    },
+    {
+      "K": 32768,
+      "domain": "pg19_excerpts",
+      "rounds": {
+        "full": [
+          {
+            "full_scan": 0.03900850052013993,
+            "merge_application": 0.018070745398290455
+          },
+          {
+            "full_scan": 0.039546823827549815,
+            "merge_application": 0.018358583096414804
+          },
+          {
+            "full_scan": 0.03805529570672661,
+            "merge_application": 0.017736784415319562
+          },
+          {
+            "full_scan": 0.03778349794447422,
+            "merge_application": 0.017593118827790022
+          },
+          {
+            "full_scan": 0.037488626898266375,
+            "merge_application": 0.01767437264788896
+          },
+          {
+            "full_scan": 0.037050876999273896,
+            "merge_application": 0.017494867672212422
+          },
+          {
+            "full_scan": 0.036963291466236115,
+            "merge_application": 0.017404494574293494
+          }
+        ],
+        "local": [
+          {
+            "candidate_generation": 0.0219014510512352,
+            "state_setup": 0.0031613780884072185,
+            "merge_application": 3.900332376360893e-05,
+            "queue_pop_validation": 9.34047857299447e-05,
+            "neighbor_candidate_push": 5.369831342250109e-05,
+            "output_reconstruction": 0.004352116957306862
+          },
+          {
+            "candidate_generation": 0.021437879651784897,
+            "state_setup": 0.003194290678948164,
+            "merge_application": 3.5758595913648605e-05,
+            "queue_pop_validation": 8.474651258438826e-05,
+            "neighbor_candidate_push": 5.108513869345188e-05,
+            "output_reconstruction": 0.004360455903224647
+          },
+          {
+            "candidate_generation": 0.020595581270754337,
+            "state_setup": 0.00317870348226279,
+            "merge_application": 3.146706148982048e-05,
+            "queue_pop_validation": 8.286209776997566e-05,
+            "neighbor_candidate_push": 5.1619368605315685e-05,
+            "output_reconstruction": 0.00421899848151952
+          },
+          {
+            "candidate_generation": 0.020140672102570534,
+            "state_setup": 0.003016910166479647,
+            "merge_application": 3.033457323908806e-05,
+            "queue_pop_validation": 7.470231503248215e-05,
+            "neighbor_candidate_push": 4.412420094013214e-05,
+            "output_reconstruction": 0.004210582235828042
+          },
+          {
+            "candidate_generation": 0.020022081211209297,
+            "state_setup": 0.003079791204072535,
+            "merge_application": 3.9741978980600834e-05,
+            "queue_pop_validation": 7.54593638703227e-05,
+            "neighbor_candidate_push": 4.499324131757021e-05,
+            "output_reconstruction": 0.004190910491161048
+          },
+          {
+            "candidate_generation": 0.020343872136436403,
+            "state_setup": 0.0032212932128459215,
+            "merge_application": 3.070570528507233e-05,
+            "queue_pop_validation": 8.18353146314621e-05,
+            "neighbor_candidate_push": 4.4450280256569386e-05,
+            "output_reconstruction": 0.004199950606562197
+          },
+          {
+            "candidate_generation": 0.020243832375854254,
+            "state_setup": 0.0031418263679370284,
+            "merge_application": 3.058742731809616e-05,
+            "queue_pop_validation": 7.449218537658453e-05,
+            "neighbor_candidate_push": 4.466518294066191e-05,
+            "output_reconstruction": 0.004184364224784076
+          }
+        ],
+        "plain_demolition": [
+          0.020960959023796022,
+          0.021955624921247363,
+          0.01954608305823058,
+          0.01896941603627056,
+          0.019368874956853688,
+          0.019376000040210783,
+          0.019584208959713578
+        ],
+        "fused_demolition_and_candidates": [
+          0.05830541695468128,
+          0.0560265420936048,
+          0.055999291012994945,
+          0.052153291064314544,
+          0.05138604191597551,
+          0.051938916090875864,
+          0.05398112500552088
+        ]
+      },
+      "median_seconds": {
+        "full": {
+          "full_scan": 0.03778349794447422,
+          "merge_application": 0.01767437264788896
+        },
+        "local": {
+          "candidate_generation": 0.020343872136436403,
+          "merge_application": 3.146706148982048e-05,
+          "neighbor_candidate_push": 4.499324131757021e-05,
+          "output_reconstruction": 0.004210582235828042,
+          "queue_pop_validation": 8.18353146314621e-05,
+          "state_setup": 0.0031613780884072185
+        }
+      },
+      "dispatch_counts": {
+        "short_full": 0,
+        "empty_skip": 15,
+        "seeded_full": 46,
+        "local": 3
+      },
+      "source_function_sha256": {
+        "full": "2a4222a55a3d413020ce74aa5b7c267e60964df1f8cf48bf28e15a5c16cd6a52",
+        "local": "56076530988fffcf64371b91d302f8bdee9b6bdec8b41ac9280a88afc1a90f2c"
+      },
+      "exact_replays": true
+    },
+    {
+      "K": 65536,
+      "domain": "wiki_dev_sel",
+      "rounds": {
+        "full": [
+          {
+            "full_scan": 0.008950541960075498,
+            "merge_application": 0.0020154588855803013
+          },
+          {
+            "full_scan": 0.009041038458235562,
+            "merge_application": 0.0020093342754989862
+          },
+          {
+            "full_scan": 0.009060294134542346,
+            "merge_application": 0.0020689141238108277
+          },
+          {
+            "full_scan": 0.008931834599934518,
+            "merge_application": 0.002066708984784782
+          },
+          {
+            "full_scan": 0.009129500482231379,
+            "merge_application": 0.001992163946852088
+          },
+          {
+            "full_scan": 0.008961460436694324,
+            "merge_application": 0.001974831917323172
+          },
+          {
+            "full_scan": 0.00931987538933754,
+            "merge_application": 0.0020509138703346252
+          }
+        ],
+        "local": [
+          {
+            "candidate_generation": 0.007617706898599863,
+            "output_reconstruction": 0.0005687887314707041,
+            "state_setup": 0.000433207955211401,
+            "merge_application": 4.376983270049095e-06,
+            "queue_pop_validation": 9.16304998099804e-06,
+            "neighbor_candidate_push": 5.168025381863117e-06
+          },
+          {
+            "candidate_generation": 0.008160545025020838,
+            "output_reconstruction": 0.0005525010637938976,
+            "state_setup": 0.0004281671717762947,
+            "merge_application": 4.250090569257736e-06,
+            "queue_pop_validation": 8.20704735815525e-06,
+            "neighbor_candidate_push": 5.791196599602699e-06
+          },
+          {
+            "candidate_generation": 0.007851582951843739,
+            "output_reconstruction": 0.0005442909896373749,
+            "state_setup": 0.0004284579772502184,
+            "merge_application": 3.708992153406143e-06,
+            "queue_pop_validation": 7.121008820831776e-06,
+            "neighbor_candidate_push": 5.165929906070232e-06
+          },
+          {
+            "candidate_generation": 0.00802483328152448,
+            "output_reconstruction": 0.000553455320186913,
+            "state_setup": 0.0004419171018525958,
+            "merge_application": 2.9570655897259712e-06,
+            "queue_pop_validation": 6.791669875383377e-06,
+            "neighbor_candidate_push": 4.459288902580738e-06
+          },
+          {
+            "candidate_generation": 0.008086876128800213,
+            "output_reconstruction": 0.0005551221547648311,
+            "state_setup": 0.00043549900874495506,
+            "merge_application": 3.0820956453680992e-06,
+            "queue_pop_validation": 6.708083674311638e-06,
+            "neighbor_candidate_push": 5.208072252571583e-06
+          },
+          {
+            "candidate_generation": 0.008106668712571263,
+            "output_reconstruction": 0.000549453659914434,
+            "state_setup": 0.00046895781997591257,
+            "merge_application": 3.6261044442653656e-06,
+            "queue_pop_validation": 8.372822776436806e-06,
+            "neighbor_candidate_push": 6.789923645555973e-06
+          },
+          {
+            "candidate_generation": 0.007266043219715357,
+            "output_reconstruction": 0.0005233705742284656,
+            "state_setup": 0.0004244570154696703,
+            "merge_application": 2.748798578977585e-06,
+            "queue_pop_validation": 6.20819628238678e-06,
+            "neighbor_candidate_push": 4.416098818182945e-06
+          }
+        ],
+        "plain_demolition": [
+          0.006727249943651259,
+          0.00637020799331367,
+          0.0063784579979255795,
+          0.006453708978369832,
+          0.006718625081703067,
+          0.006697374978102744,
+          0.006775083020329475
+        ],
+        "fused_demolition_and_candidates": [
+          0.02018529106862843,
+          0.020420750021003187,
+          0.02034724992699921,
+          0.021030416013672948,
+          0.020771084004081786,
+          0.01990037492942065,
+          0.020746583002619445
+        ]
+      },
+      "median_seconds": {
+        "full": {
+          "full_scan": 0.009041038458235562,
+          "merge_application": 0.0020154588855803013
+        },
+        "local": {
+          "candidate_generation": 0.00802483328152448,
+          "merge_application": 3.6261044442653656e-06,
+          "neighbor_candidate_push": 5.168025381863117e-06,
+          "output_reconstruction": 0.0005525010637938976,
+          "queue_pop_validation": 7.121008820831776e-06,
+          "state_setup": 0.000433207955211401
+        }
+      },
+      "dispatch_counts": {
+        "short_full": 0,
+        "empty_skip": 24,
+        "seeded_full": 6,
+        "local": 0
+      },
+      "source_function_sha256": {
+        "full": "2a4222a55a3d413020ce74aa5b7c267e60964df1f8cf48bf28e15a5c16cd6a52",
+        "local": "56076530988fffcf64371b91d302f8bdee9b6bdec8b41ac9280a88afc1a90f2c"
+      },
+      "exact_replays": true
+    },
+    {
+      "K": 65536,
+      "domain": "pg19_excerpts",
+      "rounds": {
+        "full": [
+          {
+            "full_scan": 0.033315406762994826,
+            "merge_application": 0.011629913933575153
+          },
+          {
+            "full_scan": 0.03294808592181653,
+            "merge_application": 0.01241024595219642
+          },
+          {
+            "full_scan": 0.030978337163105607,
+            "merge_application": 0.011502871755510569
+          },
+          {
+            "full_scan": 0.03092946531251073,
+            "merge_application": 0.011659417185001075
+          },
+          {
+            "full_scan": 0.030297827441245317,
+            "merge_application": 0.01156249560881406
+          },
+          {
+            "full_scan": 0.03090412332676351,
+            "merge_application": 0.011729201767593622
+          },
+          {
+            "full_scan": 0.031308168079704046,
+            "merge_application": 0.011549575254321098
+          }
+        ],
+        "local": [
+          {
+            "candidate_generation": 0.02075683616567403,
+            "state_setup": 0.002256917068734765,
+            "merge_application": 1.6749370843172073e-05,
+            "queue_pop_validation": 4.240870475769043e-05,
+            "neighbor_candidate_push": 2.6124645955860615e-05,
+            "output_reconstruction": 0.0029091648757457733
+          },
+          {
+            "candidate_generation": 0.022415873245336115,
+            "state_setup": 0.002199083915911615,
+            "merge_application": 2.0207720808684826e-05,
+            "queue_pop_validation": 4.561920650303364e-05,
+            "neighbor_candidate_push": 3.4414115361869335e-05,
+            "output_reconstruction": 0.003072790103033185
+          },
+          {
+            "candidate_generation": 0.021902451408095658,
+            "state_setup": 0.0024045383324846625,
+            "merge_application": 1.9790255464613438e-05,
+            "queue_pop_validation": 4.674633964896202e-05,
+            "neighbor_candidate_push": 2.833292819559574e-05,
+            "output_reconstruction": 0.002976952586323023
+          },
+          {
+            "candidate_generation": 0.021400581346824765,
+            "state_setup": 0.002297540893778205,
+            "merge_application": 1.845823135226965e-05,
+            "queue_pop_validation": 4.2120576836168766e-05,
+            "neighbor_candidate_push": 2.6577734388411045e-05,
+            "output_reconstruction": 0.002919744700193405
+          },
+          {
+            "candidate_generation": 0.021651585353538394,
+            "state_setup": 0.0022772459778934717,
+            "merge_application": 2.1539395675063133e-05,
+            "queue_pop_validation": 4.820979665964842e-05,
+            "neighbor_candidate_push": 2.8248061425983906e-05,
+            "output_reconstruction": 0.0030729123391211033
+          },
+          {
+            "candidate_generation": 0.021374751930125058,
+            "state_setup": 0.002329208538867533,
+            "merge_application": 2.042134292423725e-05,
+            "queue_pop_validation": 4.85351774841547e-05,
+            "neighbor_candidate_push": 2.8123962692916393e-05,
+            "output_reconstruction": 0.0030043330043554306
+          },
+          {
+            "candidate_generation": 0.020761458901688457,
+            "state_setup": 0.0022575370967388153,
+            "merge_application": 1.795846037566662e-05,
+            "queue_pop_validation": 4.203675780445337e-05,
+            "neighbor_candidate_push": 2.6413588784635067e-05,
+            "output_reconstruction": 0.002955956617370248
+          }
+        ],
+        "plain_demolition": [
+          0.019197707995772362,
+          0.019256583997048438,
+          0.01947841700166464,
+          0.020055082975886762,
+          0.01945129199884832,
+          0.019845709088258445,
+          0.020709917065687478
+        ],
+        "fused_demolition_and_candidates": [
+          0.05794750002678484,
+          0.05596854200121015,
+          0.0559946249704808,
+          0.053385791019536555,
+          0.05506475002039224,
+          0.05515100003685802,
+          0.060102583025582135
+        ]
+      },
+      "median_seconds": {
+        "full": {
+          "full_scan": 0.030978337163105607,
+          "merge_application": 0.011629913933575153
+        },
+        "local": {
+          "candidate_generation": 0.021400581346824765,
+          "merge_application": 1.9790255464613438e-05,
+          "neighbor_candidate_push": 2.8123962692916393e-05,
+          "output_reconstruction": 0.002976952586323023,
+          "queue_pop_validation": 4.561920650303364e-05,
+          "state_setup": 0.0022772459778934717
+        }
+      },
+      "dispatch_counts": {
+        "short_full": 0,
+        "empty_skip": 31,
+        "seeded_full": 31,
+        "local": 2
+      },
+      "source_function_sha256": {
+        "full": "2a4222a55a3d413020ce74aa5b7c267e60964df1f8cf48bf28e15a5c16cd6a52",
+        "local": "56076530988fffcf64371b91d302f8bdee9b6bdec8b41ac9280a88afc1a90f2c"
+      },
+      "exact_replays": true
+    }
+  ]
+}

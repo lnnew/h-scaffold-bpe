@@ -1,0 +1,1309 @@
+{
+  "source_sha": "baa49a507cfc247e7c8c0fc2a3842e536e828080",
+  "baseline_sha": "0113d8e",
+  "local_sha": "8c873596e687c557ae7593e55587f7345e66bd4e",
+  "host": {
+    "system": "Darwin",
+    "node": "Jihyuns-Mac-mini.local",
+    "release": "25.6.0",
+    "version": "Darwin Kernel Version 25.6.0: Fri Jul 31 19:17:26 PDT 2026; root:xnu-12377.161.14~5/RELEASE_ARM64_T6041",
+    "machine": "arm64",
+    "processor": "arm"
+  },
+  "repetitions": 7,
+  "short_input": {
+    "sha256": "9447535266160efa4e6afbfa2a9cf68836ec4de372682e84d670a8745b9f10e6",
+    "unique_pool": 12158,
+    "sampled": 1024,
+    "seed": 20261011,
+    "max_UTF8_bytes": 32,
+    "policy": "one pretoken per encode call"
+  },
+  "input_sha256": {
+    "wiki_dev_sel.jsonl": "d9f5ca78c69de9824b7474904d30f1a4327f324f424635cc3fd979d3c13e50a0",
+    "hierarchical-32768.json": "78610f44f11eda08e5baba8d79e7afe52eaff23ff252c087a1c6685c3a9dbd79",
+    "scaffold-65536.json": "f0f06983f827e178fed830ed2244d5ce5b47be283b78551bf55dd5071fa507b6",
+    "hierarchical-65536.json": "ba862c26706eb08833f0b1cc6efad2187d91de036ab10aa17039534de95663b9",
+    "scaffold-32768.json": "8c7397af88f77bc545f8a4ad77fdf9e277d1e30c40926015d898d699781690b8",
+    "pg19_excerpts.jsonl": "0ca57826b69986fc4398fd115490d3a85de8602b93da2a709676d8e924aabf18"
+  },
+  "dispatch": {
+    "min_expanded_length": 128,
+    "min_distinct_initial_ranks": 4,
+    "tuned": false
+  },
+  "measurements": [
+    {
+      "K": 32768,
+      "backend": "python",
+      "domain": "wiki_dev_sel",
+      "documents": 30,
+      "raw_bytes": 513041,
+      "methods": {
+        "full": {
+          "seconds": [
+            0.4768261250574142,
+            0.40663191699422896,
+            0.4025836669607088,
+            0.42369474994484335,
+            0.42653558298479766,
+            0.46517141710501164,
+            0.4421856249682605
+          ],
+          "token_count": 112332,
+          "output_sha256": "43e518ee5cfe6cba50702df48b62da1c69de71e59c3dd83552e0c0c6f995919f",
+          "MBps_median": 1.2028093797236268,
+          "speedup_over_full_median": 1.0,
+          "speedup_range": [
+            1.0,
+            1.0
+          ]
+        },
+        "local": {
+          "seconds": [
+            0.43054679094348103,
+            0.41901720804162323,
+            0.40794029203243554,
+            0.4244685829617083,
+            0.40608283306937665,
+            0.4102003750158474,
+            0.41233024990651757
+          ],
+          "token_count": 112332,
+          "output_sha256": "43e518ee5cfe6cba50702df48b62da1c69de71e59c3dd83552e0c0c6f995919f",
+          "MBps_median": 1.2442477846733662,
+          "speedup_over_full_median": 1.050365955538748,
+          "speedup_range": [
+            0.9704420467472449,
+            1.134010218998558
+          ]
+        },
+        "hybrid": {
+          "seconds": [
+            0.453682207968086,
+            0.4220777089940384,
+            0.4240647499682382,
+            0.43959025002550334,
+            0.4349847909761593,
+            0.41914887505117804,
+            0.41964995907619596
+          ],
+          "token_count": 112332,
+          "output_sha256": "43e518ee5cfe6cba50702df48b62da1c69de71e59c3dd83552e0c0c6f995919f",
+          "MBps_median": 1.209817604595586,
+          "speedup_over_full_median": 0.9805758542214762,
+          "speedup_range": [
+            0.9493448040443393,
+            1.1097999894386315
+          ]
+        }
+      },
+      "round_order": [
+        [
+          "hybrid",
+          "full",
+          "local"
+        ],
+        [
+          "local",
+          "full",
+          "hybrid"
+        ],
+        [
+          "full",
+          "local",
+          "hybrid"
+        ],
+        [
+          "full",
+          "hybrid",
+          "local"
+        ],
+        [
+          "full",
+          "hybrid",
+          "local"
+        ],
+        [
+          "hybrid",
+          "full",
+          "local"
+        ],
+        [
+          "hybrid",
+          "local",
+          "full"
+        ]
+      ],
+      "exact_H_output_sha256": "43e518ee5cfe6cba50702df48b62da1c69de71e59c3dd83552e0c0c6f995919f",
+      "exact_ids_all_rounds": true,
+      "changed_H_vs_scaffold_documents": null
+    },
+    {
+      "K": 32768,
+      "backend": "python",
+      "domain": "pg19_excerpts",
+      "documents": 64,
+      "raw_bytes": 1041425,
+      "methods": {
+        "full": {
+          "seconds": [
+            0.8025095410412177,
+            0.8193957920884714,
+            0.807743874960579,
+            0.8358658340293914,
+            0.8293009999906644,
+            0.8088429589988664,
+            0.8557821660069749
+          ],
+          "token_count": 299294,
+          "output_sha256": "4cfadfc114d542b61e74a27e5cff4119b6b8d88c2fede517006240b34d18affd",
+          "MBps_median": 1.270966985741557,
+          "speedup_over_full_median": 1.0,
+          "speedup_range": [
+            1.0,
+            1.0
+          ]
+        },
+        "local": {
+          "seconds": [
+            0.8355934160063043,
+            0.8775225419085473,
+            0.8017334159230813,
+            0.8473663340555504,
+            0.834180083940737,
+            0.8236894579604268,
+            0.8346376669360325
+          ],
+          "token_count": 299294,
+          "output_sha256": "4cfadfc114d542b61e74a27e5cff4119b6b8d88c2fede517006240b34d18affd",
+          "MBps_median": 1.2477570103241171,
+          "speedup_over_full_median": 0.9864279479087671,
+          "speedup_range": [
+            0.9337603912787762,
+            1.025333746496925
+          ]
+        },
+        "hybrid": {
+          "seconds": [
+            0.8535682919900864,
+            0.832774042035453,
+            0.8537662919843569,
+            0.8479355830932036,
+            0.835228709038347,
+            0.8710160420741886,
+            0.8560583340004086
+          ],
+          "token_count": 299294,
+          "output_sha256": "4cfadfc114d542b61e74a27e5cff4119b6b8d88c2fede517006240b34d18affd",
+          "MBps_median": 1.2200839812968303,
+          "speedup_over_full_median": 0.9839353182595812,
+          "speedup_range": [
+            0.9286200482286564,
+            0.9996773958240168
+          ]
+        }
+      },
+      "round_order": [
+        [
+          "hybrid",
+          "full",
+          "local"
+        ],
+        [
+          "local",
+          "full",
+          "hybrid"
+        ],
+        [
+          "full",
+          "local",
+          "hybrid"
+        ],
+        [
+          "full",
+          "hybrid",
+          "local"
+        ],
+        [
+          "full",
+          "hybrid",
+          "local"
+        ],
+        [
+          "hybrid",
+          "full",
+          "local"
+        ],
+        [
+          "hybrid",
+          "local",
+          "full"
+        ]
+      ],
+      "exact_H_output_sha256": "4cfadfc114d542b61e74a27e5cff4119b6b8d88c2fede517006240b34d18affd",
+      "exact_ids_all_rounds": true,
+      "changed_H_vs_scaffold_documents": null
+    },
+    {
+      "K": 32768,
+      "backend": "python",
+      "domain": "short_pretokens",
+      "documents": 1024,
+      "raw_bytes": 8094,
+      "methods": {
+        "full": {
+          "seconds": [
+            0.01014599995687604,
+            0.01025087502785027,
+            0.01016037492081523,
+            0.01073033397551626,
+            0.010622416972182691,
+            0.010442666010931134,
+            0.010596832958981395
+          ],
+          "token_count": 1525,
+          "output_sha256": "1c52b00d152a51fd94ac322ce25a6ec07dfd7b41ad3336550abdcc24d9894d9c",
+          "MBps_median": 0.7750894255860902,
+          "speedup_over_full_median": 1.0,
+          "speedup_range": [
+            1.0,
+            1.0
+          ]
+        },
+        "local": {
+          "seconds": [
+            0.010331750032491982,
+            0.009030792047269642,
+            0.010041082976385951,
+            0.009538915939629078,
+            0.00958433304913342,
+            0.011180915986187756,
+            0.009668958024121821
+          ],
+          "token_count": 1525,
+          "output_sha256": "1c52b00d152a51fd94ac322ce25a6ec07dfd7b41ad3336550abdcc24d9894d9c",
+          "MBps_median": 0.8371119183481133,
+          "speedup_over_full_median": 1.0959643151355853,
+          "speedup_range": [
+            0.9339723171009771,
+            1.1351025440730313
+          ]
+        },
+        "hybrid": {
+          "seconds": [
+            0.008655000012367964,
+            0.010346625000238419,
+            0.010321249952539802,
+            0.010312124970369041,
+            0.010452457936480641,
+            0.009808292030356824,
+            0.011106833000667393
+          ],
+          "token_count": 1525,
+          "output_sha256": "1c52b00d152a51fd94ac322ce25a6ec07dfd7b41ad3336550abdcc24d9894d9c",
+          "MBps_median": 0.7842073428333425,
+          "speedup_over_full_median": 1.0162601980065251,
+          "speedup_range": [
+            0.9540823165653654,
+            1.172270357293754
+          ]
+        }
+      },
+      "round_order": [
+        [
+          "hybrid",
+          "full",
+          "local"
+        ],
+        [
+          "local",
+          "full",
+          "hybrid"
+        ],
+        [
+          "full",
+          "local",
+          "hybrid"
+        ],
+        [
+          "full",
+          "hybrid",
+          "local"
+        ],
+        [
+          "full",
+          "hybrid",
+          "local"
+        ],
+        [
+          "hybrid",
+          "full",
+          "local"
+        ],
+        [
+          "hybrid",
+          "local",
+          "full"
+        ]
+      ],
+      "exact_H_output_sha256": "1c52b00d152a51fd94ac322ce25a6ec07dfd7b41ad3336550abdcc24d9894d9c",
+      "exact_ids_all_rounds": true,
+      "changed_H_vs_scaffold_documents": null
+    },
+    {
+      "K": 32768,
+      "backend": "tiktoken",
+      "domain": "wiki_dev_sel",
+      "documents": 30,
+      "raw_bytes": 513041,
+      "methods": {
+        "full": {
+          "seconds": [
+            0.0551327500725165,
+            0.053247708012349904,
+            0.05329708300996572,
+            0.05264195799827576,
+            0.05242408299818635,
+            0.05266950000077486,
+            0.05498870904557407
+          ],
+          "token_count": 112332,
+          "output_sha256": "43e518ee5cfe6cba50702df48b62da1c69de71e59c3dd83552e0c0c6f995919f",
+          "MBps_median": 9.634987479292231,
+          "speedup_over_full_median": 1.0,
+          "speedup_range": [
+            1.0,
+            1.0
+          ]
+        },
+        "local": {
+          "seconds": [
+            0.057271874975413084,
+            0.051817124942317605,
+            0.05645841592922807,
+            0.05556433310266584,
+            0.053981499979272485,
+            0.054088791948743165,
+            0.05537274992093444
+          ],
+          "token_count": 112332,
+          "output_sha256": "43e518ee5cfe6cba50702df48b62da1c69de71e59c3dd83552e0c0c6f995919f",
+          "MBps_median": 9.265225236827865,
+          "speedup_over_full_median": 0.9711490606655216,
+          "speedup_range": [
+            0.9440059933097458,
+            1.027608306551643
+          ]
+        },
+        "hybrid": {
+          "seconds": [
+            0.05726983305066824,
+            0.05908679193817079,
+            0.0590478329686448,
+            0.058854624978266656,
+            0.058240917045623064,
+            0.05823795800097287,
+            0.058370333979837596
+          ],
+          "token_count": 112332,
+          "output_sha256": "43e518ee5cfe6cba50702df48b62da1c69de71e59c3dd83552e0c0c6f995919f",
+          "MBps_median": 8.789413474612218,
+          "speedup_over_full_median": 0.9026086196637766,
+          "speedup_range": [
+            0.8944404627115531,
+            0.9626839670326784
+          ]
+        }
+      },
+      "round_order": [
+        [
+          "hybrid",
+          "full",
+          "local"
+        ],
+        [
+          "local",
+          "full",
+          "hybrid"
+        ],
+        [
+          "full",
+          "local",
+          "hybrid"
+        ],
+        [
+          "full",
+          "hybrid",
+          "local"
+        ],
+        [
+          "full",
+          "hybrid",
+          "local"
+        ],
+        [
+          "hybrid",
+          "full",
+          "local"
+        ],
+        [
+          "hybrid",
+          "local",
+          "full"
+        ]
+      ],
+      "exact_H_output_sha256": "43e518ee5cfe6cba50702df48b62da1c69de71e59c3dd83552e0c0c6f995919f",
+      "exact_ids_all_rounds": true,
+      "changed_H_vs_scaffold_documents": null
+    },
+    {
+      "K": 32768,
+      "backend": "tiktoken",
+      "domain": "pg19_excerpts",
+      "documents": 64,
+      "raw_bytes": 1041425,
+      "methods": {
+        "full": {
+          "seconds": [
+            0.1919275000691414,
+            0.19108400004915893,
+            0.19647845800500363,
+            0.20156637497711927,
+            0.20871045894455165,
+            0.19599512498825788,
+            0.1805787079501897
+          ],
+          "token_count": 299210,
+          "output_sha256": "2f794290f379be3cdb27738b35ed83b456f89e364003696d888ca199150bf3eb",
+          "MBps_median": 5.313525017841092,
+          "speedup_over_full_median": 1.0,
+          "speedup_range": [
+            1.0,
+            1.0
+          ]
+        },
+        "local": {
+          "seconds": [
+            0.19427562493365258,
+            0.17531783296726644,
+            0.1780186250107363,
+            0.18673929094802588,
+            0.16496700001880527,
+            0.16623116703704,
+            0.16433233302086592
+          ],
+          "token_count": 299210,
+          "output_sha256": "2f794290f379be3cdb27738b35ed83b456f89e364003696d888ca199150bf3eb",
+          "MBps_median": 5.940211456951126,
+          "speedup_over_full_median": 1.0988629238730574,
+          "speedup_range": [
+            0.9879134355361713,
+            1.2651649052280751
+          ]
+        },
+        "hybrid": {
+          "seconds": [
+            0.2028105000499636,
+            0.2052768749417737,
+            0.1974262499716133,
+            0.226751041947864,
+            0.21297008311375976,
+            0.19090837496332824,
+            0.18868266593199223
+          ],
+          "token_count": 299210,
+          "output_sha256": "2f794290f379be3cdb27738b35ed83b456f89e364003696d888ca199150bf3eb",
+          "MBps_median": 5.134965890540375,
+          "speedup_over_full_median": 0.9570498013594769,
+          "speedup_range": [
+            0.8889325193198656,
+            1.0266449810067617
+          ]
+        }
+      },
+      "round_order": [
+        [
+          "hybrid",
+          "full",
+          "local"
+        ],
+        [
+          "local",
+          "full",
+          "hybrid"
+        ],
+        [
+          "full",
+          "local",
+          "hybrid"
+        ],
+        [
+          "full",
+          "hybrid",
+          "local"
+        ],
+        [
+          "full",
+          "hybrid",
+          "local"
+        ],
+        [
+          "hybrid",
+          "full",
+          "local"
+        ],
+        [
+          "hybrid",
+          "local",
+          "full"
+        ]
+      ],
+      "exact_H_output_sha256": "2f794290f379be3cdb27738b35ed83b456f89e364003696d888ca199150bf3eb",
+      "exact_ids_all_rounds": true,
+      "changed_H_vs_scaffold_documents": null
+    },
+    {
+      "K": 32768,
+      "backend": "tiktoken",
+      "domain": "short_pretokens",
+      "documents": 1024,
+      "raw_bytes": 8094,
+      "methods": {
+        "full": {
+          "seconds": [
+            0.0021704999962821603,
+            0.001580375013872981,
+            0.0014540000120177865,
+            0.0016005829675123096,
+            0.0016850830288603902,
+            0.0016521249199286103,
+            0.0015677079791203141
+          ],
+          "token_count": 1525,
+          "output_sha256": "1c52b00d152a51fd94ac322ce25a6ec07dfd7b41ad3336550abdcc24d9894d9c",
+          "MBps_median": 5.056907492012127,
+          "speedup_over_full_median": 1.0,
+          "speedup_range": [
+            1.0,
+            1.0
+          ]
+        },
+        "local": {
+          "seconds": [
+            0.0022670000325888395,
+            0.0016663339920341969,
+            0.0018681660294532776,
+            0.0018577079754322767,
+            0.0017680421005934477,
+            0.0018521250458434224,
+            0.00157633307389915
+          ],
+          "token_count": 1525,
+          "output_sha256": "1c52b00d152a51fd94ac322ce25a6ec07dfd7b41ad3336550abdcc24d9894d9c",
+          "MBps_median": 4.3701152998091155,
+          "speedup_over_full_median": 0.948414316354262,
+          "speedup_range": [
+            0.7783034211596827,
+            0.9945283805043175
+          ]
+        },
+        "hybrid": {
+          "seconds": [
+            0.0016376670682802796,
+            0.0018545000348240137,
+            0.0017764170188456774,
+            0.0016142920358106494,
+            0.001747832982800901,
+            0.0015534580452367663,
+            0.0017530419863760471
+          ],
+          "token_count": 1525,
+          "output_sha256": "1c52b00d152a51fd94ac322ce25a6ec07dfd7b41ad3336550abdcc24d9894d9c",
+          "MBps_median": 4.630877251800897,
+          "speedup_over_full_median": 0.9640984267043903,
+          "speedup_range": [
+            0.8185015098327538,
+            1.3253609590876188
+          ]
+        }
+      },
+      "round_order": [
+        [
+          "hybrid",
+          "full",
+          "local"
+        ],
+        [
+          "local",
+          "full",
+          "hybrid"
+        ],
+        [
+          "full",
+          "local",
+          "hybrid"
+        ],
+        [
+          "full",
+          "hybrid",
+          "local"
+        ],
+        [
+          "full",
+          "hybrid",
+          "local"
+        ],
+        [
+          "hybrid",
+          "full",
+          "local"
+        ],
+        [
+          "hybrid",
+          "local",
+          "full"
+        ]
+      ],
+      "exact_H_output_sha256": "1c52b00d152a51fd94ac322ce25a6ec07dfd7b41ad3336550abdcc24d9894d9c",
+      "exact_ids_all_rounds": true,
+      "changed_H_vs_scaffold_documents": null
+    },
+    {
+      "K": 65536,
+      "backend": "python",
+      "domain": "wiki_dev_sel",
+      "documents": 30,
+      "raw_bytes": 513041,
+      "methods": {
+        "full": {
+          "seconds": [
+            0.45346933300606906,
+            0.4160650830017403,
+            0.42465254210401326,
+            0.4223324579652399,
+            0.45257050008513033,
+            0.43193083396181464,
+            0.4117114999098703
+          ],
+          "token_count": 107306,
+          "output_sha256": "8de4fd61bc2d383680c7f551b14bbb99e154b123cbb11cf4bd2040e7112ff1c7",
+          "MBps_median": 1.2081430090069663,
+          "speedup_over_full_median": 1.0,
+          "speedup_range": [
+            1.0,
+            1.0
+          ]
+        },
+        "local": {
+          "seconds": [
+            0.4404638750711456,
+            0.42238179210107774,
+            0.431092832935974,
+            0.44726691604591906,
+            0.45033337501809,
+            0.42011295806150883,
+            0.4221060839481652
+          ],
+          "token_count": 107306,
+          "output_sha256": "8de4fd61bc2d383680c7f551b14bbb99e154b123cbb11cf4bd2040e7112ff1c7",
+          "MBps_median": 1.190094014103447,
+          "speedup_over_full_median": 0.9850605476595403,
+          "speedup_range": [
+            0.9442515035515856,
+            1.02952673004755
+          ]
+        },
+        "hybrid": {
+          "seconds": [
+            0.4501285420265049,
+            0.4580147919477895,
+            0.4467339579714462,
+            0.44725412502884865,
+            0.451455167029053,
+            0.42742187494877726,
+            0.4312961669638753
+          ],
+          "token_count": 107306,
+          "output_sha256": "8de4fd61bc2d383680c7f551b14bbb99e154b123cbb11cf4bd2040e7112ff1c7",
+          "MBps_median": 1.1470905941156115,
+          "speedup_over_full_median": 0.9545911404873548,
+          "speedup_range": [
+            0.9084097071021427,
+            1.0105492003973304
+          ]
+        }
+      },
+      "round_order": [
+        [
+          "hybrid",
+          "full",
+          "local"
+        ],
+        [
+          "local",
+          "full",
+          "hybrid"
+        ],
+        [
+          "full",
+          "local",
+          "hybrid"
+        ],
+        [
+          "full",
+          "hybrid",
+          "local"
+        ],
+        [
+          "full",
+          "hybrid",
+          "local"
+        ],
+        [
+          "hybrid",
+          "full",
+          "local"
+        ],
+        [
+          "hybrid",
+          "local",
+          "full"
+        ]
+      ],
+      "exact_H_output_sha256": "8de4fd61bc2d383680c7f551b14bbb99e154b123cbb11cf4bd2040e7112ff1c7",
+      "exact_ids_all_rounds": true,
+      "changed_H_vs_scaffold_documents": null
+    },
+    {
+      "K": 65536,
+      "backend": "python",
+      "domain": "pg19_excerpts",
+      "documents": 64,
+      "raw_bytes": 1041425,
+      "methods": {
+        "full": {
+          "seconds": [
+            0.8781952080316842,
+            0.8437796670477837,
+            0.8302209159592167,
+            0.8373119999887422,
+            0.8489749579457566,
+            0.846805457957089,
+            0.8856403749668971
+          ],
+          "token_count": 286047,
+          "output_sha256": "4a525ffce5a75cf983661e5c7b8c68a38f9a36b4c125733f07deccb82920f1bb",
+          "MBps_median": 1.2298279258998035,
+          "speedup_over_full_median": 1.0,
+          "speedup_range": [
+            1.0,
+            1.0
+          ]
+        },
+        "local": {
+          "seconds": [
+            0.9006597079569474,
+            0.9055864170659333,
+            0.8550026660086587,
+            0.8561701249564067,
+            0.9192266659811139,
+            0.8472448750399053,
+            0.8833761250134557
+          ],
+          "token_count": 286047,
+          "output_sha256": "4a525ffce5a75cf983661e5c7b8c68a38f9a36b4c125733f07deccb82920f1bb",
+          "MBps_median": 1.1789145874687714,
+          "speedup_over_full_median": 0.9750577274337923,
+          "speedup_range": [
+            0.9235752066000219,
+            1.0025631776650143
+          ]
+        },
+        "hybrid": {
+          "seconds": [
+            0.976744250045158,
+            0.9136101249605417,
+            0.9548634579405189,
+            0.8683134999591857,
+            0.9020666669821367,
+            0.9019822920672596,
+            0.8753004999598488
+          ],
+          "token_count": 286047,
+          "output_sha256": "4a525ffce5a75cf983661e5c7b8c68a38f9a36b4c125733f07deccb82920f1bb",
+          "MBps_median": 1.154487842327759,
+          "speedup_over_full_median": 0.938827142621935,
+          "speedup_range": [
+            0.8694655859486597,
+            1.0118129431064218
+          ]
+        }
+      },
+      "round_order": [
+        [
+          "hybrid",
+          "full",
+          "local"
+        ],
+        [
+          "local",
+          "full",
+          "hybrid"
+        ],
+        [
+          "full",
+          "local",
+          "hybrid"
+        ],
+        [
+          "full",
+          "hybrid",
+          "local"
+        ],
+        [
+          "full",
+          "hybrid",
+          "local"
+        ],
+        [
+          "hybrid",
+          "full",
+          "local"
+        ],
+        [
+          "hybrid",
+          "local",
+          "full"
+        ]
+      ],
+      "exact_H_output_sha256": "4a525ffce5a75cf983661e5c7b8c68a38f9a36b4c125733f07deccb82920f1bb",
+      "exact_ids_all_rounds": true,
+      "changed_H_vs_scaffold_documents": null
+    },
+    {
+      "K": 65536,
+      "backend": "python",
+      "domain": "short_pretokens",
+      "documents": 1024,
+      "raw_bytes": 8094,
+      "methods": {
+        "full": {
+          "seconds": [
+            0.010282000061124563,
+            0.009967084042727947,
+            0.009714124957099557,
+            0.010341791086830199,
+            0.010039416956715286,
+            0.010228624916635454,
+            0.010213459026999772
+          ],
+          "token_count": 1321,
+          "output_sha256": "c51ec789f28e466e1623bc43df2c6c8c4d96e87a6963e7c5de8f4b4e93d9a58e",
+          "MBps_median": 0.7924837196294733,
+          "speedup_over_full_median": 1.0,
+          "speedup_range": [
+            1.0,
+            1.0
+          ]
+        },
+        "local": {
+          "seconds": [
+            0.010134291020222008,
+            0.008566500036977232,
+            0.010351666016504169,
+            0.009695832966826856,
+            0.00944841606542468,
+            0.009851166978478432,
+            0.009013541042804718
+          ],
+          "token_count": 1321,
+          "output_sha256": "c51ec789f28e466e1623bc43df2c6c8c4d96e87a6963e7c5de8f4b4e93d9a58e",
+          "MBps_median": 0.8347916086934112,
+          "speedup_over_full_median": 1.0625502610382813,
+          "speedup_range": [
+            0.9384117437339894,
+            1.1634954765312677
+          ]
+        },
+        "hybrid": {
+          "seconds": [
+            0.008657417027279735,
+            0.010728708002716303,
+            0.010388665948994458,
+            0.009747707983478904,
+            0.010190750006586313,
+            0.00909712491557002,
+            0.009835290955379605
+          ],
+          "token_count": 1321,
+          "output_sha256": "c51ec789f28e466e1623bc43df2c6c8c4d96e87a6963e7c5de8f4b4e93d9a58e",
+          "MBps_median": 0.8229548100529581,
+          "speedup_over_full_median": 1.0384501153383083,
+          "speedup_range": [
+            0.9290106544240437,
+            1.1876521633098795
+          ]
+        }
+      },
+      "round_order": [
+        [
+          "hybrid",
+          "full",
+          "local"
+        ],
+        [
+          "local",
+          "full",
+          "hybrid"
+        ],
+        [
+          "full",
+          "local",
+          "hybrid"
+        ],
+        [
+          "full",
+          "hybrid",
+          "local"
+        ],
+        [
+          "full",
+          "hybrid",
+          "local"
+        ],
+        [
+          "hybrid",
+          "full",
+          "local"
+        ],
+        [
+          "hybrid",
+          "local",
+          "full"
+        ]
+      ],
+      "exact_H_output_sha256": "c51ec789f28e466e1623bc43df2c6c8c4d96e87a6963e7c5de8f4b4e93d9a58e",
+      "exact_ids_all_rounds": true,
+      "changed_H_vs_scaffold_documents": null
+    },
+    {
+      "K": 65536,
+      "backend": "tiktoken",
+      "domain": "wiki_dev_sel",
+      "documents": 30,
+      "raw_bytes": 513041,
+      "methods": {
+        "full": {
+          "seconds": [
+            0.057861416949890554,
+            0.05508662504144013,
+            0.056575583992525935,
+            0.0548790410393849,
+            0.06923737504985183,
+            0.05305216705892235,
+            0.053763541975058615
+          ],
+          "token_count": 107306,
+          "output_sha256": "8de4fd61bc2d383680c7f551b14bbb99e154b123cbb11cf4bd2040e7112ff1c7",
+          "MBps_median": 9.313349649103635,
+          "speedup_over_full_median": 1.0,
+          "speedup_range": [
+            1.0,
+            1.0
+          ]
+        },
+        "local": {
+          "seconds": [
+            0.058296333998441696,
+            0.05596333299763501,
+            0.057575584040023386,
+            0.061747999978251755,
+            0.061784832971170545,
+            0.05983124999329448,
+            0.06286041694693267
+          ],
+          "token_count": 107306,
+          "output_sha256": "8de4fd61bc2d383680c7f551b14bbb99e154b123cbb11cf4bd2040e7112ff1c7",
+          "MBps_median": 8.574799959176826,
+          "speedup_over_full_median": 0.9826315257731071,
+          "speedup_range": [
+            0.8552845269932949,
+            1.1206208986946478
+          ]
+        },
+        "hybrid": {
+          "seconds": [
+            0.06981024995911866,
+            0.067265166901052,
+            0.06297983299009502,
+            0.0615612919209525,
+            0.06728208402637392,
+            0.06333783396985382,
+            0.06746820895932615
+          ],
+          "token_count": 107306,
+          "output_sha256": "8de4fd61bc2d383680c7f551b14bbb99e154b123cbb11cf4bd2040e7112ff1c7",
+          "MBps_median": 7.627142303158044,
+          "speedup_over_full_median": 0.8376062731190489,
+          "speedup_range": [
+            0.7968722277401862,
+            1.0290610948185175
+          ]
+        }
+      },
+      "round_order": [
+        [
+          "hybrid",
+          "full",
+          "local"
+        ],
+        [
+          "local",
+          "full",
+          "hybrid"
+        ],
+        [
+          "full",
+          "local",
+          "hybrid"
+        ],
+        [
+          "full",
+          "hybrid",
+          "local"
+        ],
+        [
+          "full",
+          "hybrid",
+          "local"
+        ],
+        [
+          "hybrid",
+          "full",
+          "local"
+        ],
+        [
+          "hybrid",
+          "local",
+          "full"
+        ]
+      ],
+      "exact_H_output_sha256": "8de4fd61bc2d383680c7f551b14bbb99e154b123cbb11cf4bd2040e7112ff1c7",
+      "exact_ids_all_rounds": true,
+      "changed_H_vs_scaffold_documents": null
+    },
+    {
+      "K": 65536,
+      "backend": "tiktoken",
+      "domain": "pg19_excerpts",
+      "documents": 64,
+      "raw_bytes": 1041425,
+      "methods": {
+        "full": {
+          "seconds": [
+            0.17149837501347065,
+            0.1868250840343535,
+            0.18762049998622388,
+            0.18859920790418983,
+            0.18134483299218118,
+            0.1719964169897139,
+            0.1860436670249328
+          ],
+          "token_count": 286039,
+          "output_sha256": "d34d2f5b16b257d49be56e3cdb3b2952e8b2a2c2f866b69d93ccc3c4237be3df",
+          "MBps_median": 5.597744963070593,
+          "speedup_over_full_median": 1.0,
+          "speedup_range": [
+            1.0,
+            1.0
+          ]
+        },
+        "local": {
+          "seconds": [
+            0.19861066702287644,
+            0.20103787502739578,
+            0.19540095899719745,
+            0.17607870791107416,
+            0.17059212503954768,
+            0.17365208291448653,
+            0.20484504208434373
+          ],
+          "token_count": 286039,
+          "output_sha256": "d34d2f5b16b257d49be56e3cdb3b2952e8b2a2c2f866b69d93ccc3c4237be3df",
+          "MBps_median": 5.329682133315102,
+          "speedup_over_full_median": 0.9601820837988561,
+          "speedup_range": [
+            0.8634902524833526,
+            1.0711074049875409
+          ]
+        },
+        "hybrid": {
+          "seconds": [
+            0.213105957955122,
+            0.1924122910713777,
+            0.2113962919684127,
+            0.2077012499794364,
+            0.1881727089639753,
+            0.18878729199059308,
+            0.18743045791052282
+          ],
+          "token_count": 286039,
+          "output_sha256": "d34d2f5b16b257d49be56e3cdb3b2952e8b2a2c2f866b69d93ccc3c4237be3df",
+          "MBps_median": 5.412466086242228,
+          "speedup_over_full_median": 0.9110592941726404,
+          "speedup_range": [
+            0.8047563599774461,
+            0.9926010377339416
+          ]
+        }
+      },
+      "round_order": [
+        [
+          "hybrid",
+          "full",
+          "local"
+        ],
+        [
+          "local",
+          "full",
+          "hybrid"
+        ],
+        [
+          "full",
+          "local",
+          "hybrid"
+        ],
+        [
+          "full",
+          "hybrid",
+          "local"
+        ],
+        [
+          "full",
+          "hybrid",
+          "local"
+        ],
+        [
+          "hybrid",
+          "full",
+          "local"
+        ],
+        [
+          "hybrid",
+          "local",
+          "full"
+        ]
+      ],
+      "exact_H_output_sha256": "d34d2f5b16b257d49be56e3cdb3b2952e8b2a2c2f866b69d93ccc3c4237be3df",
+      "exact_ids_all_rounds": true,
+      "changed_H_vs_scaffold_documents": null
+    },
+    {
+      "K": 65536,
+      "backend": "tiktoken",
+      "domain": "short_pretokens",
+      "documents": 1024,
+      "raw_bytes": 8094,
+      "methods": {
+        "full": {
+          "seconds": [
+            0.0023470409214496613,
+            0.0018073749961331487,
+            0.0015510839875787497,
+            0.0016962919617071748,
+            0.0015778329689055681,
+            0.0016877499874681234,
+            0.002392333000898361
+          ],
+          "token_count": 1321,
+          "output_sha256": "c51ec789f28e466e1623bc43df2c6c8c4d96e87a6963e7c5de8f4b4e93d9a58e",
+          "MBps_median": 4.771584245352476,
+          "speedup_over_full_median": 1.0,
+          "speedup_range": [
+            1.0,
+            1.0
+          ]
+        },
+        "local": {
+          "seconds": [
+            0.002685790997929871,
+            0.0016029169782996178,
+            0.002292709075845778,
+            0.002120667020790279,
+            0.001979166059754789,
+            0.0018632919527590275,
+            0.0018338339868932962
+          ],
+          "token_count": 1321,
+          "output_sha256": "c51ec789f28e466e1623bc43df2c6c8c4d96e87a6963e7c5de8f4b4e93d9a58e",
+          "MBps_median": 4.089601254077092,
+          "speedup_over_full_median": 0.8738732549400499,
+          "speedup_range": [
+            0.6765289167822378,
+            1.3045526574361401
+          ]
+        },
+        "hybrid": {
+          "seconds": [
+            0.001644665957428515,
+            0.002522416994906962,
+            0.001852917019277811,
+            0.0016526250401511788,
+            0.0018186670495197177,
+            0.0015360829420387745,
+            0.0017492079641669989
+          ],
+          "token_count": 1321,
+          "output_sha256": "c51ec789f28e466e1623bc43df2c6c8c4d96e87a6963e7c5de8f4b4e93d9a58e",
+          "MBps_median": 4.627237107198111,
+          "speedup_over_full_median": 1.026422764084466,
+          "speedup_range": [
+            0.7165250629782618,
+            1.4270623836096972
+          ]
+        }
+      },
+      "round_order": [
+        [
+          "hybrid",
+          "full",
+          "local"
+        ],
+        [
+          "local",
+          "full",
+          "hybrid"
+        ],
+        [
+          "full",
+          "local",
+          "hybrid"
+        ],
+        [
+          "full",
+          "hybrid",
+          "local"
+        ],
+        [
+          "full",
+          "hybrid",
+          "local"
+        ],
+        [
+          "hybrid",
+          "full",
+          "local"
+        ],
+        [
+          "hybrid",
+          "local",
+          "full"
+        ]
+      ],
+      "exact_H_output_sha256": "c51ec789f28e466e1623bc43df2c6c8c4d96e87a6963e7c5de8f4b4e93d9a58e",
+      "exact_ids_all_rounds": true,
+      "changed_H_vs_scaffold_documents": null
+    }
+  ]
+}

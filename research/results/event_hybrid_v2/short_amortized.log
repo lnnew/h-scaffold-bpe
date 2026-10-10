@@ -1,0 +1,92 @@
+BEGIN amortized-short K=32768 backend=python
+round=1 method=hybrid seconds=1.3105
+round=1 method=full seconds=1.1490
+round=1 method=local seconds=1.0482
+round=2 method=local seconds=1.0701
+round=2 method=full seconds=1.2781
+round=2 method=hybrid seconds=1.1512
+round=3 method=full seconds=1.1838
+round=3 method=local seconds=1.1181
+round=3 method=hybrid seconds=1.1654
+round=4 method=full seconds=1.1189
+round=4 method=hybrid seconds=1.2756
+round=4 method=local seconds=1.1870
+round=5 method=full seconds=1.1815
+round=5 method=hybrid seconds=1.1746
+round=5 method=local seconds=1.4947
+round=6 method=hybrid seconds=1.1830
+round=6 method=full seconds=1.1717
+round=6 method=local seconds=1.2458
+round=7 method=hybrid seconds=1.2717
+round=7 method=local seconds=1.1702
+round=7 method=full seconds=1.1887
+END amortized-short 32768 python
+BEGIN amortized-short K=32768 backend=tiktoken
+round=1 method=hybrid seconds=0.2490
+round=1 method=full seconds=0.1866
+round=1 method=local seconds=0.2446
+round=2 method=local seconds=0.2162
+round=2 method=full seconds=0.2144
+round=2 method=hybrid seconds=0.2318
+round=3 method=full seconds=0.1993
+round=3 method=local seconds=0.2642
+round=3 method=hybrid seconds=0.2042
+round=4 method=full seconds=0.2100
+round=4 method=hybrid seconds=0.1990
+round=4 method=local seconds=0.2390
+round=5 method=full seconds=0.1878
+round=5 method=hybrid seconds=0.2282
+round=5 method=local seconds=0.2170
+round=6 method=hybrid seconds=0.2302
+round=6 method=full seconds=0.1874
+round=6 method=local seconds=0.2355
+round=7 method=hybrid seconds=0.2089
+round=7 method=local seconds=0.2480
+round=7 method=full seconds=0.1804
+END amortized-short 32768 tiktoken
+BEGIN amortized-short K=65536 backend=python
+round=1 method=hybrid seconds=1.3739
+round=1 method=full seconds=1.4514
+round=1 method=local seconds=1.3315
+round=2 method=local seconds=1.3104
+round=2 method=full seconds=1.1533
+round=2 method=hybrid seconds=1.2027
+round=3 method=full seconds=1.1913
+round=3 method=local seconds=1.3329
+round=3 method=hybrid seconds=1.2727
+round=4 method=full seconds=1.2206
+round=4 method=hybrid seconds=1.1255
+round=4 method=local seconds=1.1027
+round=5 method=full seconds=1.0573
+round=5 method=hybrid seconds=1.2448
+round=5 method=local seconds=1.1028
+round=6 method=hybrid seconds=1.1480
+round=6 method=full seconds=1.1174
+round=6 method=local seconds=1.1393
+round=7 method=hybrid seconds=1.1552
+round=7 method=local seconds=1.1215
+round=7 method=full seconds=1.0681
+END amortized-short 65536 python
+BEGIN amortized-short K=65536 backend=tiktoken
+round=1 method=hybrid seconds=0.1862
+round=1 method=full seconds=0.2034
+round=1 method=local seconds=0.1850
+round=2 method=local seconds=0.2373
+round=2 method=full seconds=0.1654
+round=2 method=hybrid seconds=0.2196
+round=3 method=full seconds=0.1584
+round=3 method=local seconds=0.2548
+round=3 method=hybrid seconds=0.1906
+round=4 method=full seconds=0.2128
+round=4 method=hybrid seconds=0.1919
+round=4 method=local seconds=0.2557
+round=5 method=full seconds=0.1622
+round=5 method=hybrid seconds=0.2189
+round=5 method=local seconds=0.1880
+round=6 method=hybrid seconds=0.2218
+round=6 method=full seconds=0.1821
+round=6 method=local seconds=0.2001
+round=7 method=hybrid seconds=0.2257
+round=7 method=local seconds=0.1856
+round=7 method=full seconds=0.2211
+END amortized-short 65536 tiktoken

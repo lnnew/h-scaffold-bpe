@@ -1,0 +1,12 @@
+{
+  "scope": "post-run verification; no dependency changes during trial",
+  "python": "3.14.7",
+  "executable": "/private/tmp/mlp-review-20261010/venv/bin/python",
+  "packages": {
+    "numpy": "2.5.3",
+    "regex": "2026.9.29",
+    "tiktoken": "0.14.0",
+    "matplotlib": "3.11.2",
+    "pytest": "9.1.1"
+  }
+}

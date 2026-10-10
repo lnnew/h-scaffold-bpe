@@ -1,0 +1,19 @@
+{
+  "decision": "NO_GO_STOP_LOCAL_OPTIMIZATION",
+  "correctness": true,
+  "long_speed_gate": false,
+  "short_non_regression_gate": false,
+  "source_sha": "baa49a507cfc247e7c8c0fc2a3842e536e828080",
+  "baseline_sha": "0113d8e",
+  "dispatch": {
+    "min_expanded_length": 128,
+    "min_distinct_initial_ranks": 4,
+    "tuned": false
+  },
+  "thresholds_retuned": false,
+  "additional_optimization": false,
+  "hybrid_differential_conditions": 16236,
+  "LM_training": false,
+  "utility_design": false,
+  "team_default": "full"
+}
