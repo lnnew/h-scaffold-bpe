@@ -66,7 +66,7 @@ paired seed 및 실제 byte exposure 보고로 남는 변동을 드러낸다.
 python research/scripts/a_quick.py \
   --root /root/home/ubuntu/research \
   --teacher /root/home/ubuntu/research/runs/purpose_a_v1/teacher_pool40960/model.pt \
-  --out /root/home/ubuntu/research/runs/purpose_a_v1/pilot
+  --out /root/home/ubuntu/research/runs/purpose_a_next/pilot
 ```
 
 진행 기준: utility가 frequency와 matched random보다 validation BPB가 낮고,
