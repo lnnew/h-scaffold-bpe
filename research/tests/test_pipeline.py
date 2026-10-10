@@ -45,12 +45,14 @@ def test_fixed_budget_training_records_actual_text_exposure(tmp_path):
     write_stream(str(tmp_path), "train", ids, tok.eos_id)
     write_stream(str(tmp_path), "val", ids[:2], tok.eos_id)
     np.save(tmp_path / "token_bytes.npy", tok.model_token_bytes)
-    (tmp_path / "meta.json").write_text(json.dumps(dict(n_normal=tok.n_normal)))
+    tok_path = tmp_path / "tok.json"
+    tok.save(str(tok_path))
+    (tmp_path / "meta.json").write_text(json.dumps(dict(n_normal=tok.n_normal, tokenizer=str(tok_path))))
     out = tmp_path / "run"
     env = dict(os.environ, OMP_NUM_THREADS="2")
     proc = subprocess.run([sys.executable, "-m", "scaffold_margin.train_lm", "--data", str(tmp_path), "--out", str(out),
                            "--preset", "tiny", "--seq", "32", "--batch_tokens", "256", "--micro_batch", "4",
-                           "--max_steps", "2", "--amp", "fp32", "--eval_sets", "val"],
+                           "--max_steps", "2", "--amp", "fp32", "--eval_sets", "val", "--init_pool", str(tok_path), "--save_ckpt"],
                           env=env, text=True, capture_output=True)
     assert proc.returncode == 0, proc.stderr[-1500:]
     result = json.loads((out / "results.json").read_text())
@@ -60,3 +62,12 @@ def test_fixed_budget_training_records_actual_text_exposure(tmp_path):
     assert result["train_exposure_tokens"] == 512
     assert result["train_exposure_bytes"] == expected_bytes
     assert np.isfinite(result["bpb"]["val"])
+    from pathlib import Path
+    evaluator = Path(__file__).parents[1] / "scripts/eval_checkpoint.py"
+    frozen_out = tmp_path / "frozen_eval"
+    proc = subprocess.run([sys.executable, str(evaluator), "--checkpoint", str(out / "model.pt"), "--data", str(tmp_path),
+                           "--split", "val", "--out", str(frozen_out)], env=env, text=True, capture_output=True)
+    assert proc.returncode == 0, proc.stderr[-1500:]
+    frozen = json.loads((frozen_out / "results.json").read_text())
+    assert abs(frozen["bpb"]["val"] - result["bpb"]["val"]) < 1e-6
+    assert json.loads((out / "results.json").read_text()) == result

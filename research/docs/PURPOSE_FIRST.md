@@ -76,9 +76,15 @@ paired seed 및 document CI가 같은 방향이면 최종 확인 단계로 진�
 관측 가능한 slot 변화가 0이면 현재 selector에는 개입이 없으므로 재학습을 생략한다.
 파일럿 null 결과는 이 proxy/규모의 실패이며, 모든 marginal utility 연구의 반증은 아니다.
 
-최종 확인: 선택 규칙과 hyperparameters를 validation으로 동결한 뒤 test BPB를 측정한다.
+최종 확인: 선택 규칙과 hyperparameters를 동결한 뒤 test BPB를 측정한다.
 별도 budget/setting 루트에서 고정 raw-data epochs 비교를 추가한다. 기존 report의 절대 BPB와
 소형 파일럿의 절대 BPB를 직접 연결하지 않는다. 큰 모델 확인은 파일럿 신호 이후에만 진행한다.
+
+2026-10-10 추가 확인 계약: validation에서 utility와 random의 차이가 예상과 다르므로,
+동결한 세 방법의 **모든 seed 최종 체크포인트**를 그대로 test 평가한다. 새 선택기, best-epoch
+선택, 추가 학습은 없다. 양성/음성 결과 모두 보고한다. utility의 특별한 이득은 frequency와
+matched random을 **둘 다** 이기는 경우에만 인정한다. 이 기준은 변경하지 않는다.
+`scripts/eval_checkpoint.py`는 학습 결과를 덮어쓰지 않는 별도 출력에 NLL/identity를 저장한다.
 
 ## B: 독립 준비와 주장 범위
 
