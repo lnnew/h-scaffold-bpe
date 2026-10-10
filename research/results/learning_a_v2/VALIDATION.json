@@ -1,0 +1,13 @@
+{
+  "n_fits": 30,
+  "pairing_pass": true,
+  "skipped_updates": 0,
+  "local_reaggregation_tolerance": 1e-12,
+  "U0_vs_U128_rank_spearman": -0.2142857142857143,
+  "U128_data_order_rank_spearman": -0.2380952380952381,
+  "train_bytes_by_order": {
+    "0": 1040467,
+    "1": 1036762
+  },
+  "checks": "all three comparisons, exact raw exposure, document bytes and contract identity"
+}

@@ -1,0 +1,12 @@
+{
+  "contract": "1f01f128bbfcf7cdaff2b84980c3700ec54318308cef8837265e0114b7430380",
+  "tokenizer": "5c00abe7063921523cfeeb967cdd69a364779054ad00184a299ed2efe00aeae1",
+  "data": {
+    "train": "749c8dfa50341b2da3f7e336526273755107e4fee63a377c6b7014a05cf585d7",
+    "select": "556495f952ff9c0c3b9686ec70132188ba8681169900aaa2e5ccdab380e74599",
+    "confirm": "f40c83a3975e73269d88e4a2b614ab7f6c344f34010f014bab467304ff82b020"
+  },
+  "phase": "joint",
+  "method": "random0",
+  "data_seed": 1
+}

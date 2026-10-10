@@ -1,0 +1,11 @@
+{
+  "contract": "1f01f128bbfcf7cdaff2b84980c3700ec54318308cef8837265e0114b7430380",
+  "tokenizer": "535909741151579fae713b74786eaef65c850b5d632ce9b77425238490a19393",
+  "data": {
+    "train": "749c8dfa50341b2da3f7e336526273755107e4fee63a377c6b7014a05cf585d7",
+    "select": "556495f952ff9c0c3b9686ec70132188ba8681169900aaa2e5ccdab380e74599"
+  },
+  "phase": "probes",
+  "method": "group3",
+  "data_seed": 1
+}

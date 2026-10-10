@@ -1,0 +1,40 @@
+{
+  "steps": 128,
+  "data_seed": 1,
+  "init_seed": 0,
+  "teacher": "/root/home/ubuntu/research/runs/purpose_a_v1/teacher_pool40960/model.pt",
+  "cfg": {
+    "vocab_size": 32832,
+    "d_model": 512,
+    "n_layers": 8,
+    "n_heads": 8,
+    "n_kv_heads": 8,
+    "ffn_dim": 1408,
+    "max_seq": 256,
+    "rope_theta": 500000.0,
+    "norm_eps": 1e-05,
+    "tie_embeddings": true
+  },
+  "n_params": 42508800,
+  "curves": {
+    "0": {
+      "select": 1.7095254178795234,
+      "confirm": 1.784436507101002
+    },
+    "32": {
+      "select": 1.7292608228701731,
+      "confirm": 1.8002261082191666
+    },
+    "128": {
+      "select": 1.7252235472958828,
+      "confirm": 1.7951127566962817
+    }
+  },
+  "raw_train_hash": "2f8bfd4ec7b19f62dc12c12e61abcf7ef694122f9ff790f32154dc8a395e70a2",
+  "train_exposure_bytes": 1036762,
+  "train_exposure_tokens": 227277,
+  "skipped_updates": 0,
+  "protocol": "same raw chunks; byte-normalized objective; EOS targets included; padding logits excluded",
+  "train_order_hash": "c6b2554d63f1190af92776c643363b845c4bf3c4a1f28f21c32b0ae17bfa8e43",
+  "elapsed_s": 30.186102486681193
+}

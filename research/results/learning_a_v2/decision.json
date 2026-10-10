@@ -1,0 +1,53 @@
+{
+  "status": "NO_GO_WITH_CURRENT_SHORT_ADAPTATION",
+  "comparisons": {
+    "frequency": {
+      "delta_bpb": -0.0009045219817809534,
+      "delta_by_data_seed": [
+        -0.0014087592888152789,
+        -0.00040028467474662814
+      ],
+      "doc_ci95": [
+        -0.0017237685761906211,
+        -5.073726515462322e-05
+      ],
+      "data_order_signs_pass": true
+    },
+    "random_mean": {
+      "delta_bpb": -0.0003160450065884415,
+      "delta_by_data_seed": [
+        0.0008667097689014426,
+        -0.0014987997820783256
+      ],
+      "doc_ci95": [
+        -0.0015740739716136275,
+        0.0007600699807443311
+      ],
+      "data_order_signs_pass": false
+    },
+    "static": {
+      "delta_bpb": -0.0008586196383118722,
+      "delta_by_data_seed": [
+        0.0008375325031802725,
+        -0.002554771779804017
+      ],
+      "doc_ci95": [
+        -0.002448082340206721,
+        0.0006555896252148121
+      ],
+      "data_order_signs_pass": false
+    }
+  },
+  "confirm_bpb": {
+    "frequency": 1.7991514323197193,
+    "learning": 1.7982469103379382,
+    "static": 1.79910552997625,
+    "random0": 1.7992801290172986,
+    "random1": 1.7986609519474182,
+    "random2": 1.7977477850688626
+  },
+  "scope": "development calibration; one pool teacher; two data orders, not model initialization seeds",
+  "changed_slots": 64,
+  "static_same_as_learning": false,
+  "interpretation": "conditional adaptation evidence only; no from-scratch efficacy or novelty claim"
+}
