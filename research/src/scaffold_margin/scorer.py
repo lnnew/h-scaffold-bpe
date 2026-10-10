@@ -68,25 +68,32 @@ class TorchScorer:
         self.bs = batch_size
         self.amp = amp and device.startswith("cuda")
 
-    def score(self, seqs, eos_id: int) -> np.ndarray:
+    def token_nll(self, seqs, eos_id: int, vocab_size: int | None = None) -> list:
+        """NLL for each real target; EOS is the starting context, never an added target."""
         torch = self.torch
-        out = np.zeros(len(seqs))
+        out = [None] * len(seqs)
         order = np.argsort([len(s) for s in seqs])  # length-bucket to limit padding
         with torch.no_grad():
             for i in range(0, len(order), self.bs):
                 idx = order[i : i + self.bs]
                 L = max(len(seqs[j]) for j in idx) + 1
                 x = torch.full((len(idx), L), eos_id, dtype=torch.long)
-                mask = torch.zeros((len(idx), L - 1), dtype=torch.bool)
                 for r, j in enumerate(idx):
                     s = seqs[j]
                     x[r, 1 : 1 + len(s)] = torch.tensor(s, dtype=torch.long)
-                    mask[r, : len(s)] = True
-                x, mask = x.to(self.device), mask.to(self.device)
+                x = x.to(self.device)
                 with torch.autocast(device_type="cuda", dtype=torch.float16, enabled=self.amp):
                     logits = self.model(x[:, :-1])
+                if vocab_size is not None:
+                    if vocab_size > logits.shape[-1] or max(max(seqs[j], default=0) for j in idx) >= vocab_size:
+                        raise ValueError("scoring vocabulary does not cover targets")
+                    logits = logits[..., :vocab_size]
                 lp = torch.log_softmax(logits.float(), dim=-1)
                 nll = -lp.gather(-1, x[:, 1:, None]).squeeze(-1)
-                nll = (nll * mask).sum(1)
-                out[idx] = nll.cpu().numpy()
+                nll = nll.cpu().numpy()
+                for row, j in enumerate(idx):
+                    out[j] = nll[row, :len(seqs[j])].astype(np.float64)
         return out
+
+    def score(self, seqs, eos_id: int) -> np.ndarray:
+        return np.asarray([x.sum() for x in self.token_nll(seqs, eos_id)])
