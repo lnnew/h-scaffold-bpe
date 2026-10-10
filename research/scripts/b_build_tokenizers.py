@@ -3,7 +3,8 @@
 
 For each allocation exponent alpha the tokenizer-training mixture gives language l the share
         p_l  proportional to  n_l ** alpha        (alpha=1: natural/high-resource-heavy,
-                                                   alpha=0: uniform, i.e. closest to parity)
+                                                   alpha=0: uniform language sampling)
+Uniform sampling does not imply parity; determine parity from held-out measurements.
 Implemented by re-weighting per-language word counts (no corpus duplication).  Trains BPE and
 Scaffold-BPE per alpha at one vocabulary size, then reports per-language compression and
 parity metrics.  The parity-metrics gate uses val_<lang>.jsonl; test_<lang>.jsonl is stored

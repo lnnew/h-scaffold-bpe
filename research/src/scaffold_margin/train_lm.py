@@ -136,6 +136,8 @@ def main():
         f"batch_tokens/seq ({per_step_seqs}) must be divisible by world*micro_batch ({world * args.micro_batch})"
     accum = per_step_seqs // (world * args.micro_batch)
     steps_per_epoch = n_blocks // per_step_seqs
+    if steps_per_epoch == 0:
+        raise ValueError("train stream is too short for one batch_tokens update")
     total_steps = args.max_steps or max(1, int(args.epochs * steps_per_epoch))
     if master:
         print(f"[train] amp={amp} vocab={vocab} params={cfg.n_params()/1e6:.1f}M (non-emb {cfg.n_params(False)/1e6:.1f}M) "
@@ -155,7 +157,7 @@ def main():
         idx = order[base : base + args.micro_batch]
         x = np.stack([np.asarray(train[i * L : i * L + L], dtype=np.int64) for i in idx])
         y = np.stack([np.asarray(train[i * L + 1 : i * L + L + 1], dtype=np.int64) for i in idx])
-        return torch.from_numpy(x).to(device), torch.from_numpy(y).to(device)
+        return torch.from_numpy(x).to(device), torch.from_numpy(y).to(device), int(token_bytes[y].sum())
 
     def val_bpb():
         vs = open_stream(os.path.join(args.data, "val.bin"))
@@ -165,6 +167,7 @@ def main():
     log = open(os.path.join(args.out, "log.jsonl"), "a") if master else None
     t0 = time.time()
     tokens_seen = 0
+    bytes_seen = 0
     model.train()
     for step in range(total_steps):
         epoch, sie = divmod(step, max(1, steps_per_epoch))
@@ -173,7 +176,8 @@ def main():
             g["lr"] = lr_at(step)
         loss_acc = 0.0
         for micro in range(accum):
-            x, y = get_batch(order, sie, micro)
+            x, y, batch_bytes = get_batch(order, sie, micro)
+            bytes_seen += batch_bytes
             sync = (micro == accum - 1) or world == 1
             ctx = model.no_sync() if (world > 1 and not sync) else torch.enable_grad()
             with ctx:
@@ -196,10 +200,14 @@ def main():
             print(json.dumps(rec), flush=True)
             log.write(json.dumps(rec) + "\n"); log.flush()
     train_time = time.time() - t0
+    exposure = torch.tensor(bytes_seen, dtype=torch.int64, device=device)
+    if world > 1:
+        dist.all_reduce(exposure)
 
     if master:
         res = dict(args=vars(args), cfg=cfg.__dict__, amp=amp, train_time_s=train_time, total_steps=total_steps,
-                   n_params=cfg.n_params(), train_tokens=int(len(train)), meta=meta, bpb={})
+                   n_params=cfg.n_params(), train_tokens=int(len(train)),
+                   train_exposure_tokens=tokens_seen, train_exposure_bytes=int(exposure.item()), meta=meta, bpb={})
         for name in args.eval_sets.split(","):
             p = os.path.join(args.data, f"{name}.bin")
             if not os.path.exists(p):

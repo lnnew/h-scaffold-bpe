@@ -37,3 +37,26 @@ def test_bpb_accounting_exact(tmp_path):
     d_of = doc_ids_for_targets(offs, len(s))[1:]
     tot, (nd, bd) = bpb_from_token_nll(nll, tg, tok.model_token_bytes, d_of, len(offs))
     assert abs(nd.sum() / bd.sum() - tot) < 1e-6
+
+
+def test_fixed_budget_training_records_actual_text_exposure(tmp_path):
+    tok = build_tokenizers(count_words(make_corpus(120, seed=8)), 400)["scaffold"]
+    ids = [tok.encode(d) for d in make_corpus(30, seed=9)]
+    write_stream(str(tmp_path), "train", ids, tok.eos_id)
+    write_stream(str(tmp_path), "val", ids[:2], tok.eos_id)
+    np.save(tmp_path / "token_bytes.npy", tok.model_token_bytes)
+    (tmp_path / "meta.json").write_text(json.dumps(dict(n_normal=tok.n_normal)))
+    out = tmp_path / "run"
+    env = dict(os.environ, OMP_NUM_THREADS="2")
+    proc = subprocess.run([sys.executable, "-m", "scaffold_margin.train_lm", "--data", str(tmp_path), "--out", str(out),
+                           "--preset", "tiny", "--seq", "32", "--batch_tokens", "256", "--micro_batch", "4",
+                           "--max_steps", "2", "--amp", "fp32", "--eval_sets", "val"],
+                          env=env, text=True, capture_output=True)
+    assert proc.returncode == 0, proc.stderr[-1500:]
+    result = json.loads((out / "results.json").read_text())
+    stream = open_stream(str(tmp_path / "train.bin"))
+    order = np.random.default_rng([0, 0]).permutation((len(stream) - 1) // 32)
+    expected_bytes = sum(int(tok.model_token_bytes[stream[i * 32 + 1 : i * 32 + 33]].sum()) for i in order[:16])
+    assert result["train_exposure_tokens"] == 512
+    assert result["train_exposure_bytes"] == expected_bytes
+    assert np.isfinite(result["bpb"]["val"])

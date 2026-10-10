@@ -151,6 +151,10 @@ If it passes: methods `hsel_utilpred_f50 hsel_randomT0_f50 hsel_randomT1_f50 hse
 
 ## Stage 4 — Direction A gate
 
+Current priority supersedes the earlier G0/C-first schedule: use `PURPOSE_FIRST.md` and
+`scripts/a_quick.py` for the development pilot. Do not restart old G0 jobs on wine GPUs 0/1.
+Do not infer a no-go from a Jaccard threshold alone: count changed slots and measure retrained loss.
+
 ```bash
 python scripts/a_marginal_utility.py --stage pool --tok_dir tok --K 32768 --pool_frac 0.25 --team_repo $TEAM   # pool built with the TEAM's trainer; uses tok/word_counts.pkl
 python scripts/tokenize_corpus.py --tok tok/apool_pool_40960.json --text_dir data/text --out tok_data/K32768_apool_pool      # K_pool = 1.25K

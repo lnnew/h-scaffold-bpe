@@ -1,5 +1,9 @@
 # Research extensions on top of the team code (branch `jihyun/research`)
 
+**Current priority: Direction A first; B prepared independently; C optional.**
+The smallest matched retraining experiment is `scripts/a_quick.py`; read
+[`docs/PURPOSE_FIRST.md`](docs/PURPOSE_FIRST.md) for the reviewed limitations and current protocol.
+
 This folder holds the utility-aware extensions (directions A / B / C, see `docs/RESEARCH_ASSESSMENT.md`). It lives **inside** the team repo
 so it can use the team's tokenizers, trainer and data format directly. Everything here is new files under `research/`; no team file is modified
 (the label-shift fix from PR #1 is on this branch only because it is a separate commit underneath).

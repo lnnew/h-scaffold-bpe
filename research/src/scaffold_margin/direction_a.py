@@ -26,7 +26,33 @@ from __future__ import annotations
 import numpy as np
 
 from .bpe import Tokenizer, TrainResult, assign_levels
-from .utility import CandidateAlts, collect_edits, score_edits, summarize
+from .utility import CandidateAlts, collect_edits, pick_matched, score_edits, summarize
+
+
+def select_supported(candidates, values, frequency_selection, evidence):
+    """Preserve frequency decisions for tokens without utility evidence."""
+    candidates, values, evidence = map(np.asarray, (candidates, values, evidence))
+    if not (len(candidates) == len(values) == len(evidence)) or not np.isfinite(values).all():
+        raise ValueError("utility scores must be finite and aligned with candidate IDs")
+    supported = set(candidates[evidence > 0])
+    fixed = set(frequency_selection) - supported
+    mask = evidence > 0
+    return sorted(fixed) + pick_matched(candidates[mask].tolist(), values[mask], len(frequency_selection) - len(fixed))
+
+
+def matched_random_swaps(candidates, residual, frequency_selection, utility_selection, seed):
+    """Match utility's changed-slot count and residual-frequency deciles in each swap direction."""
+    rng = np.random.default_rng(seed)
+    base, utility = set(frequency_selection), set(utility_selection)
+    bins = np.searchsorted(np.quantile(np.log1p(residual), np.arange(0.1, 1, 0.1)), np.log1p(residual))
+    result = set(base)
+    for actual, eligible, remove in [(base - utility, base, True), (utility - base, set(candidates) - base, False)]:
+        for b in range(10):
+            members = set(np.asarray(candidates)[bins == b])
+            count = len(actual & members)
+            chosen = set(rng.choice(sorted(eligible & members), count, replace=False)) if count else set()
+            result = result - chosen if remove else result | chosen
+    return sorted(result)
 
 
 def pool_tokenizer(res: TrainResult, k_pool: int) -> Tokenizer:

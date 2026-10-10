@@ -16,8 +16,8 @@ Reported per alpha (averaged over seeds):
     where `slope` is fit across (language, alpha) pairs.  The first term is what compression change
     alone predicts; the residual is everything else (cross-lingual transfer, capacity, embedding
     quality...).  Exploratory only: it is a regression on <= languages x alphas points.
-Falsification target: if equal-weight mean BPB is minimised at the smallest-parity-gap alpha
-(alpha=0) and rises monotonically with alpha, 'parity is optimal' is supported in this setup.
+Compare the measured validation parity gap with LM quality. No alpha is assumed to achieve parity.
+The regression residual cannot establish a cross-lingual transfer effect.
 """
 import argparse, glob, json, os
 import numpy as np
