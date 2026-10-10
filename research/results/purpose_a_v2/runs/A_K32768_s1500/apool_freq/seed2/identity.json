@@ -1,0 +1,16 @@
+{
+  "checkpoint": "1a52237a9f4bc74d2ab3e872132225d784acfc814d46cdf5a7ff1468b0269276",
+  "tokenizer": "0fbc4db5ec65c28c48e2d0d2c3a738a9155c4d08d81408c8250c4b765c7532b7",
+  "inputs": {
+    "test.bin": "f5bcbe2bb06618b4fac2263a16447460a734cc8722b025367e0ad62eafb3d0fd",
+    "test_docs.npy": "4083dd8057b191db62f6fe69fd4cb0335d4c756c84112a059370332faf4da540",
+    "token_bytes.npy": "be0b9932f1c8856a8f8ebb71e1b666fb78c187c4d515a92e63a92afe6c14d3f3"
+  },
+  "code": {
+    "lm.py": "cec889bae8db6d81face35d696bc6d3f130fa2aa8c40b3aa74ad6852b3fba284",
+    "train_lm.py": "972f945551ed66b497b738b28eb3a9818959e9bb57cb54e0ccaf6d4473c09a0d",
+    "data.py": "0ccdb577c569e040129824bb9f09e484a7d0f023b147781062aea8d99f876152"
+  },
+  "evaluator": "bf83e7188a61b501d125075376fa04d75a75ad38e39e2de2be0223bdd44943e5",
+  "split": "test"
+}

@@ -1,0 +1,74 @@
+{
+  "checkpoint": "/root/home/ubuntu/research/runs/purpose_a_v2/pilot/runs/A_K32768_s1500/apool_lm/seed0/model.pt",
+  "training_args": {
+    "data": "/root/home/ubuntu/research/runs/purpose_a_v2/pilot/streams/A_K32768_s1500_apool_lm",
+    "out": "/root/home/ubuntu/research/runs/purpose_a_v2/pilot/runs/A_K32768_s1500/apool_lm/seed0",
+    "preset": "small",
+    "seq": 256,
+    "batch_tokens": 8192,
+    "micro_batch": 16,
+    "epochs": 5.0,
+    "max_steps": 1500,
+    "lr": 0.0003,
+    "min_lr_frac": 0.1,
+    "warmup_steps": 100,
+    "wd": 0.1,
+    "clip": 1.0,
+    "seed": 0,
+    "data_seed": 0,
+    "amp": "auto",
+    "compile": false,
+    "eval_sets": "val",
+    "eval_every": 0,
+    "save_ckpt": true,
+    "init_pool": "/root/home/ubuntu/research/runs/purpose_a_v2/pilot/tok/apool_pool_40960.json",
+    "max_train_tokens": 0
+  },
+  "cfg": {
+    "vocab_size": 32832,
+    "d_model": 512,
+    "n_layers": 8,
+    "n_heads": 8,
+    "n_kv_heads": 8,
+    "ffn_dim": 1408,
+    "max_seq": 256,
+    "rope_theta": 500000.0,
+    "norm_eps": 1e-05,
+    "tie_embeddings": true
+  },
+  "data_meta": {
+    "tokenizer": "/root/home/ubuntu/research/runs/purpose_a_v2/pilot/tok/apool_lm_32768.json",
+    "n_normal": 32768,
+    "eos_id": 32768,
+    "mode": "scaffold",
+    "splits": {
+      "test": {
+        "tokens": 270781,
+        "docs": 62,
+        "bytes": 1287656,
+        "bytes_per_token": 4.756447668791879
+      }
+    }
+  },
+  "split": "test",
+  "bpb": {
+    "test": 1.5343180455462762
+  },
+  "identity": {
+    "checkpoint": "b3ff51bca9cffa23a5e433d235c4171bd87aaaf55d5397a956da919b441c6473",
+    "tokenizer": "d22ebf025e1df461f43e9f1e053452d0db71a9d0d85a8d9c4c819b2ee4a14e2b",
+    "inputs": {
+      "test.bin": "da15248c86c50b22aec19ad16c99e17d0449ca333453ef1aaf2e93746b9dcb6a",
+      "test_docs.npy": "c7ce07ae46ccd1bb261dbc0315dd8142d5d6b15f4e4fde29a34768d80d3bc95f",
+      "token_bytes.npy": "82ed2ae98f0f85b31d6f55e49cc6d40012fe9c9223a4ced5a692d1590db7b683"
+    },
+    "code": {
+      "lm.py": "cec889bae8db6d81face35d696bc6d3f130fa2aa8c40b3aa74ad6852b3fba284",
+      "train_lm.py": "972f945551ed66b497b738b28eb3a9818959e9bb57cb54e0ccaf6d4473c09a0d",
+      "data.py": "0ccdb577c569e040129824bb9f09e484a7d0f023b147781062aea8d99f876152"
+    },
+    "evaluator": "bf83e7188a61b501d125075376fa04d75a75ad38e39e2de2be0223bdd44943e5",
+    "split": "test"
+  },
+  "note": "frozen checkpoint evaluation; does not establish performance at a larger model/budget"
+}
