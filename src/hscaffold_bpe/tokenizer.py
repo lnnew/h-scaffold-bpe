@@ -6,15 +6,22 @@ from pathlib import Path
 
 from .model import TokenizerModel
 from .pretokenize import PATTERN, iter_pretokens
+from .remerge import event_remerge
 
 
 class HierarchicalTokenizer:
-    def __init__(self, model: TokenizerModel, backend: str = "auto"):
+    def __init__(self, model: TokenizerModel, backend: str = "auto", second_pass: str = "full"):
         model.validate()
+        if second_pass not in {"full", "skip", "local"}:
+            raise ValueError("second_pass must be full, skip, or local")
+        self.second_pass = second_pass
         self.model = model
         self._rank: dict[tuple[int, int], tuple[int, int]] = {}
         for rank, merge in enumerate(model.merges):
             self._rank.setdefault((merge.left, merge.right), (rank, merge.output))
+        self._remerge_rules = {
+            pair: rule for pair, rule in self._rank.items() if model.levels[rule[1]] <= 1
+        }
         self._visible = model.visible_ids
         self._internal_to_model = {token_id: index for index, token_id in enumerate(self._visible)}
         self._model_to_internal = dict(enumerate(self._visible))
@@ -52,8 +59,8 @@ class HierarchicalTokenizer:
                     raise
 
     @classmethod
-    def from_file(cls, path: str | Path) -> HierarchicalTokenizer:
-        return cls(TokenizerModel.load(path))
+    def from_file(cls, path: str | Path, **kwargs) -> HierarchicalTokenizer:
+        return cls(TokenizerModel.load(path), **kwargs)
 
     @property
     def vocab_size(self) -> int:
@@ -110,26 +117,33 @@ class HierarchicalTokenizer:
         ]
         return min(candidates, key=lambda value: (len(value), value))
 
+    def _second_merge(self, sequence: list[int], saturated: bool) -> list[int]:
+        if self.second_pass == "skip" or (self.second_pass == "local" and saturated):
+            if not any(self.model.levels[t] == 2 for t in sequence):
+                # The fast backend concatenates pretokens: unchanged boundary
+                # edges can still be eligible, so a blind no-L2 skip is unsafe.
+                if saturated or not any(
+                    (a, b) in self._remerge_rules for a, b in zip(sequence, sequence[1:])
+                ):
+                    return sequence
+        early: list[int] = []
+        starts = set() if saturated and self.second_pass == "local" else None
+        for token_id in sequence:
+            start = len(early)
+            early.extend(self._demolish_token(token_id, max_level=1))
+            if starts is not None and self.model.levels[token_id] == 2:
+                starts.update(range(max(0, start - 1), len(early)))
+        if self.second_pass == "local":
+            return event_remerge(early, self._remerge_rules, starts)
+        return self._apply_bpe(early, max_output_level=1)
+
     def _encode_pretoken(self, token: bytes) -> list[int]:
         sequence = self._apply_bpe(list(token), max_output_level=2)
-        if self.model.variant == "hierarchical":
-            # Level 2 may help construct a longer token, but any residual level-2
-            # token is removed before a second pass that only builds levels 0/1.
-            early: list[int] = []
-            for token_id in sequence:
-                early.extend(self._demolish_token(token_id, max_level=1))
-            sequence = self._apply_bpe(early, max_output_level=1)
-        final: list[int] = []
-        for token_id in sequence:
-            final.extend(self._demolish_token(token_id, max_level=0))
-        return final
+        return self._demolish_sequence(sequence, saturated=True)
 
-    def _demolish_sequence(self, sequence: list[int]) -> list[int]:
+    def _demolish_sequence(self, sequence: list[int], saturated: bool = False) -> list[int]:
         if self.model.variant == "hierarchical":
-            early: list[int] = []
-            for token_id in sequence:
-                early.extend(self._demolish_token(token_id, max_level=1))
-            sequence = self._apply_bpe(early, max_output_level=1)
+            sequence = self._second_merge(sequence, saturated)
         final: list[int] = []
         for token_id in sequence:
             final.extend(self._demolish_token(token_id, max_level=0))

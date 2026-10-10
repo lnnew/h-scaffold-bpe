@@ -46,7 +46,8 @@ def main():
     base = Tokenizer.load(find_tokenizer(a.tok_dir, "hscaffold", K))
     cfgs = {"scaffold": sc.variant(cache=cache),
             "hscaffold-full": base.variant(second_pass="full", cache=cache),
-            "hscaffold-event": base.variant(second_pass="event", cache=cache)}
+            "hscaffold-event": base.variant(second_pass="event", cache=cache),
+            "hscaffold-local": base.variant(second_pass="local", cache=cache)}
     for v in a.variants:
         t = Tokenizer.load(f"{a.variants_dir or a.tok_dir}/hsel_{v}_{K}.json")
         cfgs[f"hsel-{v}-full"] = t.variant(second_pass="full", cache=cache)
@@ -60,6 +61,7 @@ def main():
     for v in ["hscaffold"] + [f"hsel-{v}" for v in a.variants]:
         full, ev = ref_out[f"{v}-full"] if v != "hscaffold" else ref_out["hscaffold-full"], ref_out[f"{v}-event"] if v != "hscaffold" else ref_out["hscaffold-event"]
         assert full == ev, f"event-triggered output differs from full second pass for {v}"
+    assert ref_out["hscaffold-local"] == ref_out["hscaffold-full"]
     res["_event_equals_full"] = True
     res["_relative_to_scaffold"] = {k: v["MBps"] / res["scaffold"]["MBps"] for k, v in res.items() if isinstance(v, dict) and "MBps" in v}
     print(json.dumps(res["_relative_to_scaffold"], indent=1))

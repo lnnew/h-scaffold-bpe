@@ -248,7 +248,7 @@ class Tokenizer:
     def __init__(self, merges, levels, mode="scaffold", allowed_remerge=None,
                  second_pass="event", cache=True, meta=None, pattern="margin"):
         assert mode in ("bpe", "scaffold", "hscaffold")
-        assert second_pass in ("event", "full")
+        assert second_pass in ("event", "full", "local")
         self.merges = [tuple(m) for m in merges]
         self.levels = np.asarray(levels, dtype=np.int8)
         assert len(self.levels) == 256 + len(self.merges)
@@ -281,6 +281,7 @@ class Tokenizer:
             if self.levels[256 + i] <= 1 and (self.allowed_remerge is None or (a, b) in self.allowed_remerge):
                 ok[i] = True
         self._remerge_ok = ok
+        self._remerge_rules = {pair: (r, 256 + r) for pair, r in self.rank.items() if ok[r]}
         if getattr(self, "_cache", None) is not None:
             self._cache.clear()
 
@@ -329,17 +330,35 @@ class Tokenizer:
                     out.append(x)
         return out
 
+    def _l2_stage(self, full):
+        if self.second_pass != "local":
+            return self._demolish(full, 2), None
+        early, starts = [], set()
+        for token in full:
+            if self.levels[token] < 2:
+                early.append(token)
+            else:
+                start = len(early)
+                early.extend(self._demolish([token], 2))
+                starts.update(range(max(0, start - 1), len(early)))
+        return early, starts
+
+    def _second_merge(self, early, starts, changed, log=None):
+        if self.second_pass == "local":
+            from hscaffold_bpe.remerge import event_remerge
+            return event_remerge(early, self._remerge_rules, starts, log)
+        if changed or self.second_pass == "full":
+            return self._merge_loop(early, ok=self._remerge_ok, log=log)
+        return early
+
     def trace(self, word: bytes) -> dict:
         """Every intermediate stage of encoding one pretoken (expanded ids)."""
         full = self._merge_loop(list(word))
         scaf = self._demolish(full, 1)
-        after_l2 = self._demolish(full, 2)
+        after_l2, starts = self._l2_stage(full)
         log: list = []
         has_l2 = len(after_l2) != len(full) or after_l2 != full
-        if has_l2 or self.second_pass == "full":
-            pass2 = self._merge_loop(after_l2, ok=self._remerge_ok, log=log)
-        else:
-            pass2 = after_l2
+        pass2 = self._second_merge(after_l2, starts, has_l2, log)
         h = self._demolish(pass2, 1)
         return dict(full=full, scaffold=scaf, after_l2=after_l2, remerges=log,
                     pass2=pass2, hscaffold=h, has_l2=has_l2)
@@ -378,9 +397,8 @@ class Tokenizer:
             return full
         if self.mode == "scaffold":
             return self._demolish(full, 1)
-        after_l2 = self._demolish(full, 2)
-        if after_l2 != full or self.second_pass == "full":
-            after_l2 = self._merge_loop(after_l2, ok=self._remerge_ok)
+        after_l2, starts = self._l2_stage(full)
+        after_l2 = self._second_merge(after_l2, starts, after_l2 != full)
         return self._demolish(after_l2, 1)
 
     def encode_word(self, word: bytes) -> tuple:
