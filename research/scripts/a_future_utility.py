@@ -79,23 +79,23 @@ def pairs_and_quotas(pool, base, stats, budget):
     residual = np.asarray(pool.meta["resid"], dtype=float)
     bins = np.searchsorted(np.quantile(np.log1p(residual[candidates]), np.arange(.1, 1, .1)),
                            np.log1p(residual))
-    buckets = defaultdict(lambda: [[], []])
+    removes, adds = defaultdict(set), []
     for t, values in stats.items():
         if values["n"] >= 2 and residual[t] > 0:
-            buckets[(int(bins[t]), len(pool.token_bytes[t]))][int(t not in base)].append(t)
-    grouped = {}
-    for key, (removes, adds) in buckets.items():
-        if not removes or not adds:
+            if t in base:
+                removes[len(pool.token_bytes[t])].add(t)
+            else:
+                adds.append(t)
+    grouped = defaultdict(list)
+    for c in sorted(adds, key=lambda t: (-residual[t], t)):
+        length = len(pool.token_bytes[c])
+        available = removes[length]
+        if not available:
             continue
-        available = set(removes)
-        pairs = []
-        for c in sorted(adds, key=lambda t: (-residual[t], t)):
-            if not available:
-                break
-            t = min(available, key=lambda t: (abs(np.log1p(residual[t]) - np.log1p(residual[c])), t))
-            pairs.append([t, c]); available.remove(t)
-        if len(pairs) >= 2:
-            grouped[key] = pairs
+        t = min(available, key=lambda t: (abs(np.log1p(residual[t]) - np.log1p(residual[c])), t))
+        available.remove(t)
+        grouped[(int(bins[t]), int(bins[c]), length)].append([t, c])
+    grouped = {key: pairs for key, pairs in grouped.items() if len(pairs) >= 2}
     # Leave alternatives inside every stratum so word/future/random can make different decisions.
     cap = sum(len(pairs) // 2 for pairs in grouped.values())
     budget = min(budget, cap)
@@ -138,6 +138,7 @@ def prepare(a):
                     seq=a.seq, context_tokens=64, batch_windows=32, micro_batch=8, lr=.0003,
                     seeds=[0, 1, 2], data_seed=0, max_samples=32, scoring_context_pretokens=12,
                     scoring_min_occurrences=2, requested_swaps=32, train_raw_budget_bytes=64 * 1024**2,
+                    pair_matching="equal byte length; closest frequency; quotas by removal/addition deciles and byte length",
                     teacher=str(a.teacher), teacher_hash=file_hash(a.teacher), pool_hash=file_hash(pool_path),
                     input_hashes={p.name: file_hash(p) for p in files},
                     scoring="FP32 common pool+EOS output head; partition in bits; rank residual*shrunk span BPB",
@@ -150,9 +151,26 @@ def prepare(a):
     words = doc_word_lists(selection_docs, pool.pattern)
     edits, seen, rejected = collect(pool, words, max_samples=32, context=12, seq=a.seq)
     print(json.dumps(dict(stage="score", candidates=len(edits), windows=sum(map(len, edits.values())))), flush=True)
-    scorer = TorchScorer(str(a.teacher), device="cuda:0", batch_size=32, amp=False)
-    rows, checks = score(pool, scorer, edits)
-    del scorer, edits
+    if a.score_cache:
+        prior = json.loads((a.score_cache / "contract_draft.json").read_text())
+        if any(prior[key] != contract[key] for key in ["input_hashes", "teacher_hash", "pool_hash", "max_samples", "scoring"]):
+            raise ValueError("score-cache input or scoring identity mismatch")
+        if any(value != contract["source_hashes"].get(name) for name, value in prior["source_hashes"].items()
+               if name.startswith("src/")):
+            raise ValueError("score-cache implementation changed")
+        cached = np.load(a.score_cache / "score_samples.npz")
+        rows = {int(t): cached[t] for t in cached.files}
+        if set(rows) != set(edits) or any(len(rows[t]) != len(edits[t]) for t in rows):
+            raise ValueError("cached windows no longer match deterministic collected edits")
+        checks = dict(max_prefix_delta_bits=max(float(np.abs(v[:, 2] - v[:, 0] - v[:, 1]).max()) for v in rows.values()),
+                      max_partition_error_bits=0., windows=sum(map(len, rows.values())))
+        contract["score_cache"] = dict(root=str(a.score_cache), source_sha=prior["source_sha"],
+                                      samples_hash=file_hash(a.score_cache / "score_samples.npz"))
+    else:
+        scorer = TorchScorer(str(a.teacher), device="cuda:0", batch_size=32, amp=False)
+        rows, checks = score(pool, scorer, edits)
+        del scorer
+    del edits
     import torch
     torch.cuda.empty_cache()
     if checks["max_prefix_delta_bits"] > .001 or checks["max_partition_error_bits"] > 1e-8:
@@ -368,6 +386,7 @@ def main():
     ap.add_argument("--root", type=Path)
     ap.add_argument("--teacher", type=Path)
     ap.add_argument("--source_sha")
+    ap.add_argument("--score_cache", type=Path)
     ap.add_argument("--K", type=int, default=32768)
     ap.add_argument("--steps", type=int, default=1500)
     ap.add_argument("--seq", type=int, default=256)

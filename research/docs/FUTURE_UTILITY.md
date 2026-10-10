@@ -20,7 +20,10 @@ useful vocabulary slot than its effect on predicting the changed pretoken itself
   towards zero. Word and future have separate byte denominators. This is a local proxy;
   overlapping continuation windows mean it is not an exact corpus-wide marginal utility.
 - At most32 exchanges. Qualify tokens with at least2 scored occurrences; pair an added
-  and removed token in the same residual-frequency decile and byte-length stratum.
+  and removed token with identical byte length and closest residual frequency.
+  Stratify pairs by (removal decile, addition decile, byte length); match each direction's
+  distribution across selectors. A frequency-top-K boundary need not permit same-decile
+  addition/removal pairs. Preserve the initial failed prepare and reuse unchanged scoring.
   Quotas and disjoint exchange pairs depend only on coverage/frequency/length. Keep at
   least two possible pairs per quota. Effective budget=min(32, sum floor(pair_count/2)).
 - Word/future rank exchanges inside identical quotas. Random uses the same pair universe
