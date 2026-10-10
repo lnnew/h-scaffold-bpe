@@ -54,6 +54,7 @@ def main():
     encode_code = {n: file_hash(src / n) for n in ["bpe.py", "pretok.py", "data.py"]}
     encode_code["tokenize_corpus.py"] = file_hash(Path(here) / "tokenize_corpus.py")
     train_code = {n: file_hash(src / n) for n in ["lm.py", "train_lm.py", "data.py"]}
+    extra_inputs = {"init_pool": file_hash(a.lm_args[a.lm_args.index("--init_pool") + 1])} if "--init_pool" in a.lm_args else {}
     env = dict(os.environ, PYTHONPATH=os.path.join(here, "..", "src") + os.pathsep + os.environ.get("PYTHONPATH", ""))
     for m in a.methods:
         tok = os.path.join(a.tok_dir, a.tok_pattern.format(method=m, K=a.K))
@@ -68,7 +69,7 @@ def main():
             continue
         for s in a.seeds:
             out = os.path.join(a.runs, a.setting, m, f"seed{s}")
-            run_identity = dict(data=data_identity, code=train_code, lm_args=a.lm_args,
+            run_identity = dict(data=data_identity, code=train_code, lm_args=a.lm_args, extra_inputs=extra_inputs,
                                 gpus=a.gpus, seed=s, data_seed=0, eval_sets=a.eval_sets)
             check_identity(out, run_identity, os.path.join(out, "results.json"), a.dry)
             if os.path.exists(os.path.join(out, "results.json")):

@@ -34,7 +34,8 @@ def main():
         raise ValueError("teacher must use exactly the pool tokenizer and its token-ID mapping")
     methods = ["apool_freq", "apool_lm", "apool_randomswap0"]
     contract = dict(K=a.K, steps=a.steps, batch_tokens=8192, preset="small", seq=256,
-                    seeds=[0, 1, 2], methods=methods, eval_split="val", teacher=file_hash(a.teacher),
+                    seeds=[0, 1, 2], methods=methods, eval_split="val", initialization="shared pool-token embedding bank",
+                    teacher=file_hash(a.teacher),
                     pool=file_hash(pool), code={str(p.relative_to(scripts.parent)): file_hash(p)
                                                for p in sorted([*source.glob("*.py"), *scripts.glob("*.py")])},
                     claim_scope="development pilot; test untouched; not final efficacy evidence")
@@ -90,7 +91,7 @@ def main():
             try:
                 execute([*suite, "--methods", method, "--seeds", seed, "--lm_args", "--preset", "small", "--seq", 256,
                          "--batch_tokens", 8192, "--micro_batch", 16, "--max_steps", a.steps, "--warmup_steps", 100,
-                         "--lr", 0.0003], f"{method}_seed{seed}.log", gpu)
+                         "--lr", 0.0003, "--init_pool", tok / pool.name, "--save_ckpt"], f"{method}_seed{seed}.log", gpu)
             except Exception:
                 stop.set()
                 raise

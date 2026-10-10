@@ -40,13 +40,14 @@ def select_supported(candidates, values, frequency_selection, evidence):
     return sorted(fixed) + pick_matched(candidates[mask].tolist(), values[mask], len(frequency_selection) - len(fixed))
 
 
-def matched_random_swaps(candidates, residual, frequency_selection, utility_selection, seed):
+def matched_random_swaps(candidates, residual, frequency_selection, utility_selection, seed, evidence=None):
     """Match utility's changed-slot count and residual-frequency deciles in each swap direction."""
     rng = np.random.default_rng(seed)
     base, utility = set(frequency_selection), set(utility_selection)
+    supported = set(candidates) if evidence is None else set(np.asarray(candidates)[np.asarray(evidence) > 0])
     bins = np.searchsorted(np.quantile(np.log1p(residual), np.arange(0.1, 1, 0.1)), np.log1p(residual))
     result = set(base)
-    for actual, eligible, remove in [(base - utility, base, True), (utility - base, set(candidates) - base, False)]:
+    for actual, eligible, remove in [(base - utility, base & supported, True), (utility - base, supported - base, False)]:
         for b in range(10):
             members = set(np.asarray(candidates)[bins == b])
             count = len(actual & members)

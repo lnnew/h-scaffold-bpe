@@ -83,6 +83,7 @@ def main():
     ap.add_argument("--eval_sets", default="val,test", help="comma list of <name>.bin files to evaluate at the end")
     ap.add_argument("--eval_every", type=int, default=0, help="steps between val-BPB evals (0=end only)")
     ap.add_argument("--save_ckpt", action="store_true")
+    ap.add_argument("--init_pool", help="pool tokenizer for common-token-matched embedding initialization")
     ap.add_argument("--max_train_tokens", type=int, default=0, help="truncate train stream (smoke tests)")
     args = ap.parse_args()
 
@@ -116,6 +117,10 @@ def main():
 
     torch.manual_seed(args.seed)
     model = LM(cfg).to(device)
+    if args.init_pool:
+        from .bpe import Tokenizer
+        from .lm import init_pool_embeddings
+        init_pool_embeddings(model, Tokenizer.load(meta["tokenizer"]), Tokenizer.load(args.init_pool), args.seed)
     if args.compile:
         model = torch.compile(model)
     raw_model = model

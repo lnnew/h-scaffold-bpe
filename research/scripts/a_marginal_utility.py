@@ -107,7 +107,7 @@ def main():
         if spec == selected_scorer:
             variants["lm"] = lm_sel
             for s in range(a.seeds):
-                variants[f"randomswap{s}"] = matched_random_swaps(cands, r[cands], freq_sel, lm_sel, s)
+                variants[f"randomswap{s}"] = matched_random_swaps(cands, r[cands], freq_sel, lm_sel, s, seen_dev)
         idx = {int(t): i for i, t in enumerate(cands)}
         def dev_value(sel, V=None): return float(sum((V_dev if V is None else V)[idx[t]] for t in sel))
         covered = int(sum(1 for t in cands if t in summ))

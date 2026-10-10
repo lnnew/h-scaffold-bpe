@@ -34,7 +34,8 @@ encoding 단계의 selective re-merging 연구로 바꾸지 않는다.
 5. 관측되지 않은 token의 baseline 상태를 고정하고, 관측된 token의 가용 슬롯만 V로 선택한다.
    홀수 문서의 proxy는 진단용이다. 최종 품질은 별도 LM 재학습으로 측정한다.
 6. random 대조군은 frequency baseline에서 utility와 동일한 수의 슬롯을 바꾸고,
-   제거/추가 방향 각각의 residual-frequency decile 분포를 맞춘다.
+   제거/추가 방향 각각의 residual-frequency decile 분포를 맞춘다. 동일하게 utility 관측이 있는
+   token에서만 변경한다. 관측되지 않은 token을 변경하는 불리한 대조군을 만들지 않는다.
 
 이는 fixed teacher와 독립 token ablation의 proxy다. 여러 token 제거의 상호작용과
 teacher segmentation 편향이 남는다. 재학습 비교가 이 proxy의 유효성을 검증한다.
@@ -47,7 +48,7 @@ teacher segmentation 편향이 남는다. 재학습 비교가 이 proxy의 유�
 | primary arms | `apool_freq`, `apool_lm`, `apool_randomswap0` |
 | LM | 기존 `small` preset, seq=256, FP16 on Turing |
 | budget | 각 arm/seed 1500 updates × 8192 tokens = 12,288,000 token exposures |
-| seeds | model init 0,1,2; data order 0; random-swap seed 0 고정 |
+| seeds | model init 0,1,2; 공통 token/EOS embedding은 같은 pool-indexed 초기값; data order 0; random-swap seed 0 고정 |
 | text | 동일 WikiText raw train corpus, 전체 corpus에서 고정 token budget으로 학습 |
 | selection | `dev_sel`만 사용 |
 | pilot evaluation | `val`만 사용; test는 tokenization/evaluation 대상에서도 제외 |
@@ -56,8 +57,9 @@ teacher segmentation 편향이 남는다. 재학습 비교가 이 proxy의 유�
 
 고정 token budget은 compute 관점의 비교다. tokenizer별 실제 읽힌 raw bytes는 다를 수 있으므로
 `train_exposure_bytes`도 저장한다. 최종 유효성 확인에는 같은 raw-data epoch 관점의 비교를 추가한다.
-동일 seed는 같은 크기의 초기 parameter tensor와 data-order seed를 맞추며, 서로 다른 token 문자열의
-embedding을 의미적으로 동일하게 만든다는 뜻은 아니다.
+vocabulary의 token ID가 바뀌어도 공통 token/EOS의 초기 embedding과 같은 seed의 나머지 model
+parameter를 맞춘다. token stream 길이가 달라 raw block 위치까지 완전히 동일하지는 않으며,
+paired seed 및 실제 byte exposure 보고로 남는 변동을 드러낸다.
 
 ```bash
 # 새 코드에서 실행. 기존 pool와 그 pool로 학습 완료된 teacher를 재사용한다.

@@ -32,6 +32,27 @@ def test_random_swaps_match_changed_slots_and_frequency_bins():
     for changed in (lambda s: s - frequency, lambda s: frequency - s):
         assert sorted(bins[list(changed(control))]) == sorted(bins[list(changed(utility))])
     assert control == set(matched_random_swaps(candidates, residual, frequency, utility, 7))
+    supported = np.isin(candidates, list(utility | {52, 62, 72, 12, 24, 36}))
+    control = set(matched_random_swaps(candidates, residual, frequency, utility, 7, supported))
+    assert (control ^ frequency).issubset(set(candidates[supported]))
+
+
+def test_common_tokens_keep_initial_vectors_after_ids_shift():
+    import torch
+    from scaffold_margin.direction_a import with_selected
+    from scaffold_margin.lm import LM, init_pool_embeddings, make_config
+    pool = build_tokenizers(count_words(make_corpus(250, seed=8)), 400)["scaffold"]
+    ids = list(pool_candidates(pool))
+    a = with_selected(pool, ids[:64], "freq")
+    b = with_selected(pool, ids[1:65], "utility")
+    torch.manual_seed(7); ma = LM(make_config("tiny", 384))
+    torch.manual_seed(7); mb = LM(make_config("tiny", 384))
+    init_pool_embeddings(ma, a, pool, 7)
+    init_pool_embeddings(mb, b, pool, 7)
+    common = sorted(set(a.from_model) & set(b.from_model))
+    assert torch.equal(ma.emb.weight[a.to_model[common]], mb.emb.weight[b.to_model[common]])
+    assert torch.equal(ma.emb.weight[a.eos_id], mb.emb.weight[b.eos_id])
+    assert torch.equal(ma.blocks[0].q.weight, mb.blocks[0].q.weight)
 
 
 def test_neural_teacher_controls_saved_vocabulary(tmp_path, monkeypatch):

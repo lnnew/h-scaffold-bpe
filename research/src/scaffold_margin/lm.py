@@ -51,6 +51,22 @@ def make_config(preset: str, vocab_size: int, max_seq: int = 1024) -> LMConfig:
     return LMConfig(vocab_size=vocab_size, max_seq=max_seq, **PRESETS[preset])
 
 
+def init_pool_embeddings(model, tokenizer, pool, seed):
+    """Keep common tokens' initial vectors equal even when vocabulary pruning shifts their IDs."""
+    if tokenizer.merges != pool.merges or tokenizer.pattern != pool.pattern:
+        raise ValueError("initialization pool must use the same merge table and pattern")
+    ids = pool.to_model[tokenizer.from_model].tolist() + [pool.eos_id]
+    if min(ids) < 0:
+        raise ValueError("student vocabulary is not a subset of the initialization pool")
+    bank = torch.empty(pool.n_normal + 1, model.c.d_model).normal_(
+        0, 0.02, generator=torch.Generator().manual_seed(seed))
+    vectors = bank[ids].to(model.emb.weight.device)
+    with torch.no_grad():
+        model.emb.weight[:len(ids)].copy_(vectors)
+        if model.head is not None:
+            model.head.weight[:len(ids)].copy_(vectors)
+
+
 class RMSNorm(nn.Module):
     def __init__(self, d, eps):
         super().__init__()

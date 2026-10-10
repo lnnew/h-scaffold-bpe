@@ -13,6 +13,8 @@ def experiment(tmp_path, monkeypatch):
     spec.loader.exec_module(script)
     tok = tmp_path / "freq_320.json"
     tok.write_text("first tokenizer")
+    pool = tmp_path / "pool.json"
+    pool.write_text("initialization pool")
     for split in ("lm_train", "val", "test"):
         (tmp_path / (split + ".jsonl")).write_text('{"text":"original text"}\n')
     calls = []
@@ -26,10 +28,13 @@ def experiment(tmp_path, monkeypatch):
     monkeypatch.setattr(script.subprocess, "run", execute)
     args = [str(path), "--tok_dir", str(tmp_path), "--text_dir", str(tmp_path), "--K", "320", "--setting", "pilot",
             "--methods", "freq", "--seeds", "0", "--gpus", "1", "--data_root", str(tmp_path / "data"),
-            "--runs", str(tmp_path / "runs"), "--lm_args", "--max_steps", "10"]
+            "--runs", str(tmp_path / "runs"), "--lm_args", "--max_steps", "10", "--init_pool", str(pool)]
 
     def run(extra=None):
-        monkeypatch.setattr(sys, "argv", args if extra is None else args[:-1] + [extra])
+        current = args.copy()
+        if extra is not None:
+            current[current.index("--max_steps") + 1] = extra
+        monkeypatch.setattr(sys, "argv", current)
         script.main()
     return run, tok, calls
 
@@ -50,5 +55,12 @@ def test_budget_change_cannot_reuse_result(experiment):
 def test_tokenizer_change_cannot_reuse_stream(experiment):
     run, tok, _ = experiment
     run(); tok.write_text("different tokenizer")
+    with pytest.raises(ValueError, match="identity changed"):
+        run()
+
+
+def test_pool_content_change_cannot_reuse_result(experiment):
+    run, tok, _ = experiment
+    run(); tok.with_name("pool.json").write_text("different initialization pool")
     with pytest.raises(ValueError, match="identity changed"):
         run()
