@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import json
 import os
+import shutil
 import subprocess
 import sys
 import urllib.request
@@ -21,7 +22,7 @@ from run_lm_suite import file_hash
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from scaffold_margin.aligned_lm import prepare as aligned_prepare, train
 from scaffold_margin.bpe import Tokenizer
-from scaffold_margin.data import read_jsonl, write_jsonl
+from scaffold_margin.data import encode_docs, read_jsonl, write_jsonl
 from scaffold_margin.direction_a import pool_candidates, with_selected
 from scaffold_margin.future import collect, score, summaries
 from scaffold_margin.learning import training_batches
@@ -149,6 +150,7 @@ def prepare(a):
                     scoring_min_occurrences=2, requested_swaps=32, train_raw_budget_bytes=64 * 1024**2,
                     pair_matching="equal byte length; closest frequency; quotas by removal/addition deciles and byte length",
                     random_draw_limit=1000,
+                    min_scheduled_pool_occurrences=8,
                     teacher=str(a.teacher), teacher_hash=file_hash(a.teacher), pool_hash=file_hash(pool_path),
                     input_hashes={p.name: file_hash(p) for p in files},
                     scoring="FP32 common pool+EOS output head; partition in bits; rank residual*shrunk span BPB",
@@ -187,7 +189,34 @@ def prepare(a):
         raise ValueError("prefix invariance or loss partition check failed")
     stats = summaries(rows)
     np.savez_compressed(a.out / "score_samples.npz", **{str(t): v for t, v in rows.items()})
-    grouped, quotas, residual, budget = pairs_and_quotas(pool, base, stats, 32)
+    if not a.training_cache:
+        raise ValueError("actual raw training-window cache required for eligibility")
+    prior_train = json.loads((a.training_cache / "contract_draft.json").read_text())
+    for key in ["input_hashes", "pool_hash", "steps", "seq", "data_seed", "train_raw_budget_bytes"]:
+        if prior_train[key] != contract[key]:
+            raise ValueError("training support cache contract mismatch")
+    cached_train_path = a.training_cache / "data/frequency_train.npz"
+    cached_train = dict(np.load(cached_train_path))
+    cached_tok = Tokenizer.load(str(a.training_cache / "tok/frequency.json"))
+    if set(map(int, cached_tok.from_model[256:])) != base:
+        raise ValueError("training cache baseline vocabulary mismatch")
+    indices = np.concatenate(list(training_batches(len(cached_train["bytes"]), a.steps, 32, 0)))
+    raw_targets = [cached_tok.decode(cached_train["ids"][cached_train["offsets"][i] + cached_train["starts"][i]:
+                    cached_train["offsets"][i + 1]]).decode() for i in indices]
+    if sum(len(text.encode()) for text in raw_targets) != int(cached_train["bytes"][indices].sum()):
+        raise ValueError("cached raw training targets changed bytes")
+    pool.save(str(a.out / "tok/pool.json"))
+    print(json.dumps(dict(stage="training_eligibility", windows=len(raw_targets))), flush=True)
+    encoded_targets = encode_docs(str(a.out / "tok/pool.json"), raw_targets, workers=8)
+    support = np.zeros(len(pool.levels), dtype=np.int64)
+    support[pool.from_model] = np.bincount(np.concatenate(encoded_targets), minlength=pool.n_normal)
+    np.save(a.out / "eligibility_support.npy", support)
+    del raw_targets, encoded_targets, cached_train
+    eligible_stats = {t: values for t, values in stats.items() if support[t] >= contract["min_scheduled_pool_occurrences"]}
+    contract["eligibility"] = dict(cache=str(a.training_cache), cache_hash=file_hash(cached_train_path),
+                                  support_hash=file_hash(a.out / "eligibility_support.npy"),
+                                  eligible_scored_candidates=len(eligible_stats))
+    grouped, quotas, residual, budget = pairs_and_quotas(pool, base, eligible_stats, 32)
     selected = {}
     for method in ["word", "future"]:
         selected[method] = [p for key, quota in quotas.items() for p in sorted(grouped[key],
@@ -249,7 +278,10 @@ def prepare(a):
         train_docs.append(documents[i]); size += len(documents[i].encode())
         if size >= contract["train_raw_budget_bytes"]:
             break
-    pg_docs = pg19(a.out)
+    pg_docs = [text for text, _ in read_jsonl(str(a.training_cache / "pg19.jsonl"))]
+    shutil.copyfile(a.training_cache / "pg19.jsonl", a.out / "pg19.jsonl")
+    shutil.copyfile(a.training_cache / "pg19_manifest.json", a.out / "pg19_manifest.json")
+    shutil.copytree(a.training_cache / "pg19_sources", a.out / "pg19_sources")
     digest = lambda text: hashlib.sha256(" ".join(text.split()).encode()).hexdigest()
     pg_hashes = set(map(digest, pg_docs))
     if len(pg_hashes) != len(pg_docs) or pg_hashes & set(map(digest, documents + selection_docs)):
@@ -400,6 +432,7 @@ def main():
     ap.add_argument("--teacher", type=Path)
     ap.add_argument("--source_sha")
     ap.add_argument("--score_cache", type=Path)
+    ap.add_argument("--training_cache", type=Path)
     ap.add_argument("--K", type=int, default=32768)
     ap.add_argument("--steps", type=int, default=1500)
     ap.add_argument("--seq", type=int, default=256)

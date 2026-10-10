@@ -19,8 +19,13 @@ useful vocabulary slot than its effect on predicting the changed pretoken itself
 - Rank tokens by residual training count times span BPB improvement, with n/(n+4) shrinkage
   towards zero. Word and future have separate byte denominators. This is a local proxy;
   overlapping continuation windows mean it is not an exact corpus-wide marginal utility.
-- At most32 exchanges. Qualify tokens with at least2 scored occurrences; pair an added
-  and removed token with identical byte length and closest residual frequency.
+- At most32 exchanges. Qualify tokens with at least2 scored occurrences. Pair added and
+  removed tokens with identical byte length and closest residual frequency, only when
+  each pool form has>=8 occurrences in the actual1500-step
+  scheduled raw target windows. This conservative eligibility excludes unseen additions.
+  Derive support by decoding the preserved frequency-window targets, re-encoding with
+  the pool, and recording input/cache hashes. Recheck>=2 actual final-token observations
+  after rebuilding the common windows. The earlier prepare failing that check is preserved.
   Stratify pairs by (removal decile, addition decile, byte length); match each direction's
   distribution across selectors. A frequency-top-K boundary need not permit same-decile
   addition/removal pairs. Preserve the initial failed prepare and reuse unchanged scoring.
