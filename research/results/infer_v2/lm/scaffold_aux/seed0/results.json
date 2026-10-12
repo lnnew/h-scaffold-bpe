@@ -1,0 +1,151 @@
+{
+ "args": {
+  "data": "/root/home/ubuntu/research/runs/infer_v2/data/scaffold_aux",
+  "out": "/root/home/ubuntu/research/runs/infer_v2/lm/scaffold_aux/seed0",
+  "preset": "small",
+  "seq": 1024,
+  "batch_tokens": 131072,
+  "micro_batch": 16,
+  "epochs": 2.0,
+  "max_steps": 0,
+  "lr": 0.0006,
+  "min_lr_frac": 0.1,
+  "warmup_steps": 200,
+  "wd": 0.1,
+  "clip": 1.0,
+  "seed": 0,
+  "data_seed": 0,
+  "amp": "fp16",
+  "compile": true,
+  "eval_sets": "val,test",
+  "eval_every": 0,
+  "save_ckpt": true,
+  "init_pool": null,
+  "max_train_tokens": 0,
+  "aux": true
+ },
+ "cfg": {
+  "vocab_size": 32768,
+  "d_model": 512,
+  "n_layers": 8,
+  "n_heads": 8,
+  "n_kv_heads": 8,
+  "ffn_dim": 1408,
+  "max_seq": 1024,
+  "rope_theta": 500000.0,
+  "norm_eps": 1e-05,
+  "tie_embeddings": true,
+  "aux_size": 2602
+ },
+ "amp": "fp16",
+ "train_time_s": 2047.650274515152,
+ "total_steps": 1806,
+ "n_params": 43808256,
+ "train_tokens": 118449038,
+ "train_exposure_tokens": 236716032,
+ "train_exposure_bytes": 1077759621,
+ "meta": {
+  "tokenizer": "/root/home/ubuntu/research/h-scaffold-bpe-infer-v1/artifacts/tokenizers/scaffold-32768.json",
+  "n_normal": 32767,
+  "eos_id": 32767,
+  "mode": "scaffold",
+  "inference": "canonical",
+  "splits": {
+   "train": {
+    "tokens": 118449038,
+    "docs": 29444,
+    "bytes": 539295549,
+    "bytes_per_token": 4.554107435582893,
+    "methods": {
+     "canonical": 29444
+    }
+   },
+   "val": {
+    "tokens": 135954,
+    "docs": 30,
+    "bytes": 631207,
+    "bytes_per_token": 4.643857183846737,
+    "methods": {
+     "canonical": 30
+    }
+   },
+   "test": {
+    "tokens": 283339,
+    "docs": 62,
+    "bytes": 1287656,
+    "bytes_per_token": 4.545588048405089,
+    "methods": {
+     "canonical": 62
+    }
+   },
+   "val_canonical": {
+    "tokens": 135954,
+    "docs": 30,
+    "bytes": 631207,
+    "bytes_per_token": 4.643857183846737,
+    "methods": {
+     "canonical": 30
+    }
+   },
+   "val_longest": {
+    "tokens": 135474,
+    "docs": 30,
+    "bytes": 631207,
+    "bytes_per_token": 4.660314671116263,
+    "methods": {
+     "longest": 30
+    }
+   },
+   "val_dp": {
+    "tokens": 135215,
+    "docs": 30,
+    "bytes": 631207,
+    "bytes_per_token": 4.6692434015859865,
+    "methods": {
+     "dp": 30
+    }
+   },
+   "test_canonical": {
+    "tokens": 283339,
+    "docs": 62,
+    "bytes": 1287656,
+    "bytes_per_token": 4.545588048405089,
+    "methods": {
+     "canonical": 62
+    }
+   },
+   "test_longest": {
+    "tokens": 282490,
+    "docs": 62,
+    "bytes": 1287656,
+    "bytes_per_token": 4.559252479401757,
+    "methods": {
+     "longest": 62
+    }
+   },
+   "test_dp": {
+    "tokens": 281725,
+    "docs": 62,
+    "bytes": 1287656,
+    "bytes_per_token": 4.571635506387088,
+    "methods": {
+     "dp": 62
+    }
+   }
+  },
+  "aux_size": 2602,
+  "aux_shuffle_seed": null,
+  "aux_table": 2601,
+  "aux_maxk": 4,
+  "aux_rule": "longest scaffold whose demolition equals the last k>=2 tokens (causal)",
+  "aux_coverage": {
+   "train": 0.002494186571612342,
+   "val": 0.0026479544551833707,
+   "test": 0.002541125648075274
+  }
+ },
+ "bpb": {
+  "val": 1.08715105375605,
+  "test": 1.0940775288606235
+ }
+}

@@ -1,0 +1,17 @@
+{
+ "tokenizer": "/root/home/ubuntu/research/h-scaffold-bpe-infer-v2/artifacts/tokenizers/scaffold-32768.json",
+ "n_normal": 32767,
+ "eos_id": 32767,
+ "seg": "lam0.4",
+ "lam": 0.4,
+ "splits": {
+  "val": {
+   "tokens": 135820,
+   "docs": 30
+  },
+  "test": {
+   "tokens": 283148,
+   "docs": 62
+  }
+ }
+}
