@@ -170,5 +170,6 @@ def load_checkpoint(path, device="cpu"):
     d = torch.load(path, map_location=device)
     cfg = LMConfig(**d["cfg"])
     m = LM(cfg).to(device)
-    m.load_state_dict(d["state"])
+    # checkpoints saved from a torch.compile'd model carry an "_orig_mod." prefix
+    m.load_state_dict({k.removeprefix("_orig_mod."): v for k, v in d["state"].items()})
     return m, cfg
