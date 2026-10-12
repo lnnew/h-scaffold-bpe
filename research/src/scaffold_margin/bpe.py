@@ -63,6 +63,7 @@ def train_bpe(
     min_freq: int = 2,
     log_every: int = 2000,
     scaffold_rule: str = "global",
+    scaffold_factor: float = 1.0,
 ) -> TrainResult:
     """Train BPE.
 
@@ -79,8 +80,12 @@ def train_bpe(
           identical merges, scaffold sets and L1/L2 levels on synthetic counts (tests/test_adapter.py).
       "component": literal reading of report slide 2 (judge only a and b; revive only when judged again).
           It does NOT match the team's trainer - kept only to show the difference.
+
+    `scaffold_factor` c (global rule only): a token is scaffold iff f(x) < c * f(Qhead).  c = 1 is Scaffold-BPE;
+    larger c hides more intermediate tokens (their slots go to further merges), c -> 0 approaches plain BPE.
     """
     assert scaffold_rule in ("component", "global")
+    assert scaffold_factor == 1.0 or scaffold_rule == "global"
     assert (num_merges is None) != (target_normal is None)
     scaffold = target_normal is not None
     if max_merges is None:
@@ -186,7 +191,7 @@ def train_bpe(
                 else:
                     m = len(merges)
                     fr = freq[256 : 256 + m]
-                    new = fr < q
+                    new = fr < scaffold_factor * q
                     old = scaf[256 : 256 + m]
                     n_normal += int(old.sum()) - int(new.sum())
                     cur = fr / q

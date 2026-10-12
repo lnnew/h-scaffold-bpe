@@ -103,3 +103,30 @@ def test_aux_embedding_zero_index_is_identity():
     with torch.no_grad():
         assert torch.allclose(m(x), m(x, torch.zeros_like(x)))
         assert not torch.allclose(m(x), m(x, torch.full_like(x, 2)))
+
+
+def test_scaffold_factor_monotone_and_default():
+    from scaffold_margin.bpe import train_bpe
+
+    wc = count_words(make_corpus(n_docs=200, seed=4))
+    base = train_bpe(wc, target_normal=350)
+    same = train_bpe(wc, target_normal=350, scaffold_factor=1.0)
+    assert base.merges == same.merges and (base.scaf == same.scaf).all()
+    hidden = [int(train_bpe(wc, target_normal=350, max_merges=6000, scaffold_factor=c).scaf.sum()) for c in (0.5, 1, 2, 4)]
+    assert hidden == sorted(hidden) and hidden[-1] > hidden[0]
+
+
+def test_perturb_deterministic_and_rate():
+    import importlib.util
+    import os
+
+    p = os.path.join(os.path.dirname(__file__), "..", "scripts", "i_eval_extra.py")
+    spec = importlib.util.spec_from_file_location("i_eval_extra", p)
+    m = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(m)
+    text = " ".join(["word", "another", "language", "model", "tokenizer"] * 200)
+    a, b = m.perturb(text, 0.15, 7), m.perturb(text, 0.15, 7)
+    assert a == b and a != text
+    changed = sum(x != y for x, y in zip(text.split(" "), a.split(" "))) / len(text.split(" "))
+    assert 0.08 < changed < 0.22
+    assert m.perturb(text, 0.0, 7) == text
