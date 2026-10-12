@@ -1,0 +1,18 @@
+{
+ "c": 0.5,
+ "K": 32767,
+ "train_seconds": 133.34639310836792,
+ "merges": 34743,
+ "hidden": 2232,
+ "train_tokens": 113402392,
+ "exposure_zero": 79,
+ "exposure_lt10": 81,
+ "exposure_lt100": 94,
+ "exposure_lt1000": 21795,
+ "exposure_p01": 142.0,
+ "exposure_median": 592.0,
+ "val_tokens": 130515,
+ "val_bytes_per_token": 4.836279354863426,
+ "test_tokens": 270689,
+ "test_bytes_per_token": 4.756957246138557
+}

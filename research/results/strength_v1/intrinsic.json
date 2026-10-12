@@ -1,0 +1,140 @@
+{
+ "0": {
+  "vocab_mean_len": 6.578264717551195,
+  "vocab_word_initial": 0.7949461348307749,
+  "train": {
+   "tokens": 113872877,
+   "types_used": 32593,
+   "entropy_bits": 10.81211645284357,
+   "renyi_eff_2_5": 0.4176965994348508,
+   "shannon_eff": 0.720809879255136,
+   "mean_token_bytes": 4.735943827958259,
+   "word_initial_share": 0.9009292616713285
+  },
+  "test": {
+   "tokens": 271659,
+   "types_used": 18396,
+   "entropy_bits": 10.47394205988665,
+   "renyi_eff_2_5": 0.4168944905070871,
+   "shannon_eff": 0.6982648535501687,
+   "mean_token_bytes": 4.7399718028852345,
+   "word_initial_share": 0.8985750518112781,
+   "rare_type_token_share": 0.0006331467022995741
+  }
+ },
+ "0.5": {
+  "vocab_mean_len": 6.6729331339457385,
+  "vocab_word_initial": 0.8173772392956328,
+  "train": {
+   "tokens": 113402392,
+   "types_used": 32688,
+   "entropy_bits": 10.81485702383196,
+   "renyi_eff_2_5": 0.41704705539148984,
+   "shannon_eff": 0.7209925845239746,
+   "mean_token_bytes": 4.755592359991842,
+   "word_initial_share": 0.9046670461765921
+  },
+  "test": {
+   "tokens": 270689,
+   "types_used": 18633,
+   "entropy_bits": 10.47175884461115,
+   "renyi_eff_2_5": 0.41633582683727083,
+   "shannon_eff": 0.6981193054379204,
+   "mean_token_bytes": 4.756957246138557,
+   "word_initial_share": 0.9017950489306917,
+   "rare_type_token_share": 3.6942764574844194e-06
+  }
+ },
+ "1": {
+  "vocab_mean_len": 6.760612811670278,
+  "vocab_word_initial": 0.8315683462019715,
+  "train": {
+   "tokens": 113280555,
+   "types_used": 32688,
+   "entropy_bits": 10.809957183548134,
+   "renyi_eff_2_5": 0.41686883842413264,
+   "shannon_eff": 0.7206659275462441,
+   "mean_token_bytes": 4.760707157552327,
+   "word_initial_share": 0.9056400456371352
+  },
+  "test": {
+   "tokens": 270447,
+   "types_used": 18561,
+   "entropy_bits": 10.46701633142483,
+   "renyi_eff_2_5": 0.41618958801289757,
+   "shannon_eff": 0.6978031369641431,
+   "mean_token_bytes": 4.761213842268541,
+   "word_initial_share": 0.9026019885596809,
+   "rare_type_token_share": 3.6975821510314407e-06
+  }
+ },
+ "2": {
+  "vocab_mean_len": 6.974639118625446,
+  "vocab_word_initial": 0.8662068544572283,
+  "train": {
+   "tokens": 113522887,
+   "types_used": 32688,
+   "entropy_bits": 10.78727530234816,
+   "renyi_eff_2_5": 0.41719263475666823,
+   "shannon_eff": 0.719153797694486,
+   "mean_token_bytes": 4.750544698532905,
+   "word_initial_share": 0.9037068181678642
+  },
+  "test": {
+   "tokens": 271719,
+   "types_used": 18132,
+   "entropy_bits": 10.45381899334331,
+   "renyi_eff_2_5": 0.4169280220002209,
+   "shannon_eff": 0.696923311842899,
+   "mean_token_bytes": 4.73892513957434,
+   "word_initial_share": 0.8983766317408793,
+   "rare_type_token_share": 3.680272634596771e-06
+  }
+ },
+ "4": {
+  "vocab_mean_len": 7.179754020813624,
+  "vocab_word_initial": 0.8957182531205176,
+  "train": {
+   "tokens": 113798468,
+   "types_used": 32688,
+   "entropy_bits": 10.761061421698699,
+   "renyi_eff_2_5": 0.4175754110709945,
+   "shannon_eff": 0.7174062005216144,
+   "mean_token_bytes": 4.739040502724518,
+   "word_initial_share": 0.9015183490870896
+  },
+  "test": {
+   "tokens": 272334,
+   "types_used": 17753,
+   "entropy_bits": 10.434798080491657,
+   "renyi_eff_2_5": 0.41729073421845775,
+   "shannon_eff": 0.6956552472640793,
+   "mean_token_bytes": 4.728223431521587,
+   "word_initial_share": 0.896347866957486,
+   "rare_type_token_share": 3.671961635344834e-06
+  }
+ },
+ "8": {
+  "vocab_mean_len": 7.363719595934935,
+  "vocab_word_initial": 0.9222083193456831,
+  "train": {
+   "tokens": 114183757,
+   "types_used": 32689,
+   "entropy_bits": 10.729696022448081,
+   "renyi_eff_2_5": 0.4180812825710925,
+   "shannon_eff": 0.715315167767275,
+   "mean_token_bytes": 4.72304961028739,
+   "word_initial_share": 0.898476365600757
+  },
+  "test": {
+   "tokens": 273079,
+   "types_used": 17350,
+   "entropy_bits": 10.410618921747739,
+   "renyi_eff_2_5": 0.4176969113097261,
+   "shannon_eff": 0.6940432986164018,
+   "mean_token_bytes": 4.715324136971352,
+   "word_initial_share": 0.8939024970795997,
+   "rare_type_token_share": 3.6619439795810002e-06
+  }
+ }
+}

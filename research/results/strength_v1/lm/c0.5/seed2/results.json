@@ -1,0 +1,141 @@
+{
+ "args": {
+  "data": "/home/ubuntu/jihyun_scaffold/runs/strength/data/c0.5",
+  "out": "/home/ubuntu/jihyun_scaffold/runs/strength/lm/c0.5/seed2",
+  "preset": "small",
+  "seq": 1024,
+  "batch_tokens": 131072,
+  "micro_batch": 64,
+  "epochs": 2.0,
+  "max_steps": 0,
+  "lr": 0.0006,
+  "min_lr_frac": 0.1,
+  "warmup_steps": 200,
+  "wd": 0.1,
+  "clip": 1.0,
+  "seed": 2,
+  "data_seed": 2,
+  "amp": "bf16",
+  "compile": true,
+  "eval_sets": "val,test",
+  "eval_every": 0,
+  "save_ckpt": true,
+  "init_pool": null,
+  "max_train_tokens": 0,
+  "aux": false
+ },
+ "cfg": {
+  "vocab_size": 32768,
+  "d_model": 512,
+  "n_layers": 8,
+  "n_heads": 8,
+  "n_kv_heads": 8,
+  "ffn_dim": 1408,
+  "max_seq": 1024,
+  "rope_theta": 500000.0,
+  "norm_eps": 1e-05,
+  "tie_embeddings": true,
+  "aux_size": 0
+ },
+ "amp": "bf16",
+ "train_time_s": 310.7460026741028,
+ "total_steps": 1730,
+ "n_params": 42476032,
+ "train_tokens": 113431837,
+ "train_exposure_tokens": 226754560,
+ "train_exposure_bytes": 1078074993,
+ "meta": {
+  "tokenizer": "/home/ubuntu/jihyun_scaffold/runs/strength/tok/tok_c0.5.json",
+  "n_normal": 32767,
+  "eos_id": 32767,
+  "mode": "scaffold",
+  "inference": "canonical",
+  "splits": {
+   "train": {
+    "tokens": 113431837,
+    "docs": 29444,
+    "bytes": 539295549,
+    "bytes_per_token": 4.755592359991842,
+    "methods": {
+     "canonical": 29444
+    }
+   },
+   "val": {
+    "tokens": 130546,
+    "docs": 30,
+    "bytes": 631207,
+    "bytes_per_token": 4.836279354863426,
+    "methods": {
+     "canonical": 30
+    }
+   },
+   "test": {
+    "tokens": 270752,
+    "docs": 62,
+    "bytes": 1287656,
+    "bytes_per_token": 4.756957246138557,
+    "methods": {
+     "canonical": 62
+    }
+   },
+   "val_canonical": {
+    "tokens": 130546,
+    "docs": 30,
+    "bytes": 631207,
+    "bytes_per_token": 4.836279354863426,
+    "methods": {
+     "canonical": 30
+    }
+   },
+   "val_longest": {
+    "tokens": 130362,
+    "docs": 30,
+    "bytes": 631207,
+    "bytes_per_token": 4.84310716560143,
+    "methods": {
+     "longest": 30
+    }
+   },
+   "val_dp": {
+    "tokens": 130152,
+    "docs": 30,
+    "bytes": 631207,
+    "bytes_per_token": 4.850923371323614,
+    "methods": {
+     "dp": 30
+    }
+   },
+   "test_canonical": {
+    "tokens": 270752,
+    "docs": 62,
+    "bytes": 1287656,
+    "bytes_per_token": 4.756957246138557,
+    "methods": {
+     "canonical": 62
+    }
+   },
+   "test_longest": {
+    "tokens": 270008,
+    "docs": 62,
+    "bytes": 1287656,
+    "bytes_per_token": 4.770067976810091,
+    "methods": {
+     "longest": 62
+    }
+   },
+   "test_dp": {
+    "tokens": 269600,
+    "docs": 62,
+    "bytes": 1287656,
+    "bytes_per_token": 4.777288461324419,
+    "methods": {
+     "dp": 62
+    }
+   }
+  }
+ },
+ "bpb": {
+  "val": 1.0796473142483158,
+  "test": 1.085843329122733
+ }
+}

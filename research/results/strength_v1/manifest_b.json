@@ -1,0 +1,92 @@
+[
+ {
+  "run": "c0.5/seed1",
+  "ckpt": "/home/ubuntu/jihyun_scaffold/runs/strength/lm/c0.5/seed1/model.pt",
+  "tok": "/home/ubuntu/jihyun_scaffold/runs/strength/tok/tok_c0.5.json",
+  "method": "canonical"
+ },
+ {
+  "run": "c0/seed0",
+  "ckpt": "/home/ubuntu/jihyun_scaffold/runs/strength/lm/c0/seed0/model.pt",
+  "tok": "/home/ubuntu/jihyun_scaffold/runs/strength/tok/tok_c0.json",
+  "method": "canonical"
+ },
+ {
+  "run": "c0/seed2",
+  "ckpt": "/home/ubuntu/jihyun_scaffold/runs/strength/lm/c0/seed2/model.pt",
+  "tok": "/home/ubuntu/jihyun_scaffold/runs/strength/tok/tok_c0.json",
+  "method": "canonical"
+ },
+ {
+  "run": "c1/seed1",
+  "ckpt": "/home/ubuntu/jihyun_scaffold/runs/strength/lm/c1/seed1/model.pt",
+  "tok": "/home/ubuntu/jihyun_scaffold/runs/strength/tok/tok_c1.json",
+  "method": "canonical"
+ },
+ {
+  "run": "c2/seed0",
+  "ckpt": "/home/ubuntu/jihyun_scaffold/runs/strength/lm/c2/seed0/model.pt",
+  "tok": "/home/ubuntu/jihyun_scaffold/runs/strength/tok/tok_c2.json",
+  "method": "canonical"
+ },
+ {
+  "run": "c2/seed2",
+  "ckpt": "/home/ubuntu/jihyun_scaffold/runs/strength/lm/c2/seed2/model.pt",
+  "tok": "/home/ubuntu/jihyun_scaffold/runs/strength/tok/tok_c2.json",
+  "method": "canonical"
+ },
+ {
+  "run": "c4/seed1",
+  "ckpt": "/home/ubuntu/jihyun_scaffold/runs/strength/lm/c4/seed1/model.pt",
+  "tok": "/home/ubuntu/jihyun_scaffold/runs/strength/tok/tok_c4.json",
+  "method": "canonical"
+ },
+ {
+  "run": "c8/seed0",
+  "ckpt": "/home/ubuntu/jihyun_scaffold/runs/strength/lm/c8/seed0/model.pt",
+  "tok": "/home/ubuntu/jihyun_scaffold/runs/strength/tok/tok_c8.json",
+  "method": "canonical"
+ },
+ {
+  "run": "c8/seed2",
+  "ckpt": "/home/ubuntu/jihyun_scaffold/runs/strength/lm/c8/seed2/model.pt",
+  "tok": "/home/ubuntu/jihyun_scaffold/runs/strength/tok/tok_c8.json",
+  "method": "canonical"
+ },
+ {
+  "run": "v1/bpe_canonical/seed1",
+  "ckpt": "/home/ubuntu/jihyun_scaffold/v1/lm/bpe_canonical/seed1/model.pt",
+  "tok": "/home/ubuntu/jihyun_scaffold/src-s1/artifacts/tokenizers/bpe-32768.json",
+  "method": "canonical"
+ },
+ {
+  "run": "v1/scaffold_canonical/seed0",
+  "ckpt": "/home/ubuntu/jihyun_scaffold/v1/lm/scaffold_canonical/seed0/model.pt",
+  "tok": "/home/ubuntu/jihyun_scaffold/src-s1/artifacts/tokenizers/scaffold-32768.json",
+  "method": "canonical"
+ },
+ {
+  "run": "v1/scaffold_canonical/seed2",
+  "ckpt": "/home/ubuntu/jihyun_scaffold/v1/lm/scaffold_canonical/seed2/model.pt",
+  "tok": "/home/ubuntu/jihyun_scaffold/src-s1/artifacts/tokenizers/scaffold-32768.json",
+  "method": "canonical"
+ },
+ {
+  "run": "v1/scaffold_mix/seed1",
+  "ckpt": "/home/ubuntu/jihyun_scaffold/v1/lm/scaffold_mix/seed1/model.pt",
+  "tok": "/home/ubuntu/jihyun_scaffold/src-s1/artifacts/tokenizers/scaffold-32768.json",
+  "method": "canonical"
+ },
+ {
+  "run": "v1/scaffold_dp/seed0",
+  "ckpt": "/home/ubuntu/jihyun_scaffold/v1/lm/scaffold_dp/seed0/model.pt",
+  "tok": "/home/ubuntu/jihyun_scaffold/src-s1/artifacts/tokenizers/scaffold-32768.json",
+  "method": "dp"
+ },
+ {
+  "run": "v1/scaffold_dp/seed2",
+  "ckpt": "/home/ubuntu/jihyun_scaffold/v1/lm/scaffold_dp/seed2/model.pt",
+  "tok": "/home/ubuntu/jihyun_scaffold/src-s1/artifacts/tokenizers/scaffold-32768.json",
+  "method": "dp"
+ }
+]
