@@ -34,11 +34,12 @@ def pad_vocab(n, mult=64):
 
 
 @torch.no_grad()
-def eval_stream(model, stream, token_bytes, seq, device, amp_dtype, bs=16):
+def eval_stream(model, stream, token_bytes, seq, device, amp_dtype, bs=16, aux_stream=None):
     """Contiguous windows: x = s[iL:iL+L], y = s[iL+1:iL+L+1]; each token after the first is
     predicted exactly once (context restarts at window starts, same as in training)."""
     model.eval()
     s = np.asarray(stream, dtype=np.int64)
+    sa = None if aux_stream is None else np.asarray(aux_stream, dtype=np.int64)
     n_t = len(s) - 1
     nll = np.zeros(n_t, dtype=np.float32)
     starts = list(range(0, n_t, seq))
@@ -52,8 +53,9 @@ def eval_stream(model, stream, token_bytes, seq, device, amp_dtype, bs=16):
                 continue
             x = torch.tensor(np.stack([s[st : st + L] for st in sts]), device=device)
             y = torch.tensor(np.stack([s[st + 1 : st + L + 1] for st in sts]), device=device)
+            xa = None if sa is None else torch.tensor(np.stack([sa[st : st + L] for st in sts]), device=device)
             with torch.autocast(device_type="cuda", dtype=amp_dtype, enabled=device.startswith("cuda") and amp_dtype is not None):
-                logits = model(x)
+                logits = model(x) if xa is None else model(x, xa)
             l = F.cross_entropy(logits.float().view(-1, logits.shape[-1]), y.reshape(-1), reduction="none").view(len(sts), L)
             for r, st in enumerate(sts):
                 nll[st : st + L] = l[r].cpu().numpy()
@@ -85,6 +87,7 @@ def main():
     ap.add_argument("--save_ckpt", action="store_true")
     ap.add_argument("--init_pool", help="pool tokenizer for common-token-matched embedding initialization")
     ap.add_argument("--max_train_tokens", type=int, default=0, help="truncate train stream (smoke tests)")
+    ap.add_argument("--aux", action="store_true", help="use <split>_aux.bin input-only features (meta['aux_size'])")
     args = ap.parse_args()
 
     rank = int(os.environ.get("RANK", 0))
@@ -114,6 +117,9 @@ def main():
     token_bytes = np.load(os.path.join(args.data, "token_bytes.npy"))
     vocab = pad_vocab(meta["n_normal"] + 1)
     cfg = make_config(args.preset, vocab, args.seq)
+    if args.aux:
+        cfg.aux_size = int(meta["aux_size"])
+    aux_of = lambda name: open_stream(os.path.join(args.data, f"{name}_aux.bin")) if args.aux else None  # noqa: E731
 
     torch.manual_seed(args.seed)
     model = LM(cfg).to(device)
@@ -132,8 +138,11 @@ def main():
                             lr=args.lr, betas=(0.9, 0.95), fused=use_cuda)
 
     train = open_stream(os.path.join(args.data, "train.bin"))
+    train_aux = aux_of("train")
     if args.max_train_tokens:
         train = train[: args.max_train_tokens]
+        train_aux = None if train_aux is None else train_aux[: args.max_train_tokens]
+    assert train_aux is None or len(train_aux) == len(train), "aux stream misaligned" 
     L = args.seq
     n_blocks = (len(train) - 1) // L
     per_step_seqs = args.batch_tokens // L
@@ -162,11 +171,13 @@ def main():
         idx = order[base : base + args.micro_batch]
         x = np.stack([np.asarray(train[i * L : i * L + L], dtype=np.int64) for i in idx])
         y = np.stack([np.asarray(train[i * L + 1 : i * L + L + 1], dtype=np.int64) for i in idx])
-        return torch.from_numpy(x).to(device), torch.from_numpy(y).to(device), int(token_bytes[y].sum())
+        xa = None if train_aux is None else torch.from_numpy(
+            np.stack([np.asarray(train_aux[i * L : i * L + L], dtype=np.int64) for i in idx])).to(device)
+        return torch.from_numpy(x).to(device), torch.from_numpy(y).to(device), int(token_bytes[y].sum()), xa
 
     def val_bpb():
         vs = open_stream(os.path.join(args.data, "val.bin"))
-        nll, tg = eval_stream(raw_model, vs, token_bytes, args.seq, device, amp_dtype)
+        nll, tg = eval_stream(raw_model, vs, token_bytes, args.seq, device, amp_dtype, aux_stream=aux_of("val"))
         return bpb_from_token_nll(nll, tg, token_bytes)[0]
 
     log = open(os.path.join(args.out, "log.jsonl"), "a") if master else None
@@ -181,13 +192,13 @@ def main():
             g["lr"] = lr_at(step)
         loss_acc = 0.0
         for micro in range(accum):
-            x, y, batch_bytes = get_batch(order, sie, micro)
+            x, y, batch_bytes, xa = get_batch(order, sie, micro)
             bytes_seen += batch_bytes
             sync = (micro == accum - 1) or world == 1
             ctx = model.no_sync() if (world > 1 and not sync) else torch.enable_grad()
             with ctx:
                 with torch.autocast(device_type="cuda", dtype=amp_dtype, enabled=use_cuda and amp_dtype is not None):
-                    logits = model(x)
+                    logits = model(x) if xa is None else model(x, xa)
                 loss = F.cross_entropy(logits.float().view(-1, logits.shape[-1]), y.view(-1)) / accum
                 scaler.scale(loss).backward()
             loss_acc += loss.item()
@@ -218,7 +229,7 @@ def main():
             if not os.path.exists(p):
                 continue
             s = open_stream(p)
-            nll, tg = eval_stream(raw_model, s, token_bytes, args.seq, device, amp_dtype)
+            nll, tg = eval_stream(raw_model, s, token_bytes, args.seq, device, amp_dtype, aux_stream=aux_of(name))
             doc_off = np.load(os.path.join(args.data, f"{name}_docs.npy"))
             d_of = doc_ids_for_targets(doc_off, len(s))[1:]
             tot, (nll_d, by_d) = bpb_from_token_nll(nll, tg, token_bytes, d_of, len(doc_off))

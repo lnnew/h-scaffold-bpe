@@ -27,13 +27,14 @@ class LMConfig:
     rope_theta: float = 500000.0
     norm_eps: float = 1e-5
     tie_embeddings: bool = True
+    aux_size: int = 0          # >0: extra input-only embedding (index 0 = none, contributes zero)
 
     def n_params(self, include_embedding=True) -> int:
         hd = self.d_model // self.n_heads
         attn = self.d_model * (self.n_heads * hd) * 2 + self.d_model * (self.n_kv_heads * hd) * 2
         mlp = 3 * self.d_model * self.ffn_dim
         body = self.n_layers * (attn + mlp + 2 * self.d_model) + self.d_model
-        emb = self.vocab_size * self.d_model * (1 if self.tie_embeddings else 2)
+        emb = self.vocab_size * self.d_model * (1 if self.tie_embeddings else 2) + self.aux_size * self.d_model
         return body + (emb if include_embedding else 0)
 
 
@@ -131,7 +132,11 @@ class LM(nn.Module):
         self.blocks = nn.ModuleList(Block(c) for _ in range(c.n_layers))
         self.norm = RMSNorm(c.d_model, c.norm_eps)
         self.head = None if c.tie_embeddings else nn.Linear(c.d_model, c.vocab_size, bias=False)
+        self.aux_emb = nn.Embedding(c.aux_size, c.d_model, padding_idx=0) if c.aux_size else None
         self.apply(self._init)
+        if self.aux_emb is not None:
+            with torch.no_grad():
+                self.aux_emb.weight[0].zero_()
         for n, p in self.named_parameters():  # GPT-2 style scaled residual init
             if n.endswith("o.weight") or n.endswith("down.weight"):
                 nn.init.normal_(p, 0.0, 0.02 / math.sqrt(2 * c.n_layers))
@@ -142,12 +147,14 @@ class LM(nn.Module):
         if isinstance(m, (nn.Linear, nn.Embedding)):
             nn.init.normal_(m.weight, 0.0, 0.02)
 
-    def forward(self, idx):
+    def forward(self, idx, aux=None):
         c = self.c
         if self._rope is None or self._rope[0].device != idx.device or self._rope[0].shape[0] < idx.shape[1]:
             self._rope = rope_cache(max(c.max_seq, idx.shape[1]), c.d_model // c.n_heads, c.rope_theta, idx.device)
         cos, sin = self._rope
         x = self.emb(idx)
+        if aux is not None:
+            x = x + self.aux_emb(aux)
         for b in self.blocks:
             x = b(x, cos, sin)
         x = self.norm(x)

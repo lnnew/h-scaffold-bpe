@@ -54,3 +54,52 @@ def test_dp_finds_shorter_segmentations_for_scaffold(setup):
     can, dp = VisibleSegmenter(sc, "canonical"), VisibleSegmenter(sc, "dp")
     words = {w for d in dev for w in pretokenize(d)}
     assert sum(len(can.encode_word(w)) - len(dp.encode_word(w)) for w in words) >= 0
+
+
+def test_constrained_interpolates_between_dp_and_canonical(setup):
+    toks, dev = setup
+    sc = toks["scaffold"]
+    can, dp = VisibleSegmenter(sc, "canonical"), VisibleSegmenter(sc, "dp")
+    words = {w for d in dev for w in pretokenize(d)}
+    prev = None
+    for lam in (0.0, 0.2, 0.5, 1.0, 3.0):
+        seg = VisibleSegmenter(sc, "constrained", lam)
+        total = sum(len(seg.encode_word(w)) for w in words)
+        for w in words:
+            assert sc.decode(seg.encode_word(w)) == w
+            if lam == 0.0:
+                assert len(seg.encode_word(w)) == len(dp.encode_word(w))
+            if lam >= 1.0:
+                assert seg.encode_word(w) == can.encode_word(w)
+        assert prev is None or total >= prev
+        prev = total
+
+
+def test_causal_features_depend_only_on_prefix(setup):
+    from scaffold_margin.inference import CausalScaffoldFeatures
+
+    toks, dev = setup
+    sc = toks["scaffold"]
+    f, g = CausalScaffoldFeatures(sc), CausalScaffoldFeatures(sc, shuffle_seed=3)
+    ids = sc.encode(" ".join(dev[:5]))
+    full = f.features(ids)
+    assert any(full), "synthetic corpus should fire at least once"
+    for t in range(0, len(ids), 7):
+        assert f.features(ids[: t + 1])[t] == full[t]
+    shuf = g.features(ids)
+    assert [x > 0 for x in shuf] == [x > 0 for x in full]
+
+
+def test_aux_embedding_zero_index_is_identity():
+    import torch
+
+    from scaffold_margin.lm import LM, make_config
+
+    c = make_config("tiny", 64, 16)
+    c.aux_size = 5
+    torch.manual_seed(0)
+    m = LM(c).eval()
+    x = torch.randint(0, 64, (2, 16))
+    with torch.no_grad():
+        assert torch.allclose(m(x), m(x, torch.zeros_like(x)))
+        assert not torch.allclose(m(x), m(x, torch.full_like(x, 2)))
